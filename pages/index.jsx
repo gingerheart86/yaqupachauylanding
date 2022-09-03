@@ -14,10 +14,18 @@ export default function Home() {
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Yaqu Pacha Uruguay
           </h1>
-          <p className="mt-6 max-w-3xl text-lg text-white bg-cyan-900/90 p-4 rounded-2xl shadow-xl">
-            un texto mas lindo
-          </p>
+          <h1 className="mt-14 max-w-2xl text-4xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-8 xl:text-3xl">
+            <span className="block bg-gradient-to-r from-white to-cyan-200 bg-clip-text pb-3 text-transparent sm:pb-5">
+              Si cuidamos las toninas cuidamos la costa, si cuidamos la costa
+              cuidamos las toninas
+            </span>
+          </h1>
         </div>
+        {/* <img
+          className="absolute bottom-10 right-32 w-96 object-cover"
+          src="/logo.png"
+          alt=""
+        /> */}
       </div>
       <div className="relative">
         {/* <div className="absolute inset-0">
@@ -74,14 +82,22 @@ export default function Home() {
           </div>
           <div className="relative mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
             <h1 className="text-3xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Conoce mas en nuestras redes sociales
+              Conoce más en nuestras redes sociales
             </h1>
-            <p className="mt-6 max-w-3xl text-xl text-indigo-100">
-              Mattis amet hendrerit dolor, quisque lorem pharetra. Pellentesque
-              lacus nisi urna, arcu sociis eu. Orci vel lectus nisl eget eget ut
-              consectetur. Sit justo viverra non adipisicing elit distinctio.
-              ssss
-            </p>
+            <div className=" max-w-3xl flex space-x-10 mt-8 ">
+              <a
+                href="https://www.instagram.com/proyecto.toninas/"
+                className=""
+              >
+                <img src="/iglogo.png" alt="" className="w-20 h-20" />
+              </a>
+              <a href="https://es-la.facebook.com/yaqupachauy/">
+                <img src="/fblogo.png" alt="" className="w-20 h-20" />
+              </a>
+              <a href="">
+                <img src="/twlogo.png" alt="" className="w-20 h-20" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

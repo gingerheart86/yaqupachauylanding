@@ -15,8 +15,14 @@ export default function Navbar() {
     { name: "Portada", href: "/", current: true },
     { name: "Nosotras", href: "/nosotras", current: false },
     { name: "Proyecto toninas", href: "/proyecto-toninas", current: false },
+    { name: "Especies", href: "/especies", current: false },
     { name: "Publicaciones", href: "/publicaciones", current: false },
-    { name: "Divulgación", href: "#", current: false },
+    {
+      name: "Prensa y Divulgación",
+      href: "/prensa-y-divulgacion",
+      current: false,
+    },
+    { name: "Contacto", href: "/contacto", current: false },
   ]);
   const setActiveNavigation = (itemName) => {
     const newNavigation = navigation.map((item) => {

@@ -141,6 +141,7 @@ export default function Home() {
             reproducción. También pueden ser producidas por cortes de hélices de
             barcos o por enmalles con redes de pesca.
           </p>
+
           <p className="mt-8 text-base leading-8 text-gray-500">
             📸En Uruguay se han identificado más de 45 toninas a través de
             fotografías de las marcas naturales de la aleta dorsal (Laporta
@@ -170,7 +171,6 @@ export default function Home() {
             de Janeiro, lo que podría explicarse por divergencia génetica o
             varianza ambiental (LIma et al. 2020).
           </p>
-
           <h2 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             Toninas Centinelas de la costa
           </h2>
@@ -181,6 +181,14 @@ export default function Home() {
             central de cara a la adaptación frente al CC y por lo tanto de la
             Convención Marco Naciones Unidas sobre el Cambio Climático (CMNUCC)
             y del Convenio sobre Diversidad Biológica (CDB)este proyecto.
+            <div className="prose">
+              <blockquote>
+                <p>Escucha un silbido</p>
+              </blockquote>
+              <audio controls className="my-4">
+                <source src="silbido.mp3" type="audio/mp3" />
+              </audio>
+            </div>
             Compartimos información sobre el cambio climático en la zona
             costera, especialmente sobre su impacto en las toninas, especie
             carísmática y bandera de la costa uruguaya, cuya conservación podría
@@ -225,7 +233,6 @@ export default function Home() {
               title="Embedded youtube"
             />
           </div>
-
           <div className="prose prose-lg text-base prose-cyan mx-auto mt-6 text-gray-500"></div>
         </div>
       </div>
