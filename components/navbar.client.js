@@ -36,11 +36,11 @@ export default function Navbar() {
     setNavigation(newNavigation);
   };
   return (
-    <Disclosure as="nav" className="bg-cyan-700">
+    <Disclosure as="nav" className="bg-slate-200 border-b shadow">
       {({ open }) => (
         <>
           <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 mx-auto">
-            <div className="relative flex h-16 items-center justify-between">
+            <div className="relative flex h-20 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-200 hover:bg-cyan-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
@@ -52,7 +52,9 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-shrink-0 items-center"></div>
+              <div className="flex flex-shrink-0 items-center">
+                <img src="/logo2.png" className="w-36 mr-4" alt="" />
+              </div>
 
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center">
                 <div className="hidden sm:ml-6 sm:block">
@@ -63,8 +65,8 @@ export default function Navbar() {
                           onClick={() => setActiveNavigation(item.name)}
                           className={classNames(
                             item.current
-                              ? "bg-cyan-900 text-white"
-                              : "text-gray-200 hover:bg-cyan-700 hover:text-white",
+                              ? "bg-slate-200 text-cyan-600"
+                              : "text-cyan-600 hover:bg-cyan-700 hover:text-white",
                             "px-3 py-2 rounded-md text-sm font-medium"
                           )}
                           aria-current={item.current ? "page" : undefined}

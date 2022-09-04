@@ -27,7 +27,7 @@ export default function Home() {
           alt=""
         /> */}
       </div>
-      <div className="relative">
+      <div className="relative flex flex-col items-center justify-center w-full">
         {/* <div className="absolute inset-0">
           <img
             className="h-full w-full object-cover"
@@ -39,36 +39,42 @@ export default function Home() {
             aria-hidden="true"
           />
         </div> */}
-        <div className="relative mx-auto max-w-7xl py-24 px-4 sm:py-12 sm:px-6 lg:px-8 bg-cyan-800">
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-            Qué es Yaque Pacha Uruguay?
+        <div className="relative w-full max-w-7xl pt-24 px-4 sm:py-12 sm:px-6 lg:px-8 bg-white">
+          <h1 className="text-3xl font-bold tracking-tight text-cyan-600 sm:text-3xl lg:text-4xl">
+            Qué es Yaqu Pacha Uruguay?
           </h1>
-          <p className=" max-w-3xl text-xl text-gray-200   p-4 rounded-2xl shadow-xl ">
-            Yaqu Pacha Uruguay es una filial de la Organización para la
-            Conservación de Mamíferos Acuáticos en América del Sur - Yaqu Pacha
-            e.V. en Alemania. La organización tiene como objetivos investigar y
-            conservar las especies de mamíferos acuáticos en América del Sur, en
-            particular aquellas amenazadas, así como difundir y concientizar a
-            las personas sobre la importancia de estudiar y conservar a estas
-            especies y sus ambientes.
-          </p>
+          <div className="flex justify-between">
+            <p className=" max-w-3xl  text-xl text-slate-400   p-4 rounded-2xl shadow-xl relative ">
+              Yaqu Pacha Uruguay es una filial de la Organización para la
+              Conservación de Mamíferos Acuáticos en América del Sur - Yaqu
+              Pacha e.V. en Alemania. La organización tiene como objetivos
+              investigar y conservar las especies de mamíferos acuáticos en
+              América del Sur, en particular aquellas amenazadas, así como
+              difundir y concientizar a las personas sobre la importancia de
+              estudiar y conservar a estas especies y sus ambientes.
+            </p>
+            <div className="flex justify-around flex-1">
+              <img src="logo_sinf.png" className="w-56 h-56  " alt="" />
+            </div>
+          </div>
         </div>
-        <div className="relative mx-auto max-w-7xl py-12 px-4  sm:px-6 lg:px-8 bg-teal-800">
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+
+        <div className="relative w-full max-w-7xl sm:py-12 px-4  sm:px-6 lg:px-8 bg-white">
+          <h1 className="text-3xl font-bold tracking-tight text-teal-600 sm:text-3xl lg:text-4xl">
             Cuál es el objetivo?
           </h1>
-          <p className=" max-w-3xl text-xl text-gray-200  p-4 rounded-2xl shadow-xl ">
-            Esta filial fue creada en 2013 incorporando al ***Proyecto
-            Toninas*** que se venía desarrollando desde 2002 en Uruguay. Los dos
-            objetivos principales de este proyecto son estudiar a la tonina
-            *Tursiops truncatus gephyreus*, una subespecie del delfín nariz de
-            botella *Tursiops truncatus* que ocurre únicamente en la zona
-            costera del sur de Brasil, Uruguay y Argentina, y promover la
-            educación ambiental costera, la conciencia sobre los efectos del
-            cambio climático y a la tonina como especie centinela de la costa.
+          <p className=" max-w-3xl text-xl text-slate-400  p-4 rounded-2xl shadow-xl ">
+            Esta filial fue creada en 2013 incorporando al Proyecto Toninas que
+            se venía desarrollando desde 2002 en Uruguay. Los dos objetivos
+            principales de este proyecto son estudiar a la tonina *Tursiops
+            truncatus gephyreus*, una subespecie del delfín nariz de botella
+            *Tursiops truncatus* que ocurre únicamente en la zona costera del
+            sur de Brasil, Uruguay y Argentina, y promover la educación
+            ambiental costera, la conciencia sobre los efectos del cambio
+            climático y a la tonina como especie centinela de la costa.
           </p>
         </div>
-        <div className="relative  py-12 px-4  sm:px-6 lg:px-8 bg-cyan-800">
+        <div className="relative  pb-12 px-4  sm:px-6 lg:px-8 bg-cyan-800 w-full">
           <div className="absolute inset-0">
             <img
               className="h-full w-full object-cover"

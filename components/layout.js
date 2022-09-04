@@ -6,9 +6,9 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>Yaquu Pacha Uy</title>
+        <title>Yaqu Pacha Uy</title>
       </Head>
-      <div className="min-h-screen bg-cyan-900 ">
+      <div className="min-h-screen bg-slate-100 ">
         <Navbar />
         <main className="">{children}</main>
         <FooterFC />

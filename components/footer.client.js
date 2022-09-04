@@ -39,14 +39,14 @@ const navigation = [
 
 export default function FooterFC() {
   return (
-    <footer className="bg-cyan-100">
+    <footer className="bg-slate-300">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-100 hover:text-gray-200"
+              className="text-gray-500 hover:text-gray-600"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
@@ -55,10 +55,10 @@ export default function FooterFC() {
         </div>
         <div className="mt-8 md:order-1 md:mt-0 flex items-center ">
           <img src="/logo2.png" className="w-36 mr-4" alt="" />
-          <p className="text-center text-base text-gray-300">
+          <p className="text-center text-base text-gray-600">
             &copy; Yaqupacha Uruguay {new Date().getFullYear()}. Made with ❤️ by{" "}
             <a
-              className="text-gray-200 font-semibold hover:underline underline-offset-4"
+              className="text-gray-600 font-semibold hover:underline underline-offset-4"
               href="https://twitter.com/sansildev"
               target={"__blank"}
             >
