@@ -28,8 +28,8 @@ const people = [
 
 export default function Home() {
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24">
+    <div className="">
+      <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 lg:px-8 lg:py-24 bg-white">
         <div className="">
           {/* <div className="space-y-5 sm:space-y-4">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
