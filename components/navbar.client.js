@@ -27,7 +27,7 @@ const resources = [
     href: "/proyectos/toninas",
   },
   {
-    name: "Gephyreus",
+    name: "Proyecto Gephyreus",
     description: "",
     href: "/proyectos/gephyreus",
   },
