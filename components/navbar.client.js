@@ -19,17 +19,17 @@ const resources = [
   {
     name: "Antecedentes",
     description: "",
-    href: "/proyectos",
+    href: "/proyectos/antecedentes",
   },
   {
     name: "Toninas centinelas de la costa",
     description: "",
-    href: "/proyectos",
+    href: "/proyectos/toninas",
   },
   {
     name: "Gephyreus",
     description: "",
-    href: "/proyectos",
+    href: "/proyectos/gephyreus",
   },
 ];
 
