@@ -6,8 +6,8 @@ import {
 
 export default function Home() {
   return (
-    <div className="bg-white ">
-      <div className="mx-auto max-w-7xl py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white max-w-7xl mx-auto ">
+      <div className=" py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg md:grid md:max-w-none md:grid-cols-2 md:gap-8">
           <div>
             <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
