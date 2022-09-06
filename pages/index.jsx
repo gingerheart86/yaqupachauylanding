@@ -11,16 +11,25 @@ export default function Home() {
           />
         </div>
         <div className="relative mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Yaqu Pacha Uruguay
-          </h1>
-          <h1 className="mt-14 max-w-2xl text-4xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-8 xl:text-3xl">
-            <span className="block bg-gradient-to-r from-white to-cyan-200 bg-clip-text pb-3 text-transparent sm:pb-5">
-              Si cuidamos las toninas cuidamos la costa, si cuidamos la costa
-              cuidamos las toninas
+          <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
+            <span className="block">Toninas</span>
+            <span className="block bg-gradient-to-r from-cyan-200 to-cyan-700 bg-clip-text pb-3 text-transparent sm:pb-5">
+              centinelas de la costa
             </span>
           </h1>
+          <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-white  sm:text-6xl  xl:text-3xl">
+            <p className="block bg-gradient-to-r from-white to-cyan-200 bg-clip-text  text-transparent ">
+              Si cuidamos las toninas cuidamos la costa
+            </p>
+            <p className="block bg-gradient-to-r from-white to-cyan-200 bg-clip-text  text-transparent ">
+              Si cuidamos la costa cuidamos las toninas
+            </p>
+          </h1>
+          {/* <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            Toninas, centinelas de la costa
+          </h1> */}
         </div>
+
         {/* <img
           className="absolute bottom-10 right-32 w-96 object-cover"
           src="/logo.png"
