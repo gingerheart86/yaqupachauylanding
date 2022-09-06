@@ -49,6 +49,14 @@ export default function Home() {
             en un área determinada, las preferencias de asociación, los
             intervalos de nacimiento de las crías, entre otros datos.
           </p>
+          <h2 className="text-gray-700 font-semibold prose mt-4">
+            Ejemplo de fotos del catálogo
+          </h2>
+          <div className="flex md:flex-row  space-x-0 md:space-x-5 my-4 flex-col">
+            <img src="/toninas/1.jpg" className="w-52 h-52  mt-2 " />
+            <img src="/toninas/2.jpg" className="w-52 h-52 mt-2" />
+            <img src="/toninas/3.jpg" className="w-52 h-52 mt-2" />
+          </div>
           <p className="mt-8 text-base leading-8 text-gray-500">
             A partir del 2017, el Proyecto Toninas comenzó a monitorear
             acústicamente a los grupos de toninas de Uruguay, con el objetivo de

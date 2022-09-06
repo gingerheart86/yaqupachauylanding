@@ -8,7 +8,7 @@ export default function Home() {
           <h2 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             Toninas Centinelas de la costa
           </h2>
-          <Gallery />
+
           <p className="mt-8 text-base leading-8 text-gray-500">
             Financiado por ECOSSUR, durante 9 meses (2021-2022) realizamos
             diversas actividades que involucran el trabajo en monitoreo,
@@ -28,6 +28,13 @@ export default function Home() {
           <figure className="my-4">
             <img className="w-full rounded-lg" src="/pic1.png" alt="" />
           </figure>
+
+          <h2 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-3xl">
+            Galería de fotos
+          </h2>
+          <div className="max-w-5xl  w-full mx-auto">
+            <Gallery />
+          </div>
         </div>
       </div>
     </div>
