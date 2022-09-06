@@ -12,7 +12,7 @@ const people = [
     role: "",
     imageUrl: "./caro.jpeg",
     bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Ecología y Evolución (Programa de Desarrollo de las Ciencias Básicas, Universidad de la República, Uruguay).",
-    twitterUrl: "#",
+    twitterUrl: "https://twitter.com/gingerheart86",
     linkedinUrl: "#",
   },
   {
