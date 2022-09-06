@@ -17,17 +17,6 @@ export default function Home() {
               <p className="text-lg text-gray-500"></p>
             </div>
             <div className="mt-9">
-              <div className="flex">
-                <div className="flex-shrink-0">
-                  <PhoneIcon
-                    className="h-6 w-6 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </div>
-                <div className="ml-3 text-base text-gray-500">
-                  <p>+598 099 835 474</p>
-                </div>
-              </div>
               <div className="flex mt-6">
                 <div className="flex-shrink-0">
                   <MapPinIcon

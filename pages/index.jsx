@@ -50,7 +50,7 @@ export default function Home() {
         </div> */}
         <div className="relative w-full max-w-7xl pt-24 px-4 sm:py-12 sm:px-6 lg:px-8 bg-white">
           <h1 className="text-3xl font-bold tracking-tight text-cyan-600 sm:text-3xl lg:text-4xl">
-            Qué es Yaqu Pacha Uruguay?
+            ¿Qué es Yaqu Pacha Uruguay?
           </h1>
           <div className="flex justify-between">
             <p className=" max-w-3xl  text-xl text-slate-400   p-4 rounded-2xl shadow-xl relative ">
@@ -70,17 +70,21 @@ export default function Home() {
 
         <div className="relative w-full max-w-7xl sm:py-12 px-4  sm:px-6 lg:px-8 bg-white">
           <h1 className="text-3xl font-bold tracking-tight text-teal-600 sm:text-3xl lg:text-4xl">
-            Cuál es el objetivo?
+            ¿Cuál es el objetivo?
           </h1>
           <p className=" max-w-3xl text-xl text-slate-400  p-4 rounded-2xl shadow-xl ">
             Esta filial fue creada en 2013 incorporando al Proyecto Toninas que
             se venía desarrollando desde 2002 en Uruguay. Los dos objetivos
-            principales de este proyecto son estudiar a la tonina *Tursiops
-            truncatus gephyreus*, una subespecie del delfín nariz de botella
-            *Tursiops truncatus* que ocurre únicamente en la zona costera del
-            sur de Brasil, Uruguay y Argentina, y promover la educación
-            ambiental costera, la conciencia sobre los efectos del cambio
-            climático y a la tonina como especie centinela de la costa.
+            principales de este proyecto son estudiar a la tonina{" "}
+            <span className="italic font-semibold">
+              Tursiops truncatus gephyreus
+            </span>
+            , una subespecie del delfín nariz de botella
+            <span className="italic font-semibold">Tursiops truncatus</span> que
+            ocurre únicamente en la zona costera del sur de Brasil, Uruguay y
+            Argentina, y promover la educación ambiental costera, la conciencia
+            sobre los efectos del cambio climático y a la tonina como especie
+            centinela de la costa.
           </p>
         </div>
         <div className="relative  pb-12 px-4  sm:px-6 lg:px-8 bg-cyan-800 w-full">
@@ -109,7 +113,7 @@ export default function Home() {
               <a href="https://es-la.facebook.com/yaqupachauy/">
                 <img src="/fblogo.png" alt="" className="w-20 h-20" />
               </a>
-              <a href="">
+              <a href="https://twitter.com/yaqupachauy">
                 <img src="/twlogo.png" alt="" className="w-20 h-20" />
               </a>
             </div>
