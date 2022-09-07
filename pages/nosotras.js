@@ -37,7 +37,7 @@ export default function Home() {
           <span className="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             Nosotras
           </span>
-          <p className="text-xl text-gray-500 mt-2 ">
+          <p className="text-lg sm:text-xl text-gray-500 sm:my-2 my-4 ">
             Yaqu Pacha Uruguay está conformado por 3 investigadoras y cuenta con
             la colaboración de más de 20 personas con diversas formaciones y
             habilidades.
@@ -57,7 +57,10 @@ export default function Home() {
           <div className="">
             <ul role="list" className="flex flex-wrap justify-around   ">
               {people.map((person) => (
-                <li key={person.name} className="sm:py-8 max-w-sm mb-8">
+                <li
+                  key={person.name}
+                  className="sm:py-8 max-w-sm mb-8 my-10 sm:my-0"
+                >
                   <div className="">
                     <div className="">
                       <img

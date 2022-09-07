@@ -69,7 +69,11 @@ export default function Home() {
             600 ms (Menchaca 2018).
             <div className="prose my-4">
               <h3>🎧 Escucha un silbido</h3>
-              <audio controls className="my-4">
+              <audio
+                controls
+                className="my-4"
+                controlsList="nodownload noremoteplayback noplaybackrate"
+              >
                 <source src="/silbido.mp3" type="audio/mp3" />
               </audio>
             </div>

@@ -1,18 +1,18 @@
 export default function Home() {
   return (
-    <div className="relative overflow-hidden bg-white max-w-7xl mx-auto py-16">
+    <div className="relative  bg-white max-w-7xl mx-auto py-16">
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-prose text-lg">
           <h1>
             {/* <span className="block text-center text-lg font-semibold text-cyan-600">
               Introducing
             </span> */}
-            <span className="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+            <span className="mt-2 block text-center text-2xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
               Artículos de prensa
             </span>
           </h1>
         </div>
-        <div className="prose max-w-none prose-lg prose-cyan mx-auto mt-6 text-gray-500">
+        <div className="prose max-w-none prose-base sm:prose-lg prose-cyan mx-auto mt-6 text-gray-500 overflow-x-auto">
           <ul role="list">
             <li>
               <a href="https://ladiaria.com.uy/ciencia/articulo/2022/1/hallazgos-sobre-el-clitoris-de-las-toninas-dan-indicios-de-la-evolucion-del-placer-sexual-en-los-animales/">
@@ -75,7 +75,7 @@ export default function Home() {
             {/* <span className="block text-center text-lg font-semibold text-cyan-600">
               Introducing
             </span> */}
-            <span className="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+            <span className="mt-2 block text-center text-2xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
               Divulgación
             </span>
           </h1>

@@ -4,7 +4,7 @@ export default function Home() {
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl text-lg">
           <h1>
-            <span className="block text-center sm:text-4xl font-semibold text-cyan-600">
+            <span className="block text-center text-2xl sm:text-4xl font-semibold text-cyan-600">
               Tonina
             </span>
             <span className="italic mt-2 block text-center text-lg font-medium leading-8 tracking-tight text-gray-900 ">

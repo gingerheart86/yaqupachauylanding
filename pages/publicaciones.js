@@ -7,12 +7,12 @@ export default function Home() {
             {/* <span className="block text-center text-lg font-semibold text-cyan-600">
               Introducing
             </span> */}
-            <span className="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+            <span className="mt-2 block text-center text-2xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
               Publicaciones Científicas
             </span>
           </h1>
         </div>
-        <div className="prose max-w-none   prose-lg prose-cyan mx-auto mt-6 text-gray-500  w-full">
+        <div className="prose max-w-none   prose-base sm:prose-lg prose-cyan mx-auto mt-6 text-gray-500  w-full">
           <ul role="list">
             <li>
               Campos-Rangel A, Bastida R, Fruet P, <b>Laporta P</b> , Cappozzo

@@ -54,7 +54,7 @@ export default function FooterFC() {
           ))}
         </div>
         <div className="mt-8 md:order-1 md:mt-0 flex items-center ">
-          <img src="/logo2.png" className="w-36 mr-4" alt="" />
+          <img src="/logo2.png" className="w-36 mr-4 hidden sm:block" alt="" />
           <p className="text-center text-base text-gray-600">
             &copy; Yaqupacha Uruguay {new Date().getFullYear()}. Made with ❤️ by{" "}
             <a
