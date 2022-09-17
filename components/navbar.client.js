@@ -213,6 +213,26 @@ export default function Navbar() {
                       </Disclosure.Button>
                     </Link>
                   )}
+                  {item.withResource &&
+                    resources.map((r) => {
+                      return (
+                        <Link key={r.name} href={r.href}>
+                          <Disclosure.Button
+                            as="a"
+                            onClick={() => setActiveNavigation(r.name)}
+                            className={classNames(
+                              item.current
+                                ? "bg-slate-400 text-white"
+                                : "text-cyan-600 hover:bg-slate-400 hover:text-white",
+                              "block px-3 py-2 rounded-md text-base font-medium"
+                            )}
+                            aria-current={r.current ? "page" : undefined}
+                          >
+                            {r.name}
+                          </Disclosure.Button>
+                        </Link>
+                      );
+                    })}
                 </>
               ))}
             </div>
