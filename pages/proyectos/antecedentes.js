@@ -52,10 +52,27 @@ export default function Home() {
           <h2 className="text-gray-700 font-semibold prose mt-4">
             Ejemplo de fotos del catálogo
           </h2>
-          <div className="flex md:flex-row  space-x-0 md:space-x-5 my-4 flex-col">
-            <img src="/toninas/1.jpg" className="w-52 h-52  mt-2 " />
-            <img src="/toninas/2.jpg" className="w-52 h-52 mt-2" />
-            <img src="/toninas/3.jpg" className="w-52 h-52 mt-2" />
+          <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
+            <img
+              src="/toninas/1.jpg"
+              className="h-44 w-44 sm:w-52 sm:h-52  mt-2 object-cover"
+            />
+            <img
+              src="/toninas/aletas1.jpg"
+              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
+            />
+            <img
+              src="/toninas/3.jpg"
+              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
+            />
+            <img
+              src="/toninas/aletas2.jpg"
+              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
+            />
+            <img
+              src="/toninas/aletas3.jpg"
+              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
+            />
           </div>
           <p className="mt-8 text-base leading-8 text-gray-500">
             A partir del 2017, el Proyecto Toninas comenzó a monitorear
