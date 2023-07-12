@@ -87,6 +87,15 @@ export default function Home() {
             centinela de la costa.
           </p>
         </div>
+        <div className="relative w-full max-w-7xl py-12 px-4  sm:px-6 lg:px-8 bg-white flex justify-center  ">
+          <iframe
+            className="w-full  aspect-video max-w-5xl h-[340px] sm:h-[540px]"
+            src={`https://www.youtube.com/embed/KQ81xnqVkLY`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title="yaqupacha youtube"
+          />
+        </div>
         <div className="relative  pb-12 px-4  sm:px-6 lg:px-8 bg-cyan-800 w-full">
           <div className="absolute inset-0">
             <img
