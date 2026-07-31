@@ -15,13 +15,13 @@ export default function Home() {
             {/* <figure className="my-4">
               <img
                 className="w-full rounded-lg"
-                src="pic2.webp"
+                src="/pic2.webp"
                 alt=""
 
               />
             </figure> */}
             <figure className="my-4">
-              <img className="w-full rounded-lg   " src="pic3.jpg" alt="" />
+              <img className="w-full rounded-lg   " src="/pic3.jpg" alt="" />
             </figure>
           </div>
           <div className="flex justify-center w-full">

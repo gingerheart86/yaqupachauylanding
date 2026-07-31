@@ -83,7 +83,7 @@ export default function Home() {
                 <p>Escucha un silbido</p>
               </blockquote>
               <audio controls className="my-4">
-                <source src="silbido.mp3" type="audio/mp3" />
+                <source src="/silbido.mp3" type="audio/mp3" />
               </audio>
             </div>
             Compartimos información sobre el cambio climático en la zona
@@ -110,13 +110,13 @@ export default function Home() {
             {/* <figure className="my-4">
               <img
                 className="w-full rounded-lg"
-                src="pic2.webp"
+                src="/pic2.webp"
                 alt=""
 
               />
             </figure> */}
             <figure className="my-4">
-              <img className="w-full rounded-lg   " src="pic3.jpg" alt="" />
+              <img className="w-full rounded-lg   " src="/pic3.jpg" alt="" />
             </figure>
           </div>
           <div className="mx-auto w-full">

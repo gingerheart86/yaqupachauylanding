@@ -2,7 +2,7 @@ const people = [
   {
     name: "Paula Laporta",
     role: "",
-    imageUrl: "./Paula.png",
+    imageUrl: "/Paula.png",
     bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Oceanografía Biológica (Universidade Federal de Rio Grande, Rio Grande do Sul, Brasil).",
     twitterUrl: "#",
     linkedinUrl: "#",
@@ -10,7 +10,7 @@ const people = [
   {
     name: "Carolina Menchaca",
     role: "",
-    imageUrl: "./caro.jpeg",
+    imageUrl: "/caro.jpeg",
     bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Ecología y Evolución (Programa de Desarrollo de las Ciencias Básicas, Universidad de la República, Uruguay).",
     twitterUrl: "https://twitter.com/gingerheart86",
     linkedinUrl: "#",
@@ -18,7 +18,7 @@ const people = [
   {
     name: "Cecilia Laporta",
     role: "",
-    imageUrl: "./checho.jpeg",
+    imageUrl: "/checho.jpeg",
     bio: "Contadora (Universidad Católica del Uruguay) y Magíster en Manejo Costero Integrado (Centro Universitario Regional Este, Universidad de la República, Uruguay).",
     twitterUrl: "#",
     linkedinUrl: "#",

@@ -63,7 +63,7 @@ export default function Home() {
               estudiar y conservar a estas especies y sus ambientes.
             </p>
             <div className="flex justify-around flex-1">
-              <img src="logo_sinf.png" className="w-56 h-56  " alt="" />
+              <img src="/logo_sinf.png" className="w-56 h-56  " alt="" />
             </div>
           </div>
         </div>
