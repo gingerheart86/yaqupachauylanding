@@ -15,6 +15,18 @@ export default function Home() {
         <div className="prose max-w-none   prose-base sm:prose-lg prose-cyan mx-auto mt-6 text-gray-500  w-full">
           <ul role="list">
             <li>
+              Daura-Jorge FG, <b>Laporta P</b>, Moreno IB, Ott PH, Flores PAC,
+              Volkmer de Castilho P, Barreto AS, Genoves RC, Bezamat C,
+              Machado AMS, Secchi ER, Botta S, Pretto DJ, Machado R, Di
+              Tullio JC, Dalla Rosa L, Simões-Lopes PC, Sucunza Perez M, Ilha
+              EB, Camargo YR, <b>Menchaca C</b>, <b>Laporta C</b>, Carrion M,
+              Dias L, Peverari FF, Sucunza F, Danilewicz D, Von Fersen L &
+              Fruet PF. 2026. Range-wide monitoring reveals demographic
+              vulnerability in Lahille’s bottlenose dolphins. Biological
+              Conservation 319: 111865.{" "}
+              <a href="https://doi.org/10.1016/j.biocon.2026.111865">Link</a>
+            </li>
+            <li>
               Campos-Rangel A, Bastida R, Fruet P, <b>Laporta P</b> , Cappozzo
               LH, Valdivia M, Vermeulen E & Botta S. 2021. Historic foraging
               ecology of the endangered Lahille’s bottlenose dolphin (Tursiops
