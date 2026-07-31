@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 const people = [
   {
     name: "Paula Laporta",
     role: "",
-    imageUrl: "/Paula.png",
+    imageUrl: "/Paula.webp",
     bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Oceanografía Biológica (Universidade Federal de Rio Grande, Rio Grande do Sul, Brasil).",
     twitterUrl: "#",
     linkedinUrl: "#",
@@ -10,7 +12,7 @@ const people = [
   {
     name: "Carolina Menchaca",
     role: "",
-    imageUrl: "/caro.jpeg",
+    imageUrl: "/caro.webp",
     bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Ecología y Evolución (Programa de Desarrollo de las Ciencias Básicas, Universidad de la República, Uruguay).",
     twitterUrl: "https://twitter.com/gingerheart86",
     linkedinUrl: "#",
@@ -18,7 +20,7 @@ const people = [
   {
     name: "Cecilia Laporta",
     role: "",
-    imageUrl: "/checho.jpeg",
+    imageUrl: "/checho.webp",
     bio: "Contadora (Universidad Católica del Uruguay) y Magíster en Manejo Costero Integrado (Centro Universitario Regional Este, Universidad de la República, Uruguay).",
     twitterUrl: "#",
     linkedinUrl: "#",
@@ -62,11 +64,13 @@ export default function Home() {
                   className="sm:py-8 max-w-sm mb-8 my-10 sm:my-0"
                 >
                   <div className="">
-                    <div className="">
-                      <img
-                        className="rounded-lg object-cover shadow-lg w-full h-[30rem]  shrink-0 flex-1 "
+                    <div className="relative w-full h-[30rem] shrink-0 flex-1">
+                      <Image
+                        className="rounded-lg object-cover shadow-lg"
                         src={person.imageUrl}
-                        alt=""
+                        alt={person.name}
+                        fill
+                        sizes="(min-width: 640px) 24rem, 100vw"
                       />
                     </div>
                     <div className="mt-4">

@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="relative   py-16 bg-white max-w-7xl mx-auto">
@@ -53,26 +55,51 @@ export default function Home() {
             Ejemplo de fotos del catálogo
           </h2>
           <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
-            <img
-              src="/toninas/1.jpg"
-              className="h-44 w-44 sm:w-52 sm:h-52  mt-2 object-cover"
-            />
-            <img
-              src="/toninas/aletas1.jpg"
-              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
-            />
-            <img
-              src="/toninas/3.jpg"
-              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
-            />
-            <img
-              src="/toninas/aletas2.jpg"
-              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
-            />
-            <img
-              src="/toninas/aletas3.jpg"
-              className="h-44 w-44 sm:w-52 sm:h-52 mt-2 object-cover"
-            />
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/1.webp"
+                alt="Foto de identificación de aleta de tonina"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/aletas1.webp"
+                alt="Foto de identificación de aleta de tonina"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/3.webp"
+                alt="Foto de identificación de aleta de tonina"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/aletas2.webp"
+                alt="Foto de identificación de aleta de tonina"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/aletas3.webp"
+                alt="Foto de identificación de aleta de tonina"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
           </div>
           <p className="mt-8 text-base leading-8 text-gray-500">
             A partir del 2017, el Proyecto Toninas comenzó a monitorear

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Gallery from "../../../components/imagegallery";
 
 export default function Home() {
@@ -26,7 +27,13 @@ export default function Home() {
             capacitación para operadores turísticos de Maldonado y Rocha.
           </p>
           <figure className="my-4">
-            <img className="w-full rounded-lg" src="/pic1.png" alt="" />
+            <Image
+              className="w-full h-auto rounded-lg"
+              src="/pic1.png"
+              alt="Actividades del proyecto Toninas Centinelas de la costa"
+              width={957}
+              height={225}
+            />
           </figure>
 
           <h2 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-3xl">

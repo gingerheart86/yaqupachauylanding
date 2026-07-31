@@ -1,10 +1,20 @@
 /* This example requires Tailwind CSS v2.0+ */
+import Image from "next/image";
+import { socialLinks } from "../components/social-icons";
+
 export default function Home() {
   return (
     <div className="relative ">
       <div className="relative sm:min-h-[40rem] min-h-[10rem]">
         <div className="absolute inset-0">
-          <img className="h-full w-full object-cover" src="/dol1.jpg" alt="" />
+          <Image
+            className="object-cover"
+            src="/dol1.webp"
+            alt="Toninas nadando frente a la costa de Uruguay"
+            fill
+            sizes="100vw"
+            priority
+          />
           <div
             className="absolute inset-0  mix-blend-multiply"
             aria-hidden="true"
@@ -63,7 +73,13 @@ export default function Home() {
               estudiar y conservar a estas especies y sus ambientes.
             </p>
             <div className="flex justify-around flex-1">
-              <img src="/logo_sinf.png" className="w-56 h-56  " alt="" />
+              <Image
+                src="/logo_sinf.png"
+                className="w-56 h-56  "
+                alt="Logo institucional"
+                width={600}
+                height={514}
+              />
             </div>
           </div>
         </div>
@@ -98,10 +114,12 @@ export default function Home() {
         </div>
         <div className="relative  pb-12 px-4  sm:px-6 lg:px-8 bg-cyan-800 w-full">
           <div className="absolute inset-0">
-            <img
-              className="h-full w-full object-cover"
-              src="/gomon.jpeg"
-              alt=""
+            <Image
+              className="object-cover"
+              src="/gomon.webp"
+              alt="Costa uruguaya"
+              fill
+              sizes="100vw"
             />
             <div
               className="absolute inset-0 bg-cyan-600 mix-blend-multiply"
@@ -112,31 +130,20 @@ export default function Home() {
             <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Conoce más en nuestras redes sociales
             </h1>
-            <div className=" max-w-3xl flex space-x-10 mt-8 ">
-              <a
-                href="https://www.instagram.com/proyecto.toninas/"
-                className=""
-              >
-                <img
-                  src="/iglogo.png"
-                  alt=""
-                  className=" w-12 h-12 sm:w-20 sm:h-20"
-                />
-              </a>
-              <a href="https://es-la.facebook.com/yaqupachauy/">
-                <img
-                  src="/fblogo.png"
-                  alt=""
-                  className=" w-12 h-12 sm:w-20 sm:h-20"
-                />
-              </a>
-              <a href="https://twitter.com/yaqupachauy">
-                <img
-                  src="/twlogo.png"
-                  alt=""
-                  className=" w-12 h-12 sm:w-20 sm:h-20"
-                />
-              </a>
+            <div className=" max-w-3xl flex space-x-10 mt-8 text-white">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="hover:opacity-80"
+                >
+                  <span className="sr-only">{item.name}</span>
+                  <item.Icon
+                    className="w-12 h-12 sm:w-20 sm:h-20"
+                    aria-hidden="true"
+                  />
+                </a>
+              ))}
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ import {
   PopoverPanel,
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -74,7 +75,14 @@ export default function Navbar() {
                 </DisclosureButton>
               </div>
               <div className="flex flex-shrink-0 items-center justify-end w-full sm:w-auto sm:justify-start">
-                <img src="/logo2.png" className="w-36 mr-4" alt="" />
+                <Image
+                  src="/logo2.png"
+                  className="w-36 mr-4"
+                  alt="Yaqu Pacha Uruguay"
+                  width={600}
+                  height={178}
+                  priority
+                />
               </div>
 
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center">
