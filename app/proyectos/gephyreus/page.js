@@ -1,13 +1,19 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Proyecto Gephyreus",
+  description:
+    "Trabajo regional con Brasil y Argentina para conservar al delfín de Lahille (Tursiops truncatus gephyreus) en el Atlántico Sur occidental.",
+};
+
 export default function Home() {
   return (
     <div className="relative   py-16 bg-white max-w-7xl mx-auto">
       <div className="relative px-4 sm:px-6 lg:px-8 ">
         <div className="  text-lg ">
-          <h2 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             Proyecto Gephyreus{" "}
-          </h2>
+          </h1>
           <p className="mt-8 text-base leading-8 text-gray-500">
             Desde 2018, formamos parte de un proyecto binacional en conjunto con
             investigadores brasileños, con el fin de estimar la abundancia de

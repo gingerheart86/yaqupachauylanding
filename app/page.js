@@ -27,14 +27,14 @@ export default function Home() {
               centinelas de la costa
             </span>
           </h1>
-          <h1 className="max-w-2xl text-xl font-bold tracking-tight text-white  sm:text-6xl  xl:text-3xl">
+          <h2 className="max-w-2xl text-xl font-bold tracking-tight text-white  sm:text-6xl  xl:text-3xl">
             <p className="block bg-gradient-to-r from-white to-cyan-200 bg-clip-text  text-transparent ">
               Si cuidamos las toninas cuidamos la costa
             </p>
             <p className="block bg-gradient-to-r from-white to-cyan-200 bg-clip-text  text-transparent ">
               Si cuidamos la costa cuidamos las toninas
             </p>
-          </h1>
+          </h2>
           {/* <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Toninas, centinelas de la costa
           </h1> */}
@@ -59,9 +59,9 @@ export default function Home() {
           />
         </div> */}
         <div className="relative w-full max-w-7xl  sm:pt-24 px-4 py-12  sm:px-6 lg:px-8 bg-white">
-          <h1 className="text-2xl font-bold tracking-tight text-cyan-600 sm:text-3xl lg:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-cyan-600 sm:text-3xl lg:text-4xl">
             ¿Qué es Yaqu Pacha Uruguay?
-          </h1>
+          </h2>
           <div className="flex justify-between">
             <p className=" max-w-3xl  text-base sm:text-xl text-slate-400   p-4 rounded-2xl shadow-xl relative ">
               Yaqu Pacha Uruguay es una filial de la Organización para la
@@ -85,9 +85,9 @@ export default function Home() {
         </div>
 
         <div className="relative w-full max-w-7xl py-12 px-4  sm:px-6 lg:px-8 bg-white">
-          <h1 className="text-2xl font-bold tracking-tight text-teal-600 sm:text-3xl lg:text-4xl">
+          <h2 className="text-2xl font-bold tracking-tight text-teal-600 sm:text-3xl lg:text-4xl">
             ¿Cuál es el objetivo?
-          </h1>
+          </h2>
           <p className=" max-w-3xl text-base sm:text-xl text-slate-400  p-4 rounded-2xl shadow-xl ">
             Esta filial fue creada en 2013 incorporando al Proyecto Toninas que
             se venía desarrollando desde 2002 en Uruguay. Los dos objetivos
@@ -127,9 +127,9 @@ export default function Home() {
             />
           </div>
           <div className="relative mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-            <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
               Conoce más en nuestras redes sociales
-            </h1>
+            </h2>
             <div className=" max-w-3xl flex space-x-10 mt-8 text-white">
               {socialLinks.map((item) => (
                 <a

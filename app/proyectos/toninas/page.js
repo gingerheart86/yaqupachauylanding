@@ -1,14 +1,20 @@
 import Image from "next/image";
 import Gallery from "../../../components/imagegallery";
 
+export const metadata = {
+  title: "Toninas, centinelas de la costa",
+  description:
+    "El proyecto que estudia a las toninas en La Paloma, Cabo Polonio y Cerro Verde desde 2002, y trabaja en educación ambiental con las comunidades de la costa de Rocha.",
+};
+
 export default function Home() {
   return (
     <div className="relative   py-16 bg-white max-w-7xl mx-auto">
       <div className="relative px-4 sm:px-6 lg:px-8 ">
         <div className="  text-lg ">
-          <h2 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+          <h1 className="mt-8 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
             Toninas Centinelas de la costa
-          </h2>
+          </h1>
 
           <p className="mt-8 text-base leading-8 text-gray-500">
             Financiado por ECOSSUR, durante 9 meses (2021-2022) realizamos

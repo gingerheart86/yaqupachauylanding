@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "La tonina, el delfín de la costa uruguaya",
+  description:
+    "Qué es la tonina (Tursiops truncatus gephyreus), el delfín costero de Uruguay: dónde vive, cuántos quedan, cómo se comunica y por qué está en peligro.",
+};
+
 export default function Home() {
   return (
     <div className="relative overflow-hidden bg-white max-w-7xl mx-auto py-16">

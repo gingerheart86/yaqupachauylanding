@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Publicaciones científicas",
+  description:
+    "Artículos científicos sobre las toninas de Uruguay: ecología, comportamiento, genética, estructura social y comunicación acústica.",
+};
+
 export default function Home() {
   return (
     <div className="relative overflow-hidden bg-white max-w-7xl mx-auto py-16">

@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Prensa y divulgación",
+  description:
+    "Notas de prensa, videos, charlas y materiales de divulgación sobre las toninas y la conservación de la costa uruguaya.",
+};
+
 export default function Home() {
   return (
     <div className="relative  bg-white max-w-7xl mx-auto py-16">
@@ -71,14 +77,11 @@ export default function Home() {
               </a>{" "}
             </li>
           </ul>
-          <h1>
-            {/* <span className="block text-center text-lg font-semibold text-cyan-600">
-              Introducing
-            </span> */}
+          <h2>
             <span className="mt-2 block text-center text-2xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
               Divulgación
             </span>
-          </h1>
+          </h2>
           <ul role="list">
             <li>
               Laporta, P., Menchaca, C. y Laporta C. 2016. Ficha zoológica

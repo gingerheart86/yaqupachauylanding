@@ -1,5 +1,11 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Nosotras",
+  description:
+    "El equipo de biólogas y biólogos que investiga a las toninas en la costa de Uruguay.",
+};
+
 const people = [
   {
     name: "Paula Laporta",

@@ -4,15 +4,21 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 
+export const metadata = {
+  title: "Contacto",
+  description:
+    "Escribinos para reportar un avistamiento de toninas, colaborar con el proyecto o consultar sobre nuestras actividades.",
+};
+
 export default function Home() {
   return (
     <div className="bg-white max-w-7xl mx-auto ">
       <div className=" py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg md:grid md:max-w-none md:grid-cols-2 md:gap-8">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
+            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl sm:tracking-tight">
               Ponte en contacto
-            </h2>
+            </h1>
             <div className="mt-3">
               <p className="text-lg text-gray-500"></p>
             </div>

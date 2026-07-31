@@ -1,5 +1,11 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Nuestros proyectos",
+  description:
+    "Los proyectos de Yaqu Pacha Uruguay para estudiar y conservar a las toninas y su ambiente costero: monitoreo, investigación y educación ambiental.",
+};
+
 export default function Home() {
   return (
     <div className="relative   py-16 bg-white max-w-7xl mx-auto">

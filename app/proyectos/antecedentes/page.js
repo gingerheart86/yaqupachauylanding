@@ -1,5 +1,11 @@
 import Image from "next/image";
 
+export const metadata = {
+  title: "Antecedentes del Proyecto Toninas",
+  description:
+    "Más de veinte años estudiando a las toninas en la costa uruguaya: cómo empezó el Proyecto Toninas en 2002 y qué resultados dejó.",
+};
+
 export default function Home() {
   return (
     <div className="relative   py-16 bg-white max-w-7xl mx-auto">
