@@ -1,4 +1,4 @@
-import Gallery from "../../components/imagegallery.client";
+import Gallery from "../../../components/imagegallery";
 
 export default function Home() {
   return (

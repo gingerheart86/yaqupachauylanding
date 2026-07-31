@@ -1,3 +1,5 @@
+"use client";
+
 /* This example requires Tailwind CSS v2.0+ */
 import { Fragment, useEffect } from "react";
 import { Disclosure, Menu, Transition, Popover } from "@headlessui/react";
