@@ -109,6 +109,7 @@ export default function Home() {
             src={`https://www.youtube.com/embed/KQ81xnqVkLY`}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            loading="lazy"
             title="yaqupacha youtube"
           />
         </div>
