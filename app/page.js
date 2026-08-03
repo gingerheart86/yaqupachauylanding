@@ -47,17 +47,6 @@ export default function Home() {
         /> */}
       </div>
       <div className="relative flex flex-col items-center justify-center w-full">
-        {/* <div className="absolute inset-0">
-          <img
-            className="h-full w-full object-cover"
-            src="/gomon.jpeg"
-            alt=""
-          />
-          <div
-            className="absolute inset-0  mix-blend-multiply"
-            aria-hidden="true"
-          />
-        </div> */}
         <div className="relative w-full max-w-7xl  sm:pt-24 px-4 py-12  sm:px-6 lg:px-8 bg-white">
           <h2 className="text-2xl font-bold tracking-tight text-cyan-600 sm:text-3xl lg:text-4xl">
             ¿Qué es Yaqu Pacha Uruguay?

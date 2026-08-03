@@ -20,15 +20,16 @@ export default function Home() {
             toninas del Atlántico Sudoccidental.
           </p>
           <div className=" flex space-x-3 items-center">
-            {/* <figure className="my-4">
-              <img
-                className="w-full rounded-lg"
+            <figure className="my-4 flex-1">
+              <Image
+                className="w-full h-auto rounded-lg"
                 src="/pic2.webp"
-                alt=""
-
+                alt="Logo del Proyecto Gephyreus"
+                width={465}
+                height={318}
               />
-            </figure> */}
-            <figure className="my-4">
+            </figure>
+            <figure className="my-4 flex-1">
               <Image
                 className="w-full h-auto rounded-lg"
                 src="/pic3.jpg"
