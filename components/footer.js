@@ -1,16 +1,19 @@
 import Image from "next/image";
 import { socialLinks } from "./social-icons";
 
+const FOCUS_RING =
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2 rounded-sm";
+
 export default function FooterFC() {
   return (
-    <footer className="bg-slate-300">
+    <footer className="bg-costa-200">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {socialLinks.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-gray-500 hover:text-gray-600"
+              className={`text-marca-grafito hover:text-marca ${FOCUS_RING}`}
             >
               <span className="sr-only">{item.name}</span>
               <item.Icon className="h-6 w-6" aria-hidden="true" />
@@ -25,10 +28,10 @@ export default function FooterFC() {
             width={600}
             height={178}
           />
-          <p className="text-center text-base text-gray-600">
+          <p className="text-center text-base text-marca-grafito">
             &copy; Yaqu Pacha Uruguay {new Date().getFullYear()}. Hecho con ❤️ por{" "}
             <a
-              className="text-gray-600 font-semibold hover:underline underline-offset-4"
+              className={`font-semibold hover:underline underline-offset-4 ${FOCUS_RING}`}
               href="https://twitter.com/sansildev"
               target="_blank"
               rel="noopener noreferrer"
@@ -37,7 +40,7 @@ export default function FooterFC() {
             </a>
             {" "}y{" "}
             <a
-              className="text-gray-600 font-semibold hover:underline underline-offset-4"
+              className={`font-semibold hover:underline underline-offset-4 ${FOCUS_RING}`}
               href="https://github.com/gingerheart86"
               target="_blank"
               rel="noopener noreferrer"

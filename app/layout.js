@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={montserrat.variable}>
       <body>
-        <div className="min-h-screen bg-slate-100 ">
+        <div className="min-h-screen bg-white">
           <Navbar />
           <main className="">{children}</main>
           <FooterFC />

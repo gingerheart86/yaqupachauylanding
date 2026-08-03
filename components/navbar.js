@@ -19,6 +19,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
+const FOCUS_RING =
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
+
 const navigation = [
   { name: "Portada", href: "/", withResource: false },
   { name: "Nosotras", href: "/nosotras", withResource: false },
@@ -58,14 +61,22 @@ export default function Navbar() {
   const isResourceActive = resources.some((r) => isActive(r.href));
 
   return (
-    <Disclosure as="nav" className="bg-slate-200 border-b shadow z-50 relative">
+    <Disclosure
+      as="nav"
+      className="bg-costa-100 border-b border-marca-grafito/10 shadow-sm z-50 relative"
+    >
       {({ open }) => (
         <>
           <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 mx-auto">
             <div className="relative flex h-20 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <DisclosureButton className="inline-flex items-center justify-center rounded-md p-2 text-gray-500 hover:bg-cyan-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <DisclosureButton
+                  className={classNames(
+                    "inline-flex items-center justify-center rounded-md p-2 text-marca-grafito hover:bg-marca hover:text-white",
+                    FOCUS_RING
+                  )}
+                >
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -96,15 +107,15 @@ export default function Navbar() {
                               <>
                                 <PopoverButton
                                   className={classNames(
-                                    open ? "text-gray-900" : "text-gray-500",
-                                    "group inline-flex items-center rounded-md  text-base font-medium hover:text-gray-900 focus:outline-none "
+                                    "group inline-flex items-center rounded-md text-base font-medium",
+                                    FOCUS_RING
                                   )}
                                 >
                                   <span
                                     className={classNames(
                                       isResourceActive
-                                        ? "bg-slate-300 text-cyan-600"
-                                        : "text-cyan-600 hover:bg-slate-300 hover:text-cyan-600",
+                                        ? "bg-marca text-white"
+                                        : "text-marca hover:bg-costa-200 hover:text-marca-oscuro",
                                       "px-3 py-2 rounded-md text-sm font-medium"
                                     )}
                                   >
@@ -112,8 +123,8 @@ export default function Navbar() {
                                   </span>
                                   <ChevronDownIcon
                                     className={classNames(
-                                      open ? "text-gray-600" : "text-gray-400",
-                                      "ml-2 h-5 w-5 group-hover:text-gray-500"
+                                      open ? "text-marca-grafito" : "text-marca-grafito/60",
+                                      "ml-2 h-5 w-5 group-hover:text-marca-grafito"
                                     )}
                                     aria-hidden="true"
                                   />
@@ -123,18 +134,21 @@ export default function Navbar() {
                                   transition
                                   className="absolute left-1/2 z-10 mt-3 w-screen max-w-xs -translate-x-1/2 transform px-2 sm:px-0 transition duration-200 ease-out data-[closed]:translate-y-1 data-[closed]:opacity-0"
                                 >
-                                  <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
+                                  <div className="overflow-hidden rounded-lg shadow-lg ring-1 ring-marca-grafito/10">
                                     <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
                                       {resources.map((resource) => (
                                         <Link
                                           key={resource.name}
                                           href={resource.href}
-                                          className="-m-3 block rounded-md p-3 hover:bg-gray-50"
+                                          className={classNames(
+                                            "-m-3 block rounded-md p-3 hover:bg-costa-100",
+                                            FOCUS_RING
+                                          )}
                                         >
-                                          <p className="text-base font-medium text-cyan-700">
+                                          <p className="text-base font-medium text-marca-oscuro">
                                             {resource.name}
                                           </p>
-                                          <p className="mt-1 text-sm text-gray-500">
+                                          <p className="mt-1 text-sm text-marca-grafito">
                                             {resource.description}
                                           </p>
                                         </Link>
@@ -151,9 +165,10 @@ export default function Navbar() {
                             href={item.href}
                             className={classNames(
                               isActive(item.href)
-                                ? "bg-slate-300 text-cyan-600"
-                                : "text-cyan-600 hover:bg-slate-300 hover:text-cyan-600",
-                              "px-3 py-2 rounded-md text-sm font-medium"
+                                ? "bg-marca text-white"
+                                : "text-marca hover:bg-costa-200 hover:text-marca-oscuro",
+                              "px-3 py-2 rounded-md text-sm font-medium",
+                              FOCUS_RING
                             )}
                             aria-current={isActive(item.href) ? "page" : undefined}
                           >
@@ -178,9 +193,10 @@ export default function Navbar() {
                       href={item.href}
                       className={classNames(
                         isActive(item.href)
-                          ? "bg-slate-400 text-white"
-                          : "text-cyan-600 hover:bg-slate-400 hover:text-white",
-                        "block px-3 py-2 rounded-md text-base font-medium"
+                          ? "bg-marca text-white"
+                          : "text-marca hover:bg-marca hover:text-white",
+                        "block px-3 py-2 rounded-md text-base font-medium",
+                        FOCUS_RING
                       )}
                       aria-current={isActive(item.href) ? "page" : undefined}
                     >
@@ -188,8 +204,8 @@ export default function Navbar() {
                     </DisclosureButton>
                   )}
                   {item.withResource && (
-                    <div className="py-2 bg-slate-300 -mx-2 px-2">
-                      <h2 className="px-2 font-semibold text-slate-500 text-base py-1">
+                    <div className="py-2 bg-costa-200 -mx-2 px-2">
+                      <h2 className="px-2 font-semibold text-marca-grafito text-base py-1">
                         Proyectos
                       </h2>
                       {resources.map((r) => (
@@ -199,9 +215,10 @@ export default function Navbar() {
                           href={r.href}
                           className={classNames(
                             isActive(r.href)
-                              ? "bg-slate-400 text-white"
-                              : "text-cyan-600 hover:bg-slate-400 hover:text-white",
-                            "block px-3 py-2 rounded-md text-base font-medium"
+                              ? "bg-marca text-white"
+                              : "text-marca hover:bg-marca hover:text-white",
+                            "block px-3 py-2 rounded-md text-base font-medium",
+                            FOCUS_RING
                           )}
                           aria-current={isActive(r.href) ? "page" : undefined}
                         >
