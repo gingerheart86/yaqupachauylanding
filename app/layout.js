@@ -1,9 +1,14 @@
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "../styles/globals.css";
 import Navbar from "../components/navbar";
 import FooterFC from "../components/footer";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
 
 export const metadata = {
   metadataBase: new URL("https://yaqupachauy.org"),
@@ -23,7 +28,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={inter.className}>
+    <html lang="es" className={montserrat.variable}>
       <body>
         <div className="min-h-screen bg-slate-100 ">
           <Navbar />
