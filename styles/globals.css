@@ -1,6 +1,35 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@theme {
+  --color-marca: #0093AC;
+  --color-marca-oscuro: #00758A;
+  --color-marca-claro: #5AB7C7;
+  --color-marca-grafito: #40575C;
+
+  --color-toninas: #2B7B8F;
+  --color-toninas-claro: #6AA6B9;
+
+  --color-mar-900: #0F4F6E;
+  --color-mar-800: #126287;
+  --color-mar-600: #1B7396;
+  --color-mar-400: #4E7892;
+  --color-mar-200: #86B3D6;
+  --color-mar-100: #C2D7E9;
+
+  --color-costa-900: #3F4A3C;
+  --color-costa-700: #636759;
+  --color-costa-500: #79A197;
+  --color-costa-300: #BBCB9A;
+  --color-costa-100: #EDF1EC;
+
+  --color-arena-500: #C9B79A;
+  --color-arena-200: #E8DFD0;
+
+  --color-acento-limon: #F2EFA1;
+  --color-acento-medusa: #D98CA8;
+  --color-acento-menta: #95F6CB;
+}
 
 html,
 body {
