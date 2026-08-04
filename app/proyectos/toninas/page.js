@@ -11,7 +11,16 @@ export const metadata = {
 export default function Home() {
   return (
     <Section fondo="claro">
-      <PageHeader title="Toninas Centinelas de la costa" />
+      <div className="flex justify-center">
+        <Image
+          src="/logo-toninas.png"
+          alt="Proyecto Toninas: Centinelas de la Costa"
+          width={600}
+          height={494}
+          className="w-48 h-auto sm:w-56"
+        />
+      </div>
+      <PageHeader title="Toninas Centinelas de la costa" className="mt-6" />
 
       <p className="mt-8 text-base leading-8 text-texto">
         Financiado por ECOSSUR, durante 9 meses (2021-2022) realizamos
