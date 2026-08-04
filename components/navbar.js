@@ -205,7 +205,7 @@ export default function Navbar() {
                   )}
                   {item.withResource && (
                     <div className="py-2 bg-costa-300 -mx-2 px-2">
-                      <h2 className="px-2 font-semibold text-marca-grafito text-base py-1">
+                      <h2 className="px-2 font-semibold text-texto text-base py-1">
                         Proyectos
                       </h2>
                       {resources.map((r) => (

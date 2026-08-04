@@ -61,7 +61,7 @@ export default function Home() {
               <div className="mt-4">
                 <div className="space-y-4">
                   <div className="space-y-1 text-lg font-medium leading-6">
-                    <h3>{person.name}</h3>
+                    <h2>{person.name}</h2>
                     {person.role && (
                       <p className="text-marca-grafito">{person.role}</p>
                     )}

@@ -28,11 +28,11 @@ export default function FooterFC() {
             width={600}
             height={178}
           />
-          <p className="text-center text-base text-marca-grafito">
+          <p className="text-center text-base text-texto">
             &copy; Yaqu Pacha Uruguay {new Date().getFullYear()}. Hecho con ❤️ por{" "}
             <a
               className={`font-semibold hover:underline underline-offset-4 ${FOCUS_RING}`}
-              href="https://twitter.com/sansildev"
+              href="https://kalagmitan.xyz/"
               target="_blank"
               rel="noopener noreferrer"
             >
