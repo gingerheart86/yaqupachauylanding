@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <Section fondo="claro">
       <PageHeader title="Artículos de prensa" />
-      <div className="prose max-w-none prose-base sm:prose-lg mx-auto mt-6 text-texto overflow-x-auto [&_a]:text-marca [&_a]:no-underline hover:[&_a]:text-marca-oscuro hover:[&_a]:underline">
+      <div className="prose max-w-none prose-base sm:prose-lg mx-auto mt-6 text-texto overflow-x-auto [&_a]:text-marca-oscuro [&_a]:no-underline hover:[&_a]:underline">
         <ul role="list">
             <li>
               <a href="https://ladiaria.com.uy/ciencia/articulo/2022/1/hallazgos-sobre-el-clitoris-de-las-toninas-dan-indicios-de-la-evolucion-del-placer-sexual-en-los-animales/">

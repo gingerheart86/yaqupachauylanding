@@ -73,7 +73,7 @@ export default function Navbar() {
                 {/* Mobile menu button*/}
                 <DisclosureButton
                   className={classNames(
-                    "inline-flex items-center justify-center rounded-md p-2 text-marca-grafito hover:bg-marca hover:text-white",
+                    "inline-flex items-center justify-center rounded-md p-2 text-marca-grafito hover:bg-marca-oscuro hover:text-white",
                     FOCUS_RING
                   )}
                 >
@@ -114,8 +114,8 @@ export default function Navbar() {
                                   <span
                                     className={classNames(
                                       isResourceActive
-                                        ? "bg-marca text-white"
-                                        : "text-marca hover:bg-costa-200 hover:text-marca-oscuro",
+                                        ? "bg-marca-oscuro text-white"
+                                        : "text-marca-oscuro hover:bg-costa-300",
                                       "px-3 py-2 rounded-md text-sm font-medium"
                                     )}
                                   >
@@ -165,8 +165,8 @@ export default function Navbar() {
                             href={item.href}
                             className={classNames(
                               isActive(item.href)
-                                ? "bg-marca text-white"
-                                : "text-marca hover:bg-costa-200 hover:text-marca-oscuro",
+                                ? "bg-marca-oscuro text-white"
+                                : "text-marca-oscuro hover:bg-costa-300",
                               "px-3 py-2 rounded-md text-sm font-medium",
                               FOCUS_RING
                             )}
@@ -193,8 +193,8 @@ export default function Navbar() {
                       href={item.href}
                       className={classNames(
                         isActive(item.href)
-                          ? "bg-marca text-white"
-                          : "text-marca hover:bg-marca hover:text-white",
+                          ? "bg-marca-oscuro text-white"
+                          : "text-marca-oscuro hover:bg-marca-oscuro hover:text-white",
                         "block px-3 py-2 rounded-md text-base font-medium",
                         FOCUS_RING
                       )}
@@ -204,7 +204,7 @@ export default function Navbar() {
                     </DisclosureButton>
                   )}
                   {item.withResource && (
-                    <div className="py-2 bg-costa-200 -mx-2 px-2">
+                    <div className="py-2 bg-costa-300 -mx-2 px-2">
                       <h2 className="px-2 font-semibold text-marca-grafito text-base py-1">
                         Proyectos
                       </h2>
@@ -215,8 +215,8 @@ export default function Navbar() {
                           href={r.href}
                           className={classNames(
                             isActive(r.href)
-                              ? "bg-marca text-white"
-                              : "text-marca hover:bg-marca hover:text-white",
+                              ? "bg-marca-oscuro text-white"
+                              : "text-marca-oscuro hover:bg-marca-oscuro hover:text-white",
                             "block px-3 py-2 rounded-md text-base font-medium",
                             FOCUS_RING
                           )}

@@ -6,14 +6,14 @@ const FOCUS_RING =
 
 export default function FooterFC() {
   return (
-    <footer className="bg-costa-200">
+    <footer className="bg-costa-300">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {socialLinks.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className={`text-marca-grafito hover:text-marca ${FOCUS_RING}`}
+              className={`text-marca-grafito hover:text-marca-oscuro ${FOCUS_RING}`}
             >
               <span className="sr-only">{item.name}</span>
               <item.Icon className="h-6 w-6" aria-hidden="true" />

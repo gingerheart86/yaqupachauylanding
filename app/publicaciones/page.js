@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <Section fondo="claro">
       <PageHeader title="Publicaciones científicas" />
-      <div className="prose max-w-none prose-base sm:prose-lg mx-auto mt-6 text-texto w-full [&_a]:text-marca [&_a]:no-underline hover:[&_a]:text-marca-oscuro hover:[&_a]:underline">
+      <div className="prose max-w-none prose-base sm:prose-lg mx-auto mt-6 text-texto w-full [&_a]:text-marca-oscuro [&_a]:no-underline hover:[&_a]:underline">
         <ul role="list">
             <li>
               Daura-Jorge FG, <b>Laporta P</b>, Moreno IB, Ott PH, Flores PAC,

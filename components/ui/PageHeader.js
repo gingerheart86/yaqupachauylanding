@@ -7,7 +7,7 @@ const alignments = {
 
 export default function PageHeader({
   eyebrow,
-  eyebrowTono = "marca",
+  eyebrowTono = "grafito",
   title,
   description,
   align = "center",
