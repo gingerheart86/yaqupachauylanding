@@ -1,3 +1,5 @@
+import { Section, PageHeader } from "../../components/ui";
+
 export const metadata = {
   title: "Publicaciones científicas",
   description:
@@ -6,20 +8,10 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="relative overflow-hidden bg-white max-w-7xl mx-auto py-16">
-      <div className="relative px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-prose text-lg">
-          <h1>
-            {/* <span className="block text-center text-lg font-semibold text-cyan-600">
-              Introducing
-            </span> */}
-            <span className="mt-2 block text-center text-2xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
-              Publicaciones Científicas
-            </span>
-          </h1>
-        </div>
-        <div className="prose max-w-none   prose-base sm:prose-lg prose-cyan mx-auto mt-6 text-gray-500  w-full">
-          <ul role="list">
+    <Section fondo="claro">
+      <PageHeader title="Publicaciones científicas" />
+      <div className="prose max-w-none prose-base sm:prose-lg mx-auto mt-6 text-texto w-full [&_a]:text-marca [&_a]:no-underline hover:[&_a]:text-marca-oscuro hover:[&_a]:underline">
+        <ul role="list">
             <li>
               Daura-Jorge FG, <b>Laporta P</b>, Moreno IB, Ott PH, Flores PAC,
               Volkmer de Castilho P, Barreto AS, Genoves RC, Bezamat C,
@@ -203,8 +195,7 @@ export default function Home() {
               7(1-2): 11-22. Revista arbitrada
             </li>
           </ul>
-        </div>
       </div>
-    </div>
+    </Section>
   );
 }
