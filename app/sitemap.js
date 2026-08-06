@@ -6,6 +6,8 @@ const routes = [
   "/proyectos/antecedentes",
   "/proyectos/toninas",
   "/proyectos/gephyreus",
+  "/proyectos/varamientos",
+  "/proyectos/identidad-franca",
   "/publicaciones",
   "/prensa-y-divulgacion",
   "/contacto",
