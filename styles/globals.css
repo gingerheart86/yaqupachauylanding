@@ -33,21 +33,23 @@
   --color-texto: #1F3D42;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
+@layer base {
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+  }
 
-body {
-  font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
-}
+  body {
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-* {
-  box-sizing: border-box;
+  * {
+    box-sizing: border-box;
+  }
 }
