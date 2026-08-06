@@ -1,55 +1,49 @@
 import Image from "next/image";
 import { socialLinks } from "../components/social-icons";
-import { Section, Card, Button, Eyebrow } from "../components/ui";
+import {
+  Section,
+  Card,
+  Button,
+  Eyebrow,
+  ProjectCardDestacado,
+  ProjectCardCompacta,
+} from "../components/ui";
+import HeroVideo from "../components/HeroVideo";
 
 export default function Home() {
   return (
     <div className="relative ">
-      <div className="relative sm:min-h-[40rem] min-h-[10rem]">
-        <div className="absolute inset-0">
-          <Image
-            className="object-cover"
-            src="/dol1.webp"
-            alt="Toninas nadando frente a la costa de Uruguay"
-            fill
-            sizes="100vw"
-            priority
-          />
-          <div
-            className="absolute inset-0 bg-mar-800/60 mix-blend-multiply"
-            aria-hidden="true"
-          />
+      <HeroVideo>
+        <h1 className="sr-only">Toninas</h1>
+        <Image
+          src="/logo-toninas.png"
+          alt="Proyecto Toninas: Centinelas de la Costa"
+          width={600}
+          height={494}
+          className="w-48 h-auto sm:w-64"
+          priority
+        />
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Button href="/contacto" variante="primario">
+            Reportar un avistamiento
+          </Button>
+          <Button
+            href="/especies"
+            variante="secundario"
+            className="!border-white !text-white hover:!bg-white/10"
+          >
+            Conocé a la tonina
+          </Button>
         </div>
-        <div className="relative mx-auto max-w-7xl py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-          <Eyebrow tono="limon">Centinelas de la costa</Eyebrow>
-          <h1 className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Toninas
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-mar-100 sm:text-xl">
-            Si cuidamos las toninas cuidamos la costa. Si cuidamos la costa
-            cuidamos las toninas.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/contacto" variante="primario">
-              Reportar un avistamiento
-            </Button>
-            <Button
-              href="/especies"
-              variante="secundario"
-              className="!border-white !text-white hover:!bg-white/10"
-            >
-              Conocé a la tonina
-            </Button>
-          </div>
-        </div>
-      </div>
+      </HeroVideo>
 
       <Section fondo="claro">
-        <h2 className="text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
-          ¿Qué es Yaqu Pacha Uruguay?
+        <Eyebrow>Quiénes somos</Eyebrow>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
+          Yaqu Pacha Uruguay
         </h2>
-        <div className="mt-6 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <Card className="max-w-3xl">
+        <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <Card className="lg:col-span-2">
             <p className="text-base sm:text-xl text-texto">
               Yaqu Pacha Uruguay es una filial de la Organización para la
               Conservación de Mamíferos Acuáticos en América del Sur - Yaqu
@@ -59,39 +53,87 @@ export default function Home() {
               difundir y concientizar a las personas sobre la importancia de
               estudiar y conservar a estas especies y sus ambientes.
             </p>
+            <p className="mt-4 text-base sm:text-xl text-texto">
+              Esta filial fue creada en 2013 incorporando al Proyecto Toninas
+              que se venía desarrollando desde 2002 en Uruguay. Los dos
+              objetivos principales de este proyecto son estudiar a la
+              tonina{" "}
+              <span className="italic font-semibold">
+                Tursiops truncatus gephyreus
+              </span>
+              , una subespecie del delfín nariz de botella{" "}
+              <span className="italic font-semibold">
+                Tursiops truncatus
+              </span>{" "}
+              que ocurre únicamente en la zona costera del sur de Brasil,
+              Uruguay y Argentina, y promover la educación ambiental costera,
+              la conciencia sobre los efectos del cambio climático y a la
+              tonina como especie centinela de la costa.
+            </p>
           </Card>
-          <div className="flex justify-around flex-1">
-            <Image
-              src="/logo_sinf.png"
-              className="w-56 h-56"
-              alt="Logo institucional"
-              width={600}
-              height={514}
-            />
+          <div className="grid grid-cols-3 lg:grid-cols-1 gap-3">
+            {[
+              { src: "/Paula.webp", alt: "Paula Laporta" },
+              { src: "/caro.webp", alt: "Carolina Menchaca" },
+              { src: "/checho.webp", alt: "Cecilia Laporta" },
+            ].map((foto) => (
+              <div
+                key={foto.src}
+                className="relative aspect-square w-full overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={foto.src}
+                  alt={foto.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 12rem, 33vw"
+                />
+              </div>
+            ))}
           </div>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Image
+            src="/logo_sinf.png"
+            className="w-40 h-auto"
+            alt="Logo institucional"
+            width={600}
+            height={514}
+          />
         </div>
       </Section>
 
       <Section fondo="costa">
-        <h2 className="text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
-          ¿Cuál es el objetivo?
+        <Eyebrow>Qué hacemos</Eyebrow>
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
+          Nuestros proyectos
         </h2>
-        <Card className="mt-6 max-w-3xl">
-          <p className="text-base sm:text-xl text-texto">
-            Esta filial fue creada en 2013 incorporando al Proyecto Toninas
-            que se venía desarrollando desde 2002 en Uruguay. Los dos
-            objetivos principales de este proyecto son estudiar a la tonina{" "}
-            <span className="italic font-semibold">
-              Tursiops truncatus gephyreus
-            </span>
-            , una subespecie del delfín nariz de botella{" "}
-            <span className="italic font-semibold">Tursiops truncatus</span>{" "}
-            que ocurre únicamente en la zona costera del sur de Brasil,
-            Uruguay y Argentina, y promover la educación ambiental costera,
-            la conciencia sobre los efectos del cambio climático y a la
-            tonina como especie centinela de la costa.
-          </p>
-        </Card>
+        <div className="mt-8">
+          <ProjectCardDestacado
+            href="/proyectos/toninas"
+            title="Proyecto Toninas"
+            description="El proyecto que estudia a las toninas en La Paloma, Cabo Polonio y Cerro Verde desde 2002, y trabaja en educación ambiental con las comunidades de la costa de Rocha."
+            image="/pic1.png"
+            imageAlt="Actividades del proyecto Toninas Centinelas de la costa"
+          />
+        </div>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <ProjectCardCompacta
+            href="/proyectos/gephyreus"
+            title="Proyecto Gephyreus"
+            description="Trabajo regional con Brasil y Argentina para conservar al delfín de Lahille."
+          />
+          <ProjectCardCompacta
+            href="/proyectos/varamientos"
+            title="Red Nacional de Varamientos"
+            description="Monitoreo de varamientos de mamíferos acuáticos en la costa uruguaya."
+          />
+          <ProjectCardCompacta
+            href="/proyectos/identidad-franca"
+            title="Identidad Franca"
+            description="Estudio e identificación de la ballena franca austral."
+          />
+        </div>
       </Section>
 
       <Section fondo="claro" className="flex justify-center">
