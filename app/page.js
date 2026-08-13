@@ -9,6 +9,7 @@ import {
   ProjectCardCompacta,
 } from "../components/ui";
 import HeroVideo from "../components/HeroVideo";
+import VideoInstitucional from "../components/VideoInstitucional";
 
 export default function Home() {
   return (
@@ -91,6 +92,9 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+        <div className="mt-8 max-w-3xl mx-auto">
+          <VideoInstitucional />
         </div>
         <div className="mt-6 flex justify-center">
           <Image

@@ -20,23 +20,20 @@ export default function HeroVideo({ children }) {
           muted
           loop
           playsInline
-          poster="/video/hero-poster.jpg"
+          poster="/video/hero-costa-poster.jpg"
           className="absolute inset-0 h-full w-full object-cover"
         >
-          <source src="/video/hero-toninas-1280.webm" type="video/webm" />
-          <source src="/video/hero-toninas-1280.mp4" type="video/mp4" />
+          <source src="/video/hero-costa.webm" type="video/webm" />
+          <source src="/video/hero-costa.mp4" type="video/mp4" />
         </video>
       ) : (
         <img
-          src="/video/hero-poster.jpg"
-          alt="Tonina emergiendo frente a la costa de Valizas"
+          src="/video/hero-costa-poster.jpg"
+          alt="Vista aérea de tres toninas nadando cerca de la costa"
           className="absolute inset-0 h-full w-full object-cover"
         />
       )}
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-mar-900/85 via-mar-900/40 to-transparent"
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 bg-mar-900/45" aria-hidden="true" />
       <div className="relative flex h-full w-full items-end">
         <div className="mx-auto w-full max-w-7xl px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8">
           {children}
