@@ -1,4 +1,4 @@
-import { Section, PageHeader } from "../../../components/ui";
+import { Section, PageHeader, Garabato } from "../../../components/ui";
 import TodoAviso from "../../../components/TodoAviso";
 import { alternatesPara } from "../../../lib/i18n";
 
@@ -26,7 +26,13 @@ export function generateMetadata({ params: { locale } }) {
 
 export default function Page({ params: { locale } }) {
   return (
-    <Section fondo="claro">
+    <Section fondo="claro" className="relative">
+      <Garabato
+        numero={1}
+        registro="neutro"
+        width={160}
+        className="absolute right-0 top-0 hidden sm:block"
+      />
       <PageHeader title={locale === "en" ? "Sightings" : "Avistamientos"} />
       <TodoAviso locale={locale} />
     </Section>

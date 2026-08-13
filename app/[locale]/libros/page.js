@@ -1,4 +1,4 @@
-import { Section, PageHeader } from "../../../components/ui";
+import { Section, PageHeader, Garabato } from "../../../components/ui";
 import TodoAviso from "../../../components/TodoAviso";
 import { alternatesPara } from "../../../lib/i18n";
 
@@ -17,9 +17,18 @@ export const metadata = {
 
 export default function Page({ params: { locale } }) {
   return (
-    <Section fondo="claro">
+    <Section fondo="textura" className="relative">
+      <Garabato
+        numero={5}
+        registro="alto"
+        width={110}
+        className="absolute right-6 top-6 hidden sm:block"
+      />
       <PageHeader title="Libros" />
       <TodoAviso locale={locale} />
+      <p className="mt-12 text-center text-sm text-marca-grafito">
+        Ilustraciones: Yez
+      </p>
     </Section>
   );
 }

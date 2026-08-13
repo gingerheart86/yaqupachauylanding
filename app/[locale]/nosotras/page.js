@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Section, PageHeader, Card } from "../../../components/ui";
+import { Section, PageHeader, Card, Garabato } from "../../../components/ui";
 import TodoAviso from "../../../components/TodoAviso";
 import { alternatesPara } from "../../../lib/i18n";
 
@@ -67,7 +67,13 @@ export default function Home({ params: { locale } }) {
   }
 
   return (
-    <Section fondo="claro">
+    <Section fondo="claro" className="relative">
+      <Garabato
+        numero={1}
+        registro="neutro"
+        width={220}
+        className="absolute left-0 bottom-0 hidden lg:block"
+      />
       <PageHeader
         title="Nosotras"
         description="Yaqu Pacha Uruguay está conformado por 3 investigadoras y cuenta con la colaboración de más de 20 personas con diversas formaciones y habilidades."

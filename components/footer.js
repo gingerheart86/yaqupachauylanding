@@ -50,6 +50,7 @@ export default function FooterFC({ locale = "es" }) {
             >
               gingerheart
             </a>
+            . Ilustraciones: Yez.
           </p>
         </div>
       </div>
