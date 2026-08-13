@@ -7,6 +7,7 @@ import {
   Eyebrow,
   ProjectCardDestacado,
   ProjectCardCompacta,
+  Garabato,
 } from "../../components/ui";
 import HeroVideo from "../../components/HeroVideo";
 import VideoInstitucional from "../../components/VideoInstitucional";
@@ -26,11 +27,11 @@ export default function Home({ params: { locale } }) {
       <HeroVideo>
         <h1 className="sr-only">Toninas</h1>
         <Image
-          src="/logo-toninas.png"
+          src="/decor/logo-proyecto-toninas-blanco.png"
           alt="Proyecto Toninas: Centinelas de la Costa"
-          width={600}
-          height={494}
-          className="w-48 h-auto sm:w-64"
+          width={800}
+          height={658}
+          className="w-40 h-auto drop-shadow-lg sm:w-52"
           priority
         />
         <div className="mt-8 flex flex-wrap gap-4">
@@ -53,7 +54,7 @@ export default function Home({ params: { locale } }) {
         </Section>
       ) : (
         <>
-          <Section fondo="claro">
+          <Section fondo="textura">
             <Eyebrow>Quiénes somos</Eyebrow>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
               Yaqu Pacha Uruguay
@@ -122,7 +123,10 @@ export default function Home({ params: { locale } }) {
             </div>
           </Section>
 
-          <Section fondo="costa">
+          <div className="flex justify-center bg-costa-100 pt-8">
+            <Garabato numero={5} registro="alto" width={72} />
+          </div>
+          <Section fondo="costa" innerClassName="pt-0">
             <Eyebrow>Qué hacemos</Eyebrow>
             <h2 className="mt-2 text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
               Nuestros proyectos

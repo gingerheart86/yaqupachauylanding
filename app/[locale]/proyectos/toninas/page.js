@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Gallery from "../../../../components/imagegallery";
-import { Section, PageHeader } from "../../../../components/ui";
+import { Section, PageHeader, Garabato } from "../../../../components/ui";
 import TodoAviso from "../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../lib/i18n";
 
@@ -75,7 +75,10 @@ export default function Home({ params: { locale } }) {
         />
       </figure>
 
-      <h2 className="mt-8 block text-center text-3xl font-semibold tracking-tight text-mar-800 sm:text-3xl">
+      <div className="mt-8 flex justify-center">
+        <Garabato numero={4} registro="alto" width={90} />
+      </div>
+      <h2 className="mt-4 block text-center text-3xl font-semibold tracking-tight text-mar-800 sm:text-3xl">
         Galería de fotos
       </h2>
       <div className="max-w-5xl w-full mx-auto">
