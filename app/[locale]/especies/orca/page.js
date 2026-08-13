@@ -24,6 +24,7 @@ export function generateMetadata({ params: { locale } }) {
 export default function Page({ params: { locale } }) {
   return (
     <PaginaEspecie
+      slug="orca"
       nombreComun="Orca"
       nombreCientifico="Orcinus orca"
       locale={locale}

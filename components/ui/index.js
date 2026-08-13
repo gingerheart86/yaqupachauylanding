@@ -7,3 +7,4 @@ export { ProjectCardDestacado, ProjectCardCompacta } from "./ProjectCard";
 export { default as GrillaLogos } from "./GrillaLogos";
 export { default as PaginaEspecie } from "./PaginaEspecie";
 export { default as PaginaProyecto } from "./PaginaProyecto";
+export { default as Garabato } from "./Garabato";

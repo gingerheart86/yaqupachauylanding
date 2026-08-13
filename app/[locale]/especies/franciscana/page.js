@@ -26,6 +26,7 @@ export function generateMetadata({ params: { locale } }) {
 export default function Page({ params: { locale } }) {
   return (
     <PaginaEspecie
+      slug="franciscana"
       nombreComun="Franciscana"
       nombreCientifico="Pontoporia blainvillei"
       locale={locale}

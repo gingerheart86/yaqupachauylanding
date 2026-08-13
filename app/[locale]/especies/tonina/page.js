@@ -26,6 +26,7 @@ export function generateMetadata({ params: { locale } }) {
 export default function Page({ params: { locale } }) {
   return (
     <PaginaEspecie
+      slug="tonina"
       nombreComun={locale === "en" ? "Tonina" : "Tonina"}
       nombreCientifico="Tursiops truncatus gephyreus"
       locale={locale}

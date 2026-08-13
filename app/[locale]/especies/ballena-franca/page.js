@@ -26,6 +26,7 @@ export function generateMetadata({ params: { locale } }) {
 export default function Page({ params: { locale } }) {
   return (
     <PaginaEspecie
+      slug="ballena-franca"
       nombreComun={locale === "en" ? "Southern right whale" : "Ballena franca austral"}
       nombreCientifico="Eubalaena australis"
       locale={locale}
