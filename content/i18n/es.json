@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "especies": "Especies",
+    "proyectos": "Proyectos",
+    "avistamientos": "Avistamientos",
+    "libros": "Libros",
+    "tienda": "Tienda",
+    "nosotras": "Nosotras"
+  },
+  "proyectosMenu": {
+    "antecedentes": "Antecedentes",
+    "toninas": "Toninas centinelas de la costa",
+    "gephyreus": "Proyecto Gephyreus",
+    "varamientos": "Grupo de Trabajo en Varamientos",
+    "identidadFranca": "Identidad Franca"
+  },
+  "common": {
+    "todoTitulo": "Estamos preparando esta página",
+    "todoTexto": "El contenido llega en una próxima etapa.",
+    "reportarAvistamiento": "Reportar un avistamiento",
+    "reportarVaramiento": "Reportar un varamiento",
+    "verMas": "Ver más",
+    "idioma": "Idioma",
+    "cambiarIdioma": "Cambiar idioma"
+  },
+  "footer": {
+    "hechoCon": "Hecho con",
+    "por": "por",
+    "y": "y"
+  },
+  "siteName": "Yaqu Pacha Uruguay"
+}

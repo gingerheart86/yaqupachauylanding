@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { socialLinks } from "./social-icons";
+import { getDictionary } from "../lib/i18n";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2 rounded-sm";
 
-export default function FooterFC() {
+export default function FooterFC({ locale = "es" }) {
+  const dict = getDictionary(locale);
   return (
     <footer className="bg-costa-300">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
@@ -29,7 +31,8 @@ export default function FooterFC() {
             height={178}
           />
           <p className="text-center text-base text-texto">
-            &copy; Yaqu Pacha Uruguay {new Date().getFullYear()}. Hecho con ❤️ por{" "}
+            &copy; Yaqu Pacha Uruguay {new Date().getFullYear()}. {dict.footer.hechoCon} ❤️{" "}
+            {dict.footer.por}{" "}
             <a
               className={`font-semibold hover:underline underline-offset-4 ${FOCUS_RING}`}
               href="https://kalagmitan.xyz/"
@@ -38,7 +41,7 @@ export default function FooterFC() {
             >
               sansil
             </a>
-            {" "}y{" "}
+            {" "}{dict.footer.y}{" "}
             <a
               className={`font-semibold hover:underline underline-offset-4 ${FOCUS_RING}`}
               href="https://github.com/gingerheart86"

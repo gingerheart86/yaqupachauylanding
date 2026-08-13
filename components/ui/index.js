@@ -4,4 +4,6 @@ export { default as Card } from "./Card";
 export { default as Button } from "./Button";
 export { default as Eyebrow } from "./Eyebrow";
 export { ProjectCardDestacado, ProjectCardCompacta } from "./ProjectCard";
-export { default as LogoGrid } from "./LogoGrid";
+export { default as GrillaLogos } from "./GrillaLogos";
+export { default as PaginaEspecie } from "./PaginaEspecie";
+export { default as PaginaProyecto } from "./PaginaProyecto";

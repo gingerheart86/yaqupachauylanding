@@ -1,0 +1,30 @@
+{
+  "nav": {
+    "especies": "Species",
+    "proyectos": "Projects",
+    "avistamientos": "Sightings",
+    "nosotras": "About us"
+  },
+  "proyectosMenu": {
+    "antecedentes": "Background",
+    "toninas": "Toninas Centinelas de la Costa",
+    "gephyreus": "Gephyreus Project",
+    "varamientos": "Stranding Network (Grupo de Trabajo en Varamientos)",
+    "identidadFranca": "Identidad Franca"
+  },
+  "common": {
+    "todoTitulo": "This page is coming soon",
+    "todoTexto": "Content for this page is on its way.",
+    "reportarAvistamiento": "Report a sighting",
+    "reportarVaramiento": "Report a stranding",
+    "verMas": "Learn more",
+    "idioma": "Language",
+    "cambiarIdioma": "Change language"
+  },
+  "footer": {
+    "hechoCon": "Made with",
+    "por": "by",
+    "y": "and"
+  },
+  "siteName": "Yaqu Pacha Uruguay"
+}
