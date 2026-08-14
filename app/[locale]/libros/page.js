@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Section, PageHeader, Garabato } from "../../../components/ui";
 import TodoAviso from "../../../components/TodoAviso";
 import { alternatesPara } from "../../../lib/i18n";
@@ -24,7 +25,22 @@ export default function Page({ params: { locale } }) {
         width={110}
         className="absolute right-6 top-6 hidden sm:block"
       />
-      <PageHeader title="Libros" />
+      <div className="flex justify-center">
+        <Image
+          src="/decor/clara-y-las-toninas.png"
+          alt=""
+          aria-hidden="true"
+          width={1000}
+          height={736}
+          className="w-full max-w-md h-auto"
+          priority
+        />
+      </div>
+      <PageHeader
+        title="Clara y las Toninas"
+        description="Una colección para sumergirnos en la ciencia, nuestra costa y acercarnos a las toninas."
+        className="mt-4"
+      />
       <TodoAviso locale={locale} />
       <p className="mt-12 text-center text-sm text-marca-grafito">
         Ilustraciones: Yez
