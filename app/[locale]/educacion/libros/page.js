@@ -28,8 +28,7 @@ export default function Page({ params: { locale } }) {
       <div className="flex justify-center">
         <Image
           src="/decor/clara-y-las-toninas.png"
-          alt=""
-          aria-hidden="true"
+          alt="Clara y las Toninas: una colección para sumergirnos en la ciencia, nuestra costa y acercarnos a las toninas"
           width={1000}
           height={736}
           className="w-full max-w-md h-auto"
@@ -39,11 +38,20 @@ export default function Page({ params: { locale } }) {
       <PageHeader
         title="Clara y las Toninas"
         description="Una colección para sumergirnos en la ciencia, nuestra costa y acercarnos a las toninas."
-        className="mt-4"
+        className="mt-4 sr-only"
       />
       <TodoAviso locale={locale} />
-      <p className="mt-12 text-center text-sm text-marca-grafito">
-        Ilustraciones: Yez
+      <div className="mt-12 flex justify-center">
+        <Image
+          src="/decor/logos-libros-blanco.png"
+          alt="Proyecto Toninas, Yaqu Pacha Uruguay y editorial Krakatoa"
+          width={1200}
+          height={309}
+          className="w-full max-w-xs h-auto"
+        />
+      </div>
+      <p className="mt-4 text-center text-sm text-marca-grafito">
+        Guion: Silvia Soler. Ilustraciones: Yez. Editorial: Krakatoa.
       </p>
     </Section>
   );
