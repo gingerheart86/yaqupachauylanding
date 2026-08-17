@@ -37,11 +37,11 @@ export default function Page({ params: { locale } }) {
             locale === "en"
               ? "Toninas Centinelas de la Costa"
               : "Toninas centinelas de la costa",
-          href: `/${locale}/proyectos/toninas`,
+          href: `/${locale}/investigacion/toninas`,
         },
         {
           nombre: "Proyecto Gephyreus",
-          href: `/${locale}/proyectos/gephyreus`,
+          href: `/${locale}/investigacion/gephyreus`,
         },
       ]}
     >

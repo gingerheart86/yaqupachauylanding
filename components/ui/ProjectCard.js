@@ -35,7 +35,21 @@ export function ProjectCardDestacado({ href, title, description, image, imageAlt
   );
 }
 
-export function ProjectCardCompacta({ href, title, description }) {
+export function ProjectCardCompacta({ href, title, description, oscuro = false }) {
+  if (oscuro) {
+    return (
+      <Link
+        href={href}
+        className={`block rounded-lg border-[0.5px] border-white/20 p-5 hover:bg-white/10 ${FOCUS_RING}`}
+      >
+        <h3 className="font-semibold text-white">{title}</h3>
+        {description && (
+          <p className="mt-1 text-sm text-mar-100">{description}</p>
+        )}
+      </Link>
+    );
+  }
+
   return (
     <Link
       href={href}

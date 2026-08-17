@@ -7,7 +7,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("proyectos/varamientos");
+  const alternates = alternatesPara("investigacion/varamientos");
   if (locale === "en") {
     return {
       title: "Stranding Network",

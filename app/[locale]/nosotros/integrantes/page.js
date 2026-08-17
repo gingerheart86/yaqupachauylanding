@@ -1,24 +1,24 @@
 import Image from "next/image";
-import { Section, PageHeader, Card, Garabato } from "../../../components/ui";
-import TodoAviso from "../../../components/TodoAviso";
-import { alternatesPara } from "../../../lib/i18n";
+import { Section, PageHeader, Card, Garabato } from "../../../../components/ui";
+import TodoAviso from "../../../../components/TodoAviso";
+import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("nosotras");
+  const alternates = alternatesPara("nosotros/integrantes");
   if (locale === "en") {
     return {
-      title: "About us",
+      title: "Team",
       description:
         "The team of biologists researching toninas along the Uruguayan coast.",
       alternates,
     };
   }
   return {
-    title: "Nosotras",
+    title: "Integrantes",
     description:
       "El equipo de biólogas y biólogos que investiga a las toninas en la costa de Uruguay.",
     alternates,
@@ -75,7 +75,7 @@ export default function Home({ params: { locale } }) {
         className="absolute left-0 bottom-0 hidden lg:block"
       />
       <PageHeader
-        title="Nosotras"
+        title="Integrantes"
         description="Yaqu Pacha Uruguay está conformado por 3 investigadoras y cuenta con la colaboración de más de 20 personas con diversas formaciones y habilidades."
       />
       <ul role="list" className="mt-12 flex flex-wrap justify-around">

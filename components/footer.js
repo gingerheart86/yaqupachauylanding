@@ -8,7 +8,7 @@ const FOCUS_RING =
 export default function FooterFC({ locale = "es" }) {
   const dict = getDictionary(locale);
   return (
-    <footer className="bg-costa-300">
+    <footer className="bg-costa-100 border-t border-marca-grafito/10">
       <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
         <div className="flex justify-center space-x-6 md:order-2">
           {socialLinks.map((item) => (

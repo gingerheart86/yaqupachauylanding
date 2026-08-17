@@ -1,16 +1,30 @@
 {
   "nav": {
+    "nosotros": "About us",
     "especies": "Species",
-    "proyectos": "Projects",
-    "avistamientos": "Sightings",
-    "nosotras": "About us"
+    "investigacion": "Research",
+    "colabora": "Get involved",
+    "avistamientos": "Sightings"
   },
-  "proyectosMenu": {
-    "antecedentes": "Background",
-    "toninas": "Toninas Centinelas de la Costa",
-    "gephyreus": "Gephyreus Project",
+  "nosotrosMenu": {
+    "ong": "The NGO",
+    "integrantes": "Team"
+  },
+  "especiesMenu": {
+    "tonina": "Tonina",
+    "ballenaFranca": "Southern right whale",
+    "franciscana": "Franciscana",
+    "orca": "Orca"
+  },
+  "investigacionMenu": {
+    "toninas": "Proyecto Toninas",
+    "gephyreus": "Gephyreus",
     "varamientos": "Stranding Network (Grupo de Trabajo en Varamientos)",
-    "identidadFranca": "Identidad Franca"
+    "identidadFranca": "Identidad Franca",
+    "publicaciones": "Scientific publications"
+  },
+  "colaboraMenu": {
+    "contacto": "Contact"
   },
   "common": {
     "todoTitulo": "This page is coming soon",

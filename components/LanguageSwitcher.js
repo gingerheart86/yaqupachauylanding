@@ -11,11 +11,10 @@ const FOCUS_RING =
 function hrefParaLocale(pathname, targetLocale) {
   const segments = pathname.split("/").filter(Boolean); // [locale, ...resto]
   const resto = segments.slice(1);
-  const primerSegmento = resto[0] ?? "";
-  if (!esRutaBilingue(primerSegmento)) {
+  const path = resto.join("/");
+  if (!esRutaBilingue(path)) {
     return `/${targetLocale}`;
   }
-  const path = resto.join("/");
   return path ? `/${targetLocale}/${path}` : `/${targetLocale}`;
 }
 

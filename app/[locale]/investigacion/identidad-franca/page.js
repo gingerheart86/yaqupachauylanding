@@ -7,7 +7,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("proyectos/identidad-franca");
+  const alternates = alternatesPara("investigacion/identidad-franca");
   if (locale === "en") {
     return {
       title: "Identidad Franca",

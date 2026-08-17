@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Section, PageHeader, Garabato } from "../../../components/ui";
-import TodoAviso from "../../../components/TodoAviso";
-import { alternatesPara } from "../../../lib/i18n";
+import { Section, PageHeader, Garabato } from "../../../../components/ui";
+import TodoAviso from "../../../../components/TodoAviso";
+import { alternatesPara } from "../../../../lib/i18n";
 
 // Solo espanol - seccion 3 del doc de fase 3 bloque 1.
 export async function generateStaticParams() {
@@ -13,7 +13,7 @@ export const metadata = {
   title: "Libros",
   description:
     "Los libros infantiles de Proyecto Toninas, ilustrados por Yez.",
-  alternates: alternatesPara("libros", { soloEs: true }),
+  alternates: alternatesPara("educacion/libros", { soloEs: true }),
 };
 
 export default function Page({ params: { locale } }) {

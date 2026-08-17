@@ -9,7 +9,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("proyectos/toninas");
+  const alternates = alternatesPara("investigacion/toninas");
   if (locale === "en") {
     return {
       title: "Toninas Centinelas de la Costa",

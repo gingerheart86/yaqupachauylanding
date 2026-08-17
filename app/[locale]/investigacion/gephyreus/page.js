@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("proyectos/gephyreus");
+  const alternates = alternatesPara("investigacion/gephyreus");
   if (locale === "en") {
     return {
       title: "Gephyreus Project",

@@ -5,19 +5,26 @@ const rutasBilingues = [
   "especies/ballena-franca",
   "especies/franciscana",
   "especies/orca",
-  "proyectos",
-  "proyectos/toninas",
-  "proyectos/gephyreus",
-  "proyectos/varamientos",
-  "proyectos/identidad-franca",
-  "proyectos/antecedentes",
+  "investigacion",
+  "investigacion/toninas",
+  "investigacion/toninas/antecedentes",
+  "investigacion/gephyreus",
+  "investigacion/varamientos",
+  "investigacion/identidad-franca",
+  "investigacion/publicaciones",
   "avistamientos",
-  "publicaciones",
-  "nosotras",
-  "contacto",
+  "nosotros/ong",
+  "nosotros/integrantes",
+  "colabora/contacto",
 ];
 
-const rutasSoloEs = ["prensa-y-divulgacion", "libros", "tienda", "donaciones"];
+const rutasSoloEs = [
+  "educacion/prensa",
+  "educacion/libros",
+  "tienda",
+  "colabora/donaciones",
+  "noticias",
+];
 
 const BASE = "https://yaqupachauy.org";
 

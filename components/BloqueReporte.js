@@ -1,12 +1,11 @@
 import { Section, Button } from "./ui";
 import { getDictionary } from "../lib/i18n";
-
-// TODO: falta la URL real del formulario Survey123 de avistamientos.
-// Mientras no este, el boton de avistamiento manda a /contacto (no se
-// inventan links rotos ni URLs falsas).
-const SURVEY123_URL = null;
-const WHATSAPP_VARAMIENTOS = "https://wa.me/59898490889";
-const TELEFONO_VARAMIENTOS = "098 490 889";
+import {
+  SURVEY123_URL,
+  WHATSAPP_VARAMIENTOS,
+  TELEFONO_VARAMIENTOS,
+  TELEFONO_VARAMIENTOS_TEL,
+} from "../lib/contacto";
 
 const TITULOS = {
   avistamiento: {
@@ -40,7 +39,7 @@ export default function BloqueReporte({ tipo = "avistamiento", locale = "es" }) 
               {dict.common.reportarVaramiento}
             </Button>
             <p className="mt-3 text-mar-100">
-              <a href="tel:+59898490889" className="hover:underline">
+              <a href={`tel:${TELEFONO_VARAMIENTOS_TEL}`} className="hover:underline">
                 {TELEFONO_VARAMIENTOS}
               </a>
             </p>
@@ -48,7 +47,7 @@ export default function BloqueReporte({ tipo = "avistamiento", locale = "es" }) 
         ) : (
           <div className="mt-6">
             <Button
-              href={SURVEY123_URL ?? `/${locale}/contacto`}
+              href={SURVEY123_URL ?? `/${locale}/colabora/contacto`}
               variante="primario"
               className="!bg-white !text-mar-800 hover:!bg-mar-100"
             >

@@ -6,19 +6,19 @@ export async function generateStaticParams() {
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("proyectos");
+  const alternates = alternatesPara("investigacion");
   if (locale === "en") {
     return {
-      title: "Projects",
+      title: "Research",
       description:
-        "Yaqu Pacha Uruguay's projects to study and conserve toninas and their coastal environment.",
+        "Yaqu Pacha Uruguay's projects and scientific publications to study and conserve toninas and their coastal environment.",
       alternates,
     };
   }
   return {
-    title: "Nuestros proyectos",
+    title: "Investigación",
     description:
-      "Los proyectos de Yaqu Pacha Uruguay para estudiar y conservar a las toninas y su ambiente costero: monitoreo, investigación y educación ambiental.",
+      "Los proyectos y publicaciones científicas de Yaqu Pacha Uruguay para estudiar y conservar a las toninas y su ambiente costero: monitoreo, investigación y educación ambiental.",
     alternates,
   };
 }
@@ -28,7 +28,7 @@ export default function Home({ params: { locale } }) {
   return (
     <Section fondo="claro">
       <PageHeader
-        title={esIngles ? "Our projects" : "Nuestros proyectos"}
+        title={esIngles ? "Research" : "Investigación"}
         description={
           esIngles
             ? "Proyecto Toninas is our main project. We also take part in three shared projects with other institutions."
@@ -37,20 +37,20 @@ export default function Home({ params: { locale } }) {
       />
       <div className="mt-10">
         <ProjectCardDestacado
-          href={`/${locale}/proyectos/toninas`}
+          href={`/${locale}/investigacion/toninas`}
           title="Proyecto Toninas"
           description={
             esIngles
               ? "The project that has studied toninas in La Paloma, Cabo Polonio and Cerro Verde since 2002."
               : "El proyecto que estudia a las toninas en La Paloma, Cabo Polonio y Cerro Verde desde 2002."
           }
-          image="/pic1.png"
+          image="/proytoninas/1.webp"
           imageAlt="Actividades del proyecto Toninas Centinelas de la costa"
         />
       </div>
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
         <ProjectCardCompacta
-          href={`/${locale}/proyectos/gephyreus`}
+          href={`/${locale}/investigacion/gephyreus`}
           title="Proyecto Gephyreus"
           description={
             esIngles
@@ -59,7 +59,7 @@ export default function Home({ params: { locale } }) {
           }
         />
         <ProjectCardCompacta
-          href={`/${locale}/proyectos/varamientos`}
+          href={`/${locale}/investigacion/varamientos`}
           title="Red Nacional de Varamientos"
           description={
             esIngles
@@ -68,7 +68,7 @@ export default function Home({ params: { locale } }) {
           }
         />
         <ProjectCardCompacta
-          href={`/${locale}/proyectos/identidad-franca`}
+          href={`/${locale}/investigacion/identidad-franca`}
           title="Identidad Franca"
           description={
             esIngles
@@ -77,14 +77,23 @@ export default function Home({ params: { locale } }) {
           }
         />
       </div>
-      <div className="mt-6">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         <ProjectCardCompacta
-          href={`/${locale}/proyectos/antecedentes`}
+          href={`/${locale}/investigacion/toninas/antecedentes`}
           title={esIngles ? "Background of Proyecto Toninas" : "Antecedentes del Proyecto Toninas"}
           description={
             esIngles
               ? "More than twenty years studying toninas on the Uruguayan coast."
               : "Más de veinte años estudiando a las toninas en la costa uruguaya."
+          }
+        />
+        <ProjectCardCompacta
+          href={`/${locale}/investigacion/publicaciones`}
+          title={esIngles ? "Scientific publications" : "Publicaciones científicas"}
+          description={
+            esIngles
+              ? "Peer-reviewed articles about toninas ecology, behaviour and conservation."
+              : "Artículos científicos sobre ecología, comportamiento y conservación de las toninas."
           }
         />
       </div>

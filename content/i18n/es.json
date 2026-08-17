@@ -1,18 +1,38 @@
 {
   "nav": {
+    "nosotros": "Nosotros",
     "especies": "Especies",
-    "proyectos": "Proyectos",
+    "investigacion": "Investigación",
+    "educacion": "Educación ambiental",
+    "colabora": "Colaborá",
+    "tienda": "YaquTienda",
     "avistamientos": "Avistamientos",
-    "libros": "Libros",
-    "tienda": "Tienda",
-    "nosotras": "Nosotras"
+    "noticias": "Noticias"
   },
-  "proyectosMenu": {
-    "antecedentes": "Antecedentes",
-    "toninas": "Toninas centinelas de la costa",
-    "gephyreus": "Proyecto Gephyreus",
+  "nosotrosMenu": {
+    "ong": "La ONG",
+    "integrantes": "Integrantes"
+  },
+  "especiesMenu": {
+    "tonina": "Tonina",
+    "ballenaFranca": "Ballena franca austral",
+    "franciscana": "Franciscana",
+    "orca": "Orca"
+  },
+  "investigacionMenu": {
+    "toninas": "Proyecto Toninas",
+    "gephyreus": "Gephyreus",
     "varamientos": "Grupo de Trabajo en Varamientos",
-    "identidadFranca": "Identidad Franca"
+    "identidadFranca": "Identidad Franca",
+    "publicaciones": "Publicaciones científicas"
+  },
+  "educacionMenu": {
+    "libros": "Colección de libros",
+    "prensa": "Prensa y divulgación"
+  },
+  "colaboraMenu": {
+    "contacto": "Contacto",
+    "donaciones": "Donaciones"
   },
   "common": {
     "todoTitulo": "Estamos preparando esta página",

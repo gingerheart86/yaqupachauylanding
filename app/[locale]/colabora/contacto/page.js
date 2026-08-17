@@ -3,15 +3,15 @@ import {
   PhoneIcon,
   MapPinIcon,
 } from "@heroicons/react/24/outline";
-import { Section, PageHeader } from "../../../components/ui";
-import { alternatesPara } from "../../../lib/i18n";
+import { Section, PageHeader } from "../../../../components/ui";
+import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
 }
 
 export function generateMetadata({ params: { locale } }) {
-  const alternates = alternatesPara("contacto");
+  const alternates = alternatesPara("colabora/contacto");
   if (locale === "en") {
     return {
       title: "Contact",

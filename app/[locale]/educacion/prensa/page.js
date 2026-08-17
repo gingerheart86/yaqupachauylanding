@@ -1,5 +1,5 @@
-import { Section, PageHeader } from "../../../components/ui";
-import { alternatesPara } from "../../../lib/i18n";
+import { Section, PageHeader } from "../../../../components/ui";
+import { alternatesPara } from "../../../../lib/i18n";
 
 // Solo espanol - seccion 3 del doc de fase 3 bloque 1.
 export async function generateStaticParams() {
@@ -11,7 +11,7 @@ export const metadata = {
   title: "Prensa y divulgación",
   description:
     "Notas de prensa, videos, charlas y materiales de divulgación sobre las toninas y la conservación de la costa uruguaya.",
-  alternates: alternatesPara("prensa-y-divulgacion", { soloEs: true }),
+  alternates: alternatesPara("educacion/prensa", { soloEs: true }),
 };
 
 export default function Home() {
