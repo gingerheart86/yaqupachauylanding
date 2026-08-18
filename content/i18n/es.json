@@ -28,7 +28,8 @@
   },
   "educacionMenu": {
     "libros": "Colección de libros",
-    "prensa": "Prensa y divulgación"
+    "prensa": "Prensa y divulgación",
+    "recursos": "Recursos descargables"
   },
   "colaboraMenu": {
     "contacto": "Contacto",
@@ -46,7 +47,8 @@
   "footer": {
     "hechoCon": "Hecho con",
     "por": "por",
-    "y": "y"
+    "y": "y",
+    "ilustraciones": "Ilustraciones: Yez."
   },
   "siteName": "Yaqu Pacha Uruguay"
 }

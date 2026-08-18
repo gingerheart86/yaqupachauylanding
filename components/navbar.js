@@ -69,6 +69,7 @@ const NAV = [
     children: [
       { key: "libros", slug: "educacion/libros", bilingue: false },
       { key: "prensa", slug: "educacion/prensa", bilingue: false },
+      { key: "recursos", slug: "educacion/recursos", bilingue: false },
     ],
   },
   {

@@ -23,6 +23,7 @@ const rutasBilingues = [
 const rutasSoloEs = [
   "educacion/prensa",
   "educacion/libros",
+  "educacion/recursos",
   "tienda",
   "colabora/donaciones",
   "noticias",
