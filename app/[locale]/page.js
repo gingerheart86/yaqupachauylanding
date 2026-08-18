@@ -1,7 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Section,
-  Card,
   Button,
   Eyebrow,
   ProjectCardDestacado,
@@ -9,24 +9,32 @@ import {
   Garabato,
 } from "../../components/ui";
 import HeroVideo from "../../components/HeroVideo";
-import VideoInstitucional from "../../components/VideoInstitucional";
 import BandaIlustrada from "../../components/BandaIlustrada";
 import TodoAviso from "../../components/TodoAviso";
 import { SURVEY123_URL } from "../../lib/contacto";
 import { getDictionary } from "../../lib/i18n";
+import { getUltimasNoticias } from "../../lib/noticias";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
 }
 
+function fechaCorta(fecha) {
+  return new Intl.DateTimeFormat("es-UY", {
+    day: "numeric",
+    month: "long",
+    timeZone: "UTC",
+  }).format(new Date(fecha));
+}
+
 // Orden de secciones de la portada - docs/fase3-navegacion-portada.md
-// seccion 4. La seccion de noticias (punto 5) no se renderiza todavia:
-// no hay ninguna nota publicada, y una seccion de "ultimas noticias"
-// vacia (o con placeholders inventados) es peor que no tener la
-// seccion - mismo criterio que docs/fase3-arquitectura-y-contenido.md
-// seccion 9.
+// seccion 4. La seccion de noticias (punto 5) se arma sola desde
+// content/noticias/: si todavia no hay ninguna nota, no se renderiza -
+// una seccion de "ultimas noticias" vacia es peor que no tener la
+// seccion (fase3-arquitectura-y-contenido.md seccion 9).
 export default function Home({ params: { locale } }) {
   const esIngles = locale === "en";
+  const noticias = esIngles ? [] : getUltimasNoticias(3);
 
   return (
     <div className="relative ">
@@ -74,57 +82,7 @@ export default function Home({ params: { locale } }) {
             </div>
           </Section>
 
-          {/* 3. Seccion institucional - sin fotos del equipo, esas van a /nosotros/integrantes */}
-          <Section fondo="textura">
-            <Eyebrow>Quiénes somos</Eyebrow>
-            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
-              Yaqu Pacha Uruguay
-            </h2>
-            <div className="mt-6 max-w-3xl">
-              <Card>
-                <p className="text-base sm:text-xl text-texto">
-                  Yaqu Pacha Uruguay es una filial de la Organización para la
-                  Conservación de Mamíferos Acuáticos en América del Sur - Yaqu
-                  Pacha e.V. en Alemania. La organización tiene como objetivos
-                  investigar y conservar las especies de mamíferos acuáticos en
-                  América del Sur, en particular aquellas amenazadas, así como
-                  difundir y concientizar a las personas sobre la importancia de
-                  estudiar y conservar a estas especies y sus ambientes.
-                </p>
-                <p className="mt-4 text-base sm:text-xl text-texto">
-                  Esta filial fue creada en 2013 incorporando al Proyecto Toninas
-                  que se venía desarrollando desde 2002 en Uruguay. Los dos
-                  objetivos principales de este proyecto son estudiar a la
-                  tonina{" "}
-                  <span className="italic font-semibold">
-                    Tursiops truncatus gephyreus
-                  </span>
-                  , una subespecie del delfín nariz de botella{" "}
-                  <span className="italic font-semibold">
-                    Tursiops truncatus
-                  </span>{" "}
-                  que ocurre únicamente en la zona costera del sur de Brasil,
-                  Uruguay y Argentina, y promover la educación ambiental costera,
-                  la conciencia sobre los efectos del cambio climático y a la
-                  tonina como especie centinela de la costa.
-                </p>
-              </Card>
-            </div>
-            <div className="mt-8 max-w-3xl mx-auto">
-              <VideoInstitucional />
-            </div>
-            <div className="mt-6 flex justify-center">
-              <Image
-                src="/logo_sinf.png"
-                className="w-40 h-auto"
-                alt="Logo institucional"
-                width={600}
-                height={514}
-              />
-            </div>
-          </Section>
-
-          <div className="flex justify-center bg-costa-100 pt-8">
+          <div className="flex justify-center bg-white pt-8">
             <Garabato numero={5} registro="alto" width={72} />
           </div>
 
@@ -164,6 +122,53 @@ export default function Home({ params: { locale } }) {
               />
             </div>
           </Section>
+
+          {/* 5. Tres noticias - no se renderiza si content/noticias/ esta vacio */}
+          {noticias.length > 0 && (
+            <Section fondo="costa">
+              <Eyebrow>Novedades</Eyebrow>
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight text-mar-800 sm:text-3xl lg:text-4xl">
+                Noticias
+              </h2>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {noticias.map((n) => (
+                  <Link
+                    key={n.slug}
+                    href={`/${locale}/noticias/${n.slug}`}
+                    className="group block overflow-hidden rounded-lg border-[0.5px] border-marca-grafito/20 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2"
+                  >
+                    {n.imagen && (
+                      <div className="relative aspect-[16/9] w-full">
+                        <Image
+                          src={n.imagen}
+                          alt=""
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-105"
+                          sizes="(min-width: 1024px) 33vw, 100vw"
+                        />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <h3 className="font-semibold text-mar-800">
+                        {n.titulo}
+                      </h3>
+                      <p className="mt-1 text-sm text-marca-grafito">
+                        {fechaCorta(n.fecha)}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-8 text-center">
+                <Link
+                  href={`/${locale}/noticias`}
+                  className="text-marca-oscuro font-medium underline underline-offset-4"
+                >
+                  Ver todas las noticias
+                </Link>
+              </div>
+            </Section>
+          )}
 
           {/* 6. Banda ilustrada antes del footer */}
           <BandaIlustrada />

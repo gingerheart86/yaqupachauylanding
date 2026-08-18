@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Section, PageHeader, Card } from "../../../../components/ui";
+import VideoInstitucional from "../../../../components/VideoInstitucional";
 import TodoAviso from "../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../lib/i18n";
 
@@ -66,6 +67,9 @@ export default function Home({ params: { locale } }) {
           como especie centinela de la costa.
         </p>
       </Card>
+      <div className="mt-8 max-w-3xl mx-auto">
+        <VideoInstitucional />
+      </div>
       <div className="mt-8 flex justify-center">
         <Image
           src="/logo_sinf.png"

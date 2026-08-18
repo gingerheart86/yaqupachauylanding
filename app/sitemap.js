@@ -1,3 +1,5 @@
+import { getTodasLasNoticias } from "../lib/noticias";
+
 const rutasBilingues = [
   "",
   "especies",
@@ -31,6 +33,13 @@ const BASE = "https://yaqupachauy.org";
 export default function sitemap() {
   const lastModified = new Date();
   const entries = [];
+
+  for (const n of getTodasLasNoticias()) {
+    entries.push({
+      url: `${BASE}/es/noticias/${n.slug}`,
+      lastModified: new Date(n.fecha),
+    });
+  }
 
   for (const ruta of rutasBilingues) {
     const sufijo = ruta ? `/${ruta}` : "";
