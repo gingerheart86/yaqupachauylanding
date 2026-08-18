@@ -10,26 +10,36 @@ export async function generateStaticParams() {
 export const dynamicParams = false;
 
 export const metadata = {
-  title: "Recursos descargables",
+  title: "Materiales educativos",
   description:
     "Materiales educativos de Yaqu Pacha Uruguay para descargar e imprimir.",
-  alternates: alternatesPara("educacion/recursos", { soloEs: true }),
+  alternates: alternatesPara("educacion/materiales", { soloEs: true }),
 };
 
-// Disponibles: ver TODO general - "Educacion ambiental > Recursos
-// descargables". Trivia del mar y las siluetas para colorear siguen
-// sin archivo, asi que se listan como pendientes en vez de con un
-// link roto.
+// Disponibles: ver doc de revision final, seccion 2 (mapa de Yez) y el
+// TODO general (ciclo de vida, ficha franciscana, trivia). Las siluetas
+// para colorear siguen sin archivo, se listan como pendientes en vez de
+// con un link roto.
 const RECURSOS = [
+  {
+    slug: "mapa-ilustrado-costa",
+    titulo: "Mapa ilustrado de la costa uruguaya",
+    descripcion:
+      "Mapa ilustrado por Yez de la costa de Rocha, con la ecología de la tonina y ejemplos del catálogo de foto-identificación. No es un mapa interactivo — el mapa en vivo de avistamientos está en /avistamientos.",
+    thumb: "/recursos/mapa-ilustrado-costa-thumb.webp",
+    descargas: [
+      { label: "Descargar imagen (JPG, 0,9 MB)", href: "/recursos/mapa-ilustrado-costa.jpg" },
+    ],
+  },
   {
     slug: "ciclo-de-vida-toninas",
     titulo: "Ciclo de vida de las toninas",
     descripcion:
       "Infografía educativa con preguntas para completar en familia, sobre gestación, cría, madurez y longevidad de las toninas.",
     thumb: "/recursos/ciclo-de-vida-toninas-thumb.webp",
-    archivo: "/recursos/ciclo-de-vida-toninas.jpg",
-    formato: "JPG",
-    peso: "263 KB",
+    descargas: [
+      { label: "Descargar (JPG, 263 KB)", href: "/recursos/ciclo-de-vida-toninas.jpg" },
+    ],
   },
   {
     slug: "ficha-franciscana",
@@ -37,13 +47,24 @@ const RECURSOS = [
     descripcion:
       'Ficha de la franciscana elaborada por la Dra. Julia Rouaux para la exposición itinerante "Tramas Infinitas".',
     thumb: "/recursos/ficha-franciscana-thumb.webp",
-    archivo: "/recursos/ficha-franciscana.jpg",
-    formato: "JPG",
-    peso: "205 KB",
+    descargas: [
+      { label: "Descargar (JPG, 205 KB)", href: "/recursos/ficha-franciscana.jpg" },
+    ],
+  },
+  {
+    slug: "trivia-del-mar",
+    titulo: "La Trivia del Mar",
+    descripcion:
+      "Juego de cartas de preguntas y respuestas sobre el océano y los cetáceos, para armar imprimiendo las dos caras y recortando.",
+    thumb: "/recursos/trivia-del-mar-thumb.webp",
+    descargas: [
+      { label: "Frente — preguntas (PDF, 244 KB)", href: "/recursos/trivia-del-mar-frente.pdf" },
+      { label: "Dorso — para imprimir doble faz (PDF, 1 MB)", href: "/recursos/trivia-del-mar-dorso.pdf" },
+    ],
   },
 ];
 
-const PENDIENTES = ["Trivia del mar", "Silueta de tonina para colorear", "Silueta de ballena para colorear"];
+const PENDIENTES = ["Silueta de tonina para colorear", "Silueta de ballena para colorear"];
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
@@ -52,7 +73,7 @@ export default function Page() {
   return (
     <Section fondo="claro">
       <PageHeader
-        title="Recursos descargables"
+        title="Materiales educativos"
         description="Materiales de Yaqu Pacha Uruguay para descargar, imprimir y usar en casa o en el aula."
       />
 
@@ -74,14 +95,19 @@ export default function Page() {
             <div className="p-5">
               <h3 className="font-semibold text-mar-800">{r.titulo}</h3>
               <p className="mt-1 text-sm text-texto">{r.descripcion}</p>
-              <a
-                href={r.archivo}
-                download
-                className={`mt-4 inline-flex items-center gap-2 rounded-md bg-marca-oscuro px-4 py-2 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
-              >
-                <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
-                Descargar ({r.formato}, {r.peso})
-              </a>
+              <div className="mt-4 flex flex-col gap-2">
+                {r.descargas.map((d) => (
+                  <a
+                    key={d.href}
+                    href={d.href}
+                    download
+                    className={`inline-flex items-center gap-2 rounded-md bg-marca-oscuro px-4 py-2 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+                  >
+                    <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+                    {d.label}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         ))}
