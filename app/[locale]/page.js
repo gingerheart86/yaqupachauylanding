@@ -10,7 +10,6 @@ import {
 } from "../../components/ui";
 import HeroVideo from "../../components/HeroVideo";
 import BandaIlustrada from "../../components/BandaIlustrada";
-import { SURVEY123_URL } from "../../lib/contacto";
 import { getDictionary } from "../../lib/i18n";
 import { getUltimasNoticias } from "../../lib/noticias";
 
@@ -59,7 +58,7 @@ export default function Home({ params: { locale } }) {
       <Section fondo="claro" innerClassName="!py-0 !pt-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ProjectCardDestacado
-            href={SURVEY123_URL ?? `/${locale}/colabora/contacto`}
+            href={`/${locale}/colabora/reportar-avistamiento`}
             title={esIngles ? "Report a sighting" : "Reportá un avistamiento"}
             description={
               esIngles

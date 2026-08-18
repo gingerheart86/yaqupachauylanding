@@ -1,7 +1,6 @@
 import { Section, Button } from "./ui";
 import { getDictionary } from "../lib/i18n";
 import {
-  SURVEY123_URL,
   WHATSAPP_VARAMIENTOS,
   TELEFONO_VARAMIENTOS,
   TELEFONO_VARAMIENTOS_TEL,
@@ -47,7 +46,7 @@ export default function BloqueReporte({ tipo = "avistamiento", locale = "es" }) 
         ) : (
           <div className="mt-6">
             <Button
-              href={SURVEY123_URL ?? `/${locale}/colabora/contacto`}
+              href={`/${locale}/colabora/reportar-avistamiento`}
               variante="primario"
               className="!bg-white !text-mar-800 hover:!bg-mar-100"
             >

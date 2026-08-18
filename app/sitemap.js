@@ -18,12 +18,14 @@ const rutasBilingues = [
   "nosotros/ong",
   "nosotros/integrantes",
   "colabora/contacto",
+  "colabora/reportar-avistamiento",
+  "colabora/identificacion",
 ];
 
 const rutasSoloEs = [
   "educacion/prensa",
   "educacion/libros",
-  "educacion/recursos",
+  "educacion/materiales",
   "tienda",
   "colabora/donaciones",
   "noticias",
