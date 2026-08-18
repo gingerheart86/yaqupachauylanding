@@ -30,7 +30,12 @@ function fechaLarga(fecha) {
 
 export default function Page() {
   const noticias = getTodasLasNoticias();
-  const [destacada, ...resto] = noticias;
+  // La destacada es la marcada con destacada:true en el frontmatter, no
+  // necesariamente la mas reciente - ver content/noticias/README.md.
+  // Si ninguna esta marcada, cae a la mas reciente por defecto.
+  const indiceDestacada = noticias.findIndex((n) => n.destacada);
+  const destacada = noticias[indiceDestacada === -1 ? 0 : indiceDestacada];
+  const resto = noticias.filter((n) => n !== destacada);
 
   return (
     <Section fondo="claro">
