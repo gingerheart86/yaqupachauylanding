@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Section, PageHeader, Card, Garabato } from "../../../../components/ui";
-import TodoAviso from "../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -30,7 +29,10 @@ const people = [
     name: "Paula Laporta",
     role: "",
     imageUrl: "/Paula.webp",
-    bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Oceanografía Biológica (Universidade Federal de Rio Grande, Rio Grande do Sul, Brasil).",
+    bio: {
+      es: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Oceanografía Biológica (Universidade Federal de Rio Grande, Rio Grande do Sul, Brasil).",
+      en: "Biologist specialized in animal behaviour (Facultad de Ciencias, Universidad de la República, Uruguay) and MSc in Biological Oceanography (Universidade Federal de Rio Grande, Rio Grande do Sul, Brazil).",
+    },
     twitterUrl: "#",
     linkedinUrl: "#",
   },
@@ -38,7 +40,10 @@ const people = [
     name: "Carolina Menchaca",
     role: "",
     imageUrl: "/caro.webp",
-    bio: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Ecología y Evolución (Programa de Desarrollo de las Ciencias Básicas, Universidad de la República, Uruguay).",
+    bio: {
+      es: "Bióloga especializada en comportamiento animal (Facultad de Ciencias, Universidad de la República, Uruguay) y Magister en Ecología y Evolución (Programa de Desarrollo de las Ciencias Básicas, Universidad de la República, Uruguay).",
+      en: "Biologist specialized in animal behaviour (Facultad de Ciencias, Universidad de la República, Uruguay) and MSc in Ecology and Evolution (Programa de Desarrollo de las Ciencias Básicas, Universidad de la República, Uruguay).",
+    },
     twitterUrl: "https://twitter.com/gingerheart86",
     linkedinUrl: "#",
   },
@@ -46,7 +51,10 @@ const people = [
     name: "Cecilia Laporta",
     role: "",
     imageUrl: "/checho.webp",
-    bio: "Contadora (Universidad Católica del Uruguay) y Magíster en Manejo Costero Integrado (Centro Universitario Regional Este, Universidad de la República, Uruguay).",
+    bio: {
+      es: "Contadora (Universidad Católica del Uruguay) y Magíster en Manejo Costero Integrado (Centro Universitario Regional Este, Universidad de la República, Uruguay).",
+      en: "Accountant (Universidad Católica del Uruguay) and MSc in Integrated Coastal Management (Centro Universitario Regional Este, Universidad de la República, Uruguay).",
+    },
     twitterUrl: "#",
     linkedinUrl: "#",
   },
@@ -57,14 +65,7 @@ const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2 rounded-sm";
 
 export default function Home({ params: { locale } }) {
-  if (locale === "en") {
-    return (
-      <Section fondo="claro">
-        <PageHeader title="About us" />
-        <TodoAviso locale={locale} />
-      </Section>
-    );
-  }
+  const esIngles = locale === "en";
 
   return (
     <Section fondo="claro" className="relative">
@@ -75,8 +76,12 @@ export default function Home({ params: { locale } }) {
         className="absolute left-0 bottom-0 hidden lg:block"
       />
       <PageHeader
-        title="Integrantes"
-        description="Yaqu Pacha Uruguay está conformado por 3 investigadoras y cuenta con la colaboración de más de 20 personas con diversas formaciones y habilidades."
+        title={esIngles ? "Team" : "Integrantes"}
+        description={
+          esIngles
+            ? "Yaqu Pacha Uruguay is made up of 3 researchers and has the collaboration of more than 20 people with diverse backgrounds and skills."
+            : "Yaqu Pacha Uruguay está conformado por 3 investigadoras y cuenta con la colaboración de más de 20 personas con diversas formaciones y habilidades."
+        }
       />
       <ul role="list" className="mt-12 flex flex-wrap justify-around">
         {people.map((person) => (
@@ -100,7 +105,9 @@ export default function Home({ params: { locale } }) {
                     )}
                   </div>
                   <div className="text-lg">
-                    <p className="text-texto">{person.bio}</p>
+                    <p className="text-texto">
+                      {esIngles ? person.bio.en : person.bio.es}
+                    </p>
                   </div>
                   <ul role="list" className="flex space-x-5">
                     <li>

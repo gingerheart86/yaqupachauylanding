@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Section, PageHeader } from "../../../../components/ui";
-import TodoAviso from "../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -30,7 +29,43 @@ export default function Home({ params: { locale } }) {
     return (
       <Section fondo="claro">
         <PageHeader title="Gephyreus Project" />
-        <TodoAviso locale={locale} />
+        <p className="mt-8 text-base leading-8 text-texto">
+          Since 2018, we have been part of a binational project together
+          with Brazilian researchers, aiming to estimate the abundance of
+          toninas in the Southwest Atlantic.
+        </p>
+        <div className="flex space-x-3 items-center">
+          <figure className="my-4 flex-1">
+            <Image
+              className="w-full h-auto rounded-lg"
+              src="/pic2.webp"
+              alt="Proyecto Gephyreus logo"
+              width={465}
+              height={318}
+            />
+          </figure>
+          <figure className="my-4 flex-1">
+            <Image
+              className="w-full h-auto rounded-lg"
+              src="/pic3.jpg"
+              alt="Proyecto Gephyreus activities"
+              width={819}
+              height={1024}
+            />
+          </figure>
+        </div>
+        <div className="flex justify-center w-full">
+          <iframe
+            width="650"
+            height="480"
+            src={`https://www.youtube.com/embed/B57lG7eKorA`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+            title="Embedded youtube"
+          />
+        </div>
       </Section>
     );
   }

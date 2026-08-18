@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { PaginaEspecie } from "../../../../components/ui";
-import TodoAviso from "../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -33,8 +32,224 @@ export default function Page({ params: { locale } }) {
         nombreComun="Franciscana"
         nombreCientifico="Pontoporia blainvillei"
         locale={locale}
-        todo
-      />
+        imagen={{
+          src: "/franciscana/hero.webp",
+          alt: "Franciscana calf surfacing in Aguas Dulces, Rocha",
+        }}
+        proyectosAsociados={[
+          {
+            nombre: "Grupo de Trabajo en Varamientos",
+            href: `/${locale}/investigacion/varamientos`,
+          },
+        ]}
+      >
+        <p className="text-base leading-8 text-texto">
+          The franciscana, or La Plata dolphin, is one of the world's 5
+          river dolphin species and the only one that ventures into ocean
+          waters. It is found only along the Southwest Atlantic Ocean
+          coast, from Itaúnas, in the state of Espírito Santo (Brazil), to
+          Golfo Nuevo on the Valdés Peninsula (Argentina). It prefers
+          shallow waters less than 50 metres deep.
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          River dolphins are morphologically and physiologically distinct
+          from marine dolphins: they have long snouts, small eyes and a
+          body length ranging from 1.5 to 3.0 metres.
+        </p>
+
+        <figure className="my-8">
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
+            <Image
+              src="/franciscana/infografia.webp"
+              alt='"Franciscana o delfín del Plata" infographic, with distribution map and Vulnerable conservation status'
+              fill
+              className="object-contain bg-white"
+              sizes="(min-width: 1024px) 1024px, 100vw"
+            />
+          </div>
+          <figcaption className="mt-2 text-sm text-marca-grafito">
+            Franciscana infographic by Dra. Julia Rouaux, part of the
+            touring exhibition "Tramas infinitas", where art and science
+            come together to portray the fragility of South American
+            biodiversity.
+          </figcaption>
+        </figure>
+
+        <h2 className="mt-8 text-2xl font-semibold text-mar-800">
+          How to recognise a franciscana
+        </h2>
+        <p className="mt-4 text-base leading-8 text-texto">
+          The franciscana is greyish brown on the back and lighter on the
+          belly. It has a small head and a long, narrow snout. Its dorsal
+          fin is triangular and rounded, and its pectoral fins are
+          paddle-shaped. It has a total of 200 small, uniform teeth, which
+          it uses to feed on juvenile bottom-dwelling fish such as
+          whitemouth croaker and weakfish, squid and shrimp.
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          Its common name may be inspired by the colour of Franciscan
+          friars' habits. Its scientific name,{" "}
+          <span className="italic font-semibold">Pontoporia blainvillei</span>
+          , comes from the Greek <span className="italic">ponto</span>,
+          referring to the open sea, and{" "}
+          <span className="italic">poria</span>, from poro, passage or
+          crossing — because it inhabits both estuaries and the sea. The
+          name <span className="italic">blainvillei</span> honours the
+          French naturalist Blainville (1777-1850).
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          The franciscana is a marine mammal: it is warm-blooded (it keeps
+          its internal temperature constant), breathes through lungs,
+          gestates and gives birth to a single calf, and nurses and cares
+          for it over a long period of its life. Calves are born between
+          October and February after a 10-month gestation. Nursing lasts
+          at least 9 months, and after 2 to 3 years of life they reach
+          sexual maturity. Franciscanas have one calf every 2 years, which
+          can measure up to 70 cm at birth. Adult males measure between
+          1.2 m and 1.6 m, and females between 1.4 and 1.8 m; they weigh
+          between 35 and 55 kg (Kasuya &amp; Brownell 1979).
+        </p>
+
+        <figure className="my-8 max-w-md mx-auto">
+          <Image
+            src="/franciscana/ilustracion.webp"
+            alt="Scientific illustration of a franciscana in profile"
+            width={1200}
+            height={515}
+            className="w-full h-auto"
+          />
+          <figcaption className="mt-2 text-sm text-marca-grafito text-center">
+            Franciscana (Pontoporia blainvillei). Scientific illustration:
+            Julia Rouaux.
+          </figcaption>
+        </figure>
+
+        <h2 className="mt-8 text-2xl font-semibold text-mar-800">
+          Franciscanas in the wild
+        </h2>
+        <p className="mt-4 text-base leading-8 text-texto">
+          The franciscana is rarely observed from the coast throughout its
+          range. Bahía Anegada (Argentina), Rio de Janeiro and Baía de
+          Babitonga (Brazil) are the only sites where live franciscanas and
+          their behaviour patterns have been studied. Baía de Babitonga is
+          home to the world's only bay-resident franciscana population,
+          with approximately 50 individuals (Cremer and Simões-Lopes 2008;
+          Wells et al. 2021).
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          Besides its small size and cryptic colouring, which lets it
+          blend into the water, the franciscana has discreet surfacing
+          behaviour: it does not leap out of the water and is evasive
+          around boats. It spends only a few seconds at the surface — just
+          enough to breathe. It is usually seen alone, or in small groups
+          of no more than 6 individuals.
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          In Uruguay there are various records of live franciscanas
+          reported by fishers, researchers and the general public. Yaqu
+          Pacha Uruguay is working to study the franciscana in the wild,
+          building up sighting records and identifying the sites where it
+          occurs most frequently, in order to carry out long-term
+          monitoring.
+        </p>
+
+        <div className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+            <Image
+              src="/franciscana/esmeralda-1.webp"
+              alt="Franciscana surfacing off the coast of La Esmeralda, Rocha"
+              fill
+              className="object-cover"
+              sizes="(min-width: 640px) 512px, 100vw"
+            />
+          </div>
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg">
+            <Image
+              src="/franciscana/esmeralda-2.webp"
+              alt="A pair of franciscanas swimming near the coast of La Esmeralda, Rocha"
+              fill
+              className="object-cover"
+              sizes="(min-width: 640px) 512px, 100vw"
+            />
+          </div>
+        </div>
+        <p className="text-sm text-marca-grafito text-center">
+          Franciscanas photographed at La Esmeralda, Rocha. Credit: Yaqu
+          Pacha Uruguay.
+        </p>
+
+        <h2 className="mt-12 text-2xl font-semibold text-mar-800">
+          How is the franciscana distributed?
+        </h2>
+        <p className="mt-4 text-base leading-8 text-texto">
+          Its distribution is not continuous: in southeastern Brazil there
+          are two areas where the franciscana is absent. Five Franciscana
+          Management Areas (FMAs) have been proposed across its range, and
+          some of them are further subdivided into smaller areas. This was
+          done based on scientific knowledge of its distribution,
+          abundance, contaminant and parasite load, reproductive
+          parameters, and morphological and genetic data.
+        </p>
+
+        <figure className="my-8 max-w-sm mx-auto">
+          <Image
+            src="/franciscana/mapa-fma.webp"
+            alt="Map of the franciscana's Management Areas (FMA) across Brazil, Uruguay and Argentina"
+            width={700}
+            height={883}
+            className="w-full h-auto"
+          />
+          <figcaption className="mt-2 text-sm text-marca-grafito text-center">
+            Franciscana Management Areas (FMA), adapted from Secchi et al.
+            2021.
+          </figcaption>
+        </figure>
+
+        <h2 className="mt-8 text-2xl font-semibold text-mar-800">
+          How many franciscanas are there?
+        </h2>
+        <p className="mt-4 text-base leading-8 text-texto">
+          Franciscana abundance estimates are generally carried out
+          through aerial surveys from boats, light aircraft or twin-engine
+          planes, running transects perpendicular to the coast or in a
+          zig-zag pattern. This applies the distance-sampling method,
+          which measures the perpendicular distance (or angle) between the
+          observer and the individual or group of franciscanas.
+          Mathematical models are then used to obtain an animal density
+          figure (number of individuals per surveyed area).
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          Along the Uruguayan coast, an estimated total of 30,000
+          franciscanas has been calculated (Sucunza et al. 2023). In
+          southern Brazil, about 13,000, and along the Argentine coast
+          about 14,000. In southeastern Brazil, an estimated 10,000
+          franciscanas (Secchi et al. 2021). It seems like a lot, but when
+          bycatch mortality is taken into account, more franciscanas are
+          dying than are being born.
+        </p>
+
+        <h2 className="mt-8 text-2xl font-semibold text-mar-800">
+          Bycatch
+        </h2>
+        <p className="mt-4 text-base leading-8 text-texto">
+          Franciscanas become incidentally entangled in artisanal and
+          industrial fishing nets throughout their range. This causes them
+          to drown and, in many cases, wash up stranded on the beach.
+          Various studies have been carried out to reduce this bycatch —
+          sound-emitting alarms (pingers) to scare them away, changes to
+          net material, plastic bottles attached to nets to make them more
+          detectable — but effective fishing management measures to reduce
+          catches have not yet been achieved.
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
+          It is a species listed as{" "}
+          <span className="font-semibold">Vulnerable</span> on the IUCN
+          Red List of Threatened Species (International Union for
+          Conservation of Nature), based on a suspected decline of 30%
+          over three generations — which is expected to increase due to
+          expanding fisheries and the lack of mitigation measures.
+        </p>
+      </PaginaEspecie>
     );
   }
 

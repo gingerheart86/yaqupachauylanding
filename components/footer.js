@@ -50,7 +50,7 @@ export default function FooterFC({ locale = "es" }) {
             >
               gingerheart
             </a>
-            . Ilustraciones: Yez.
+            . {dict.footer.ilustraciones}
           </p>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Section, PageHeader, Card } from "../../../../components/ui";
 import VideoInstitucional from "../../../../components/VideoInstitucional";
-import TodoAviso from "../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -30,8 +29,47 @@ export default function Home({ params: { locale } }) {
   if (locale === "en") {
     return (
       <Section fondo="claro">
-        <PageHeader title="The NGO" />
-        <TodoAviso locale={locale} />
+        <PageHeader
+          title="The NGO"
+          description="Who we are, what we do and why."
+        />
+        <Card className="mt-10 max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-texto">
+            Yaqu Pacha Uruguay is a branch of the Organization for the
+            Conservation of Aquatic Mammals in South America — Yaqu Pacha
+            e.V. — based in Germany. The organization's goals are to
+            research and conserve aquatic mammal species in South America,
+            particularly those under threat, and to raise awareness about
+            the importance of studying and conserving these species and
+            their environments.
+          </p>
+          <p className="mt-4 text-base sm:text-xl text-texto">
+            This branch was created in 2013, incorporating Proyecto
+            Toninas, which had been running in Uruguay since 2002. The
+            project's two main goals are to study the tonina (
+            <span className="italic font-semibold">
+              Tursiops truncatus gephyreus
+            </span>
+            ), a subspecies of the bottlenose dolphin{" "}
+            <span className="italic font-semibold">Tursiops truncatus</span>{" "}
+            found only along the coast of southern Brazil, Uruguay and
+            Argentina, and to promote coastal environmental education,
+            awareness of the effects of climate change, and the tonina as
+            a sentinel species of the coast.
+          </p>
+        </Card>
+        <div className="mt-8 max-w-3xl mx-auto">
+          <VideoInstitucional />
+        </div>
+        <div className="mt-8 flex justify-center">
+          <Image
+            src="/logo_sinf.png"
+            className="w-40 h-auto"
+            alt="Institutional logo"
+            width={600}
+            height={514}
+          />
+        </div>
       </Section>
     );
   }

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Section, PageHeader } from "../../../../../components/ui";
-import TodoAviso from "../../../../../components/TodoAviso";
 import { alternatesPara } from "../../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -30,7 +29,124 @@ export default function Home({ params: { locale } }) {
     return (
       <Section fondo="claro">
         <PageHeader title="Background" />
-        <TodoAviso locale={locale} />
+        <div className="mt-8">
+          <p className="text-base leading-8 text-texto">
+            In 2002, Proyecto Toninas began the first systematic study of
+            several aspects of the ecology and behaviour of toninas along
+            the coastal zone of La Coronilla and Cabo Polonio, which are
+            now part of the National System of Protected Areas (SNAP).
+            Between 2002 and 2007, the studies aimed to find out how often
+            toninas were observed on those beaches, describe their
+            behaviour, and test the photo-identification technique to
+            identify individuals through photographs of long-lasting
+            natural marks on the dorsal fin (Würsig and Würsig 1977).
+            During that same period, studies of the social structure of
+            the groups also began — that is, how they are made up (adult,
+            juvenile and calf individuals) and how photo-identified
+            individuals associate with one another (whether there is any
+            preference between individuals).
+          </p>
+          <p className="mt-8 text-base leading-8 text-texto">
+            🐬💙🌊 Overall, more than half of the individuals in the
+            tonina population show long-lasting marks on the trailing edge
+            of their dorsal fin. These marks can be notches, cuts,
+            depressions or colour changes that alter the profile of the
+            fin. This is how researchers can identify each tonina
+            individually. The marks may originate from interactions
+            between animals during socialising or mating. They can also
+            be caused by boat propeller cuts or entanglement in fishing
+            nets.
+          </p>
+
+          <p className="mt-8 text-base leading-8 text-texto">
+            📸 In Uruguay, more than 45 toninas have been identified
+            through photographs of natural dorsal-fin marks (Laporta 2009,
+            Laporta et al. 2016, Menchaca et al. 2019). Each tonina has a
+            name and a corresponding number, and they are catalogued in a
+            📖 photo-identification catalogue, used to record the toninas
+            observed in our waters and as a reference for comparison with
+            other areas. Fin photos provide very valuable information
+            about the abundance and movements of individuals in the
+            population, how long each individual stays in a given area,
+            association preferences, calving intervals, and other data.
+          </p>
+          <h2 className="text-mar-800 font-semibold text-2xl mt-4">
+            Catalogue photo examples
+          </h2>
+          <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/1.webp"
+                alt="Tonina dorsal-fin identification photo"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/aletas1.webp"
+                alt="Tonina dorsal-fin identification photo"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/3.webp"
+                alt="Tonina dorsal-fin identification photo"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/aletas2.webp"
+                alt="Tonina dorsal-fin identification photo"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+              <Image
+                src="/toninas/aletas3.webp"
+                alt="Tonina dorsal-fin identification photo"
+                fill
+                className="object-cover"
+                sizes="13rem"
+              />
+            </div>
+          </div>
+          <p className="mt-8 text-base leading-8 text-texto">
+            Since 2017, Proyecto Toninas has been acoustically monitoring
+            tonina groups in Uruguay, aiming to build a whistle catalogue.
+            Within this work, it was found that toninas use a variety of
+            whistle contours, mostly emitting multiloop, constant and
+            upsweep whistles. The emission frequency range was between 4
+            and 11 kHz, and most whistles had a minimum frequency between
+            2.1 and 5.1 kHz, a maximum frequency below 12 kHz, and a
+            duration under 600 ms (Menchaca 2018).
+            <div className="prose my-4">
+              <h3>🎧 Listen to a whistle</h3>
+              <audio
+                controls
+                className="my-4"
+                controlsList="nodownload noremoteplayback noplaybackrate"
+              >
+                <source src="/silbido.mp3" type="audio/mp3" />
+              </audio>
+            </div>
+            In addition, a comparative whistle study together with
+            colleagues from Brazil found that toninas from southern Brazil
+            and Uruguay produce sounds that are more similar to each other
+            than to those produced by toninas occurring in Rio de Janeiro,
+            which could be explained by genetic divergence or
+            environmental variance (Lima et al. 2020).
+          </p>
+        </div>
       </Section>
     );
   }
