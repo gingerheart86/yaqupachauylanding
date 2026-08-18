@@ -12,6 +12,7 @@ import HeroVideo from "../../components/HeroVideo";
 import BandaIlustrada from "../../components/BandaIlustrada";
 import { getDictionary } from "../../lib/i18n";
 import { getUltimasNoticias } from "../../lib/noticias";
+import { SURVEY123_TONINA_URL } from "../../lib/contacto";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -58,12 +59,12 @@ export default function Home({ params: { locale } }) {
       <Section fondo="claro" innerClassName="!py-0 !pt-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ProjectCardDestacado
-            href={`/${locale}/colabora/reportar-avistamiento`}
-            title={esIngles ? "Report a sighting" : "Reportá un avistamiento"}
+            href={SURVEY123_TONINA_URL}
+            title={esIngles ? "Report a tonina sighting" : "Reportá un avistamiento de tonina"}
             description={
               esIngles
-                ? "Did you spot a tonina, a whale, an orca or a franciscana? Tell us where and when."
-                : "¿Viste una tonina, una ballena, una orca o una franciscana? Contanos dónde y cuándo."
+                ? "Did you spot a tonina from the coast or a boat? Report it directly — it opens the form."
+                : "¿Viste una tonina desde la costa o una embarcación? Reportalo directo — abre el formulario."
             }
             image="/dol1.webp"
             imageAlt={esIngles ? "A tonina off the Uruguayan coast" : "Tonina en la costa uruguaya"}
