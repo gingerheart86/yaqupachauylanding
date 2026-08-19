@@ -18,12 +18,12 @@ export const metadata = {
 
 export default function Page({ params: { locale } }) {
   return (
-    <Section fondo="textura" className="relative">
+    <Section fondo="textura" className="relative overflow-hidden">
       <Garabato
         numero={5}
-        registro="alto"
-        width={110}
-        className="absolute right-6 top-6 hidden sm:block"
+        opacidad={15}
+        width={280}
+        className="absolute -left-8 -bottom-8 hidden sm:block"
       />
       <div className="flex justify-center">
         <Image

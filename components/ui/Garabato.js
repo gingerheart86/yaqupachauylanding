@@ -15,15 +15,27 @@ const GARABATOS = {
 // registro: "alto" (visible) o "neutro" (sutil, marca de agua).
 // Nunca usar en registro "sobrio" - eso lo decide quien llama al
 // componente no incluyendolo, no una prop.
+//
+// opacidad: override puntual en porcentaje (docs/fase2-correcciones.md
+// punto 5 pide valores especificos como 12% que no entran en el
+// esquema alto/neutro de dos niveles). Si no se pasa, usa el default
+// de registro.
 export default function Garabato({
   numero = 1,
   registro = "neutro",
+  opacidad,
   width = 96,
   className = "",
 }) {
   const pieza = GARABATOS[numero];
   const height = Math.round((width * pieza.height) / pieza.width);
-  const opacidad = registro === "alto" ? "opacity-100" : "opacity-15";
+  const claseOpacidad =
+    opacidad !== undefined
+      ? ""
+      : registro === "alto"
+        ? "opacity-100"
+        : "opacity-15";
+  const estiloOpacidad = opacidad !== undefined ? { opacity: opacidad / 100 } : undefined;
 
   return (
     <Image
@@ -32,7 +44,8 @@ export default function Garabato({
       aria-hidden="true"
       width={width}
       height={height}
-      className={`pointer-events-none select-none ${opacidad} ${className}`}
+      style={estiloOpacidad}
+      className={`pointer-events-none select-none ${claseOpacidad} ${className}`}
     />
   );
 }

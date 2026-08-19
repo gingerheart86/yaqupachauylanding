@@ -6,6 +6,7 @@ import {
   Eyebrow,
   ProjectCardDestacado,
   ProjectCardCompacta,
+  TarjetaProyecto,
   Garabato,
 } from "../../components/ui";
 import HeroVideo from "../../components/HeroVideo";
@@ -13,6 +14,7 @@ import BandaIlustrada from "../../components/BandaIlustrada";
 import { getDictionary } from "../../lib/i18n";
 import { getUltimasNoticias } from "../../lib/noticias";
 import { SURVEY123_TONINA_URL } from "../../lib/contacto";
+import { SILUETAS } from "../../lib/especies";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -45,7 +47,7 @@ export default function Home({ params: { locale } }) {
           alt="Proyecto Toninas: Centinelas de la Costa"
           width={800}
           height={658}
-          className="w-40 h-auto drop-shadow-lg sm:w-52"
+          className="w-80 h-auto drop-shadow-lg sm:w-96"
           priority
         />
         <div className="mt-8">
@@ -83,44 +85,38 @@ export default function Home({ params: { locale } }) {
         </div>
       </Section>
 
-      <div className="flex justify-center bg-white pt-8">
-        <Garabato numero={5} registro="alto" width={72} />
+      <div className="flex justify-center bg-white my-12">
+        <Garabato numero={2} registro="alto" width={240} />
       </div>
 
       {/* 4. Dos proyectos, no cuatro - Toninas destacado y uno mas */}
-      <Section fondo="mar" innerClassName="pt-0 relative">
+      <Section fondo="mar" innerClassName="pt-0" className="relative overflow-hidden">
         <Garabato
-          numero={3}
-          registro="alto"
-          width={24}
-          className="absolute right-8 top-20 hidden sm:block"
+          numero={1}
+          opacidad={12}
+          width={320}
+          className="absolute -right-10 -top-10 hidden sm:block"
         />
         <Eyebrow tono="limon">{esIngles ? "What we do" : "Qué hacemos"}</Eyebrow>
         <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-4xl">
           {esIngles ? "Research" : "Investigación"}
         </h2>
-        <div className="mt-8">
-          <ProjectCardDestacado
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <TarjetaProyecto
+            destacada
             href={`/${locale}/investigacion/toninas`}
             title="Proyecto Toninas"
+            silueta={SILUETAS.tonina}
             description={
               esIngles
                 ? "The project that has studied toninas in La Paloma, Cabo Polonio and Cerro Verde since 2002, and works on environmental education with coastal communities in Rocha."
                 : "El proyecto que estudia a las toninas en La Paloma, Cabo Polonio y Cerro Verde desde 2002, y trabaja en educación ambiental con las comunidades de la costa de Rocha."
             }
-            image="/proytoninas/1.webp"
-            imageAlt={
-              esIngles
-                ? "Toninas Centinelas de la Costa project activities"
-                : "Actividades del proyecto Toninas Centinelas de la costa"
-            }
           />
-        </div>
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <ProjectCardCompacta
-            oscuro
+          <TarjetaProyecto
             href={`/${locale}/investigacion/gephyreus`}
             title="Proyecto Gephyreus"
+            silueta={SILUETAS.tonina}
             description={
               esIngles
                 ? "Regional work with Brazil and Argentina to conserve Lahille's bottlenose dolphin."

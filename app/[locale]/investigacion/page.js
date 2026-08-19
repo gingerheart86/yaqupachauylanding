@@ -1,5 +1,6 @@
-import { Section, PageHeader, ProjectCardDestacado, ProjectCardCompacta } from "../../../components/ui";
+import { Section, PageHeader, ProjectCardCompacta, TarjetaProyecto } from "../../../components/ui";
 import { alternatesPara } from "../../../lib/i18n";
+import { SILUETAS } from "../../../lib/especies";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -35,30 +36,29 @@ export default function Home({ params: { locale } }) {
             : "Proyecto Toninas es nuestro proyecto principal. Además participamos de tres proyectos compartidos con otras instituciones."
         }
       />
-      <div className="mt-10">
-        <ProjectCardDestacado
+      <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <TarjetaProyecto
+          destacada
           href={`/${locale}/investigacion/toninas`}
           title="Proyecto Toninas"
+          silueta={SILUETAS.tonina}
           description={
             esIngles
               ? "The project that has studied toninas in La Paloma, Cabo Polonio and Cerro Verde since 2002."
               : "El proyecto que estudia a las toninas en La Paloma, Cabo Polonio y Cerro Verde desde 2002."
           }
-          image="/proytoninas/1.webp"
-          imageAlt="Actividades del proyecto Toninas Centinelas de la costa"
         />
-      </div>
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <ProjectCardCompacta
+        <TarjetaProyecto
           href={`/${locale}/investigacion/gephyreus`}
           title="Proyecto Gephyreus"
+          silueta={SILUETAS.tonina}
           description={
             esIngles
               ? "Regional work with Brazil and Argentina to conserve Lahille's bottlenose dolphin."
               : "Trabajo regional con Brasil y Argentina para conservar al delfín de Lahille."
           }
         />
-        <ProjectCardCompacta
+        <TarjetaProyecto
           href={`/${locale}/investigacion/varamientos`}
           title="Red Nacional de Varamientos"
           description={
@@ -67,9 +67,10 @@ export default function Home({ params: { locale } }) {
               : "Monitoreo de varamientos de mamíferos acuáticos en la costa uruguaya."
           }
         />
-        <ProjectCardCompacta
+        <TarjetaProyecto
           href={`/${locale}/investigacion/identidad-franca`}
           title="Identidad Franca"
+          silueta={SILUETAS["ballena-franca"]}
           description={
             esIngles
               ? "Study and identification of the southern right whale."
