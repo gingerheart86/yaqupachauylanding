@@ -16,14 +16,12 @@ export const metadata = {
   alternates: alternatesPara("educacion/materiales", { soloEs: true }),
 };
 
-// Disponibles: ver doc de revision final, seccion 2 (mapa de Yez) y el
-// TODO general (ciclo de vida, ficha franciscana, trivia). Formato de
-// entrega: PDF listo para imprimir, en resolucion de impresion (no
-// reducidos como imagenes web) - se convirtieron con img2pdf a partir
-// de los JPG/PNG originales, o re-renderizando el PDF original cuando
-// hacia falta (ver el commit: el mapa venia en un PDF de 415 MB).
-// Las siluetas para colorear siguen sin archivo, se listan como
-// pendientes en vez de con un link roto.
+// Disponibles: ver docs/fase2-correcciones.md punto 7 y el TODO
+// general. Formato de entrega: PDF en resolucion de impresion (no
+// reducidos como imagenes web) - convertidos con img2pdf. Los
+// materiales pesados (mapa, ciclo de vida) ofrecen ademas una version
+// liviana para pantalla. Las siluetas para colorear siguen sin
+// archivo, se listan como pendientes en vez de con un link roto.
 const RECURSOS = [
   {
     slug: "mapa-ilustrado-costa",
@@ -31,9 +29,20 @@ const RECURSOS = [
     descripcion:
       "Mapa ilustrado por Yez de la costa de Rocha, con la ecología de la tonina y ejemplos del catálogo de foto-identificación. No es un mapa interactivo — el mapa en vivo de avistamientos está en /avistamientos.",
     thumb: "/recursos/mapa-ilustrado-costa-thumb.webp",
-    archivo: "/recursos/mapa-ilustrado-costa.pdf",
-    formato: "PDF",
-    peso: "7,7 MB",
+    descargas: [
+      {
+        label: "Ver en pantalla",
+        formato: "PDF",
+        peso: "150 KB",
+        href: "/recursos/mapa-ilustrado-costa-pantalla.pdf",
+      },
+      {
+        label: "Descargar para imprimir",
+        formato: "PDF",
+        peso: "7,7 MB",
+        href: "/recursos/mapa-ilustrado-costa.pdf",
+      },
+    ],
   },
   {
     slug: "ciclo-de-vida-toninas",
@@ -41,9 +50,20 @@ const RECURSOS = [
     descripcion:
       "Infografía educativa con preguntas para completar en familia, sobre gestación, cría, madurez y longevidad de las toninas.",
     thumb: "/recursos/ciclo-de-vida-toninas-thumb.webp",
-    archivo: "/recursos/ciclo-de-vida-toninas.pdf",
-    formato: "PDF",
-    peso: "2,3 MB",
+    descargas: [
+      {
+        label: "Ver en pantalla",
+        formato: "PDF",
+        peso: "110 KB",
+        href: "/recursos/ciclo-de-vida-toninas-pantalla.pdf",
+      },
+      {
+        label: "Descargar para imprimir",
+        formato: "PDF",
+        peso: "2,3 MB",
+        href: "/recursos/ciclo-de-vida-toninas.pdf",
+      },
+    ],
   },
   {
     slug: "ficha-franciscana",
@@ -51,9 +71,14 @@ const RECURSOS = [
     descripcion:
       'Ficha de la franciscana elaborada por la Dra. Julia Rouaux para la exposición itinerante "Tramas Infinitas".',
     thumb: "/recursos/ficha-franciscana-thumb.webp",
-    archivo: "/recursos/ficha-franciscana.pdf",
-    formato: "PDF",
-    peso: "570 KB",
+    descargas: [
+      {
+        label: "Descargar",
+        formato: "PDF",
+        peso: "570 KB",
+        href: "/recursos/ficha-franciscana.pdf",
+      },
+    ],
   },
   {
     slug: "trivia-del-mar-frente",
@@ -61,9 +86,14 @@ const RECURSOS = [
     descripcion:
       "Juego de cartas de preguntas y respuestas sobre el océano y los cetáceos. Este archivo es el frente; imprimir junto con el dorso, a doble faz, y recortar.",
     thumb: "/recursos/trivia-del-mar-thumb.webp",
-    archivo: "/recursos/trivia-del-mar-frente.pdf",
-    formato: "PDF",
-    peso: "244 KB",
+    descargas: [
+      {
+        label: "Descargar",
+        formato: "PDF",
+        peso: "244 KB",
+        href: "/recursos/trivia-del-mar-frente.pdf",
+      },
+    ],
   },
   {
     slug: "trivia-del-mar-dorso",
@@ -71,9 +101,14 @@ const RECURSOS = [
     descripcion:
       "Reverso de las cartas, con el logo de Yaqu Pacha Uruguay. Se imprime a doble faz junto con el frente.",
     thumb: "/recursos/trivia-del-mar-thumb.webp",
-    archivo: "/recursos/trivia-del-mar-dorso.pdf",
-    formato: "PDF",
-    peso: "1 MB",
+    descargas: [
+      {
+        label: "Descargar",
+        formato: "PDF",
+        peso: "1 MB",
+        href: "/recursos/trivia-del-mar-dorso.pdf",
+      },
+    ],
   },
 ];
 
@@ -108,17 +143,24 @@ export default function Page() {
             <div className="p-5">
               <h3 className="font-semibold text-mar-800">{r.titulo}</h3>
               <p className="mt-1 text-sm text-texto">{r.descripcion}</p>
-              <p className="mt-2 text-xs uppercase tracking-wide text-marca-grafito">
-                {r.formato} · {r.peso}
-              </p>
-              <a
-                href={r.archivo}
-                download
-                className={`mt-3 inline-flex items-center gap-2 rounded-md bg-marca-oscuro px-4 py-2 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
-              >
-                <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
-                Descargar
-              </a>
+              <div className="mt-3 flex flex-col gap-2">
+                {r.descargas.map((d) => (
+                  <a
+                    key={d.href}
+                    href={d.href}
+                    download
+                    className={`inline-flex items-center justify-between gap-2 rounded-md bg-marca-oscuro px-4 py-2 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
+                      {d.label}
+                    </span>
+                    <span className="text-xs text-mar-100">
+                      {d.formato} · {d.peso}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         ))}
