@@ -35,6 +35,15 @@ export default function Page({ params: { locale } }) {
             description="Cetacean strandings along the Uruguayan coast."
           />
           <div className="mt-8 max-w-3xl mx-auto">
+            <figure className="mb-8 max-w-sm mx-auto">
+              <Image
+                src="/varamientos/afiche.webp"
+                alt="Stranding hotline poster: 098 490 889. What to do if you find stranded marine wildlife, alive or dead: don't touch it, don't return it to the water, don't feed or give it water, keep pets away, share its location and send photos."
+                width={1148}
+                height={1600}
+                className="w-full h-auto rounded-lg"
+              />
+            </figure>
             <p className="text-base leading-8 text-texto">
               Recording and monitoring strandings are important sources of
               information for studying various aspects of these animals'
@@ -168,6 +177,15 @@ export default function Page({ params: { locale } }) {
           description="Varamientos de cetáceos en la costa uruguaya."
         />
         <div className="mt-8 max-w-3xl mx-auto">
+          <figure className="mb-8 max-w-sm mx-auto">
+            <Image
+              src="/varamientos/afiche.webp"
+              alt="Afiche Fono Varamientos: 098 490 889. Qué hacer si encontrás fauna marina varada, viva o muerta: no la toques, no la devuelvas al agua, no le des de comer ni beber, alejá a las mascotas, compartí su ubicación y enviá fotos."
+              width={1148}
+              height={1600}
+              className="w-full h-auto rounded-lg"
+            />
+          </figure>
           <p className="text-base leading-8 text-texto">
             El registro y seguimiento de los varamientos son fuentes de
             información importantes para el estudio de diversos aspectos de
