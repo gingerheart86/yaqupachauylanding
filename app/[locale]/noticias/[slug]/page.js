@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { Section, PageHeader } from "../../../../components/ui";
-import { getNoticia, getSlugsDeNoticias } from "../../../../lib/noticias";
+import { getNoticia, getSlugsDeNoticias, fechaLegible } from "../../../../lib/noticias";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -20,15 +20,6 @@ export function generateMetadata({ params: { slug } }) {
   };
 }
 
-function fechaLarga(fecha) {
-  return new Intl.DateTimeFormat("es-UY", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(fecha));
-}
-
 export default function Page({ params: { slug } }) {
   const noticia = getNoticia(slug);
   if (!noticia) notFound();
@@ -42,7 +33,7 @@ export default function Page({ params: { slug } }) {
       )}
       <PageHeader title={noticia.titulo} className={noticia.categoria ? "mt-2" : ""} />
       <p className="text-center text-sm text-marca-grafito">
-        {fechaLarga(noticia.fecha)}
+        {fechaLegible(noticia.fecha)}
       </p>
 
       {noticia.imagen && (

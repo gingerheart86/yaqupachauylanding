@@ -38,9 +38,13 @@ export default function sitemap() {
   const entries = [];
 
   for (const n of getTodasLasNoticias()) {
+    // fecha puede venir como "YYYY-MM-XX" mientras el equipo no confirma
+    // el dia exacto (ver content/noticias/README.md) - no es un Date
+    // valido, así que se sustituye XX por 01 solo para este campo.
+    const fechaValida = n.fecha.replace(/-XX$/, "-01");
     entries.push({
       url: `${BASE}/es/noticias/${n.slug}`,
-      lastModified: new Date(n.fecha),
+      lastModified: new Date(fechaValida),
     });
   }
 

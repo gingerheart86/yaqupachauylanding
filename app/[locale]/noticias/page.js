@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Section, PageHeader } from "../../../components/ui";
-import { getTodasLasNoticias } from "../../../lib/noticias";
+import { getTodasLasNoticias, fechaLegible } from "../../../lib/noticias";
 import { alternatesPara } from "../../../lib/i18n";
 
 // Solo espanol - fase3-arquitectura-y-contenido.md seccion 11.
@@ -18,15 +18,6 @@ export const metadata = {
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
-
-function fechaLarga(fecha) {
-  return new Intl.DateTimeFormat("es-UY", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(fecha));
-}
 
 export default function Page() {
   const noticias = getTodasLasNoticias();
@@ -73,7 +64,7 @@ export default function Page() {
               {destacada.titulo}
             </h2>
             <p className="mt-1 text-sm text-marca-grafito">
-              {fechaLarga(destacada.fecha)}
+              {fechaLegible(destacada.fecha)}
             </p>
             <p className="mt-3 text-base text-texto">{destacada.resumen}</p>
           </div>
@@ -109,7 +100,7 @@ export default function Page() {
                   {n.titulo}
                 </h3>
                 <p className="mt-1 text-sm text-marca-grafito">
-                  {fechaLarga(n.fecha)}
+                  {fechaLegible(n.fecha)}
                 </p>
                 <p className="mt-2 text-sm text-texto">{n.resumen}</p>
               </div>

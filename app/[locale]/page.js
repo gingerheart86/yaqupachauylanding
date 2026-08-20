@@ -12,20 +12,12 @@ import {
 import HeroVideo from "../../components/HeroVideo";
 import BandaIlustrada from "../../components/BandaIlustrada";
 import { getDictionary } from "../../lib/i18n";
-import { getUltimasNoticias } from "../../lib/noticias";
+import { getUltimasNoticias, fechaLegible } from "../../lib/noticias";
 import { SURVEY123_TONINA_URL } from "../../lib/contacto";
 import { SILUETAS } from "../../lib/especies";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
-}
-
-function fechaCorta(fecha) {
-  return new Intl.DateTimeFormat("es-UY", {
-    day: "numeric",
-    month: "long",
-    timeZone: "UTC",
-  }).format(new Date(fecha));
 }
 
 // Orden de secciones de la portada - docs/fase3-navegacion-portada.md
@@ -165,7 +157,7 @@ export default function Home({ params: { locale } }) {
                 <div className="p-5">
                   <h3 className="font-semibold text-mar-800">{n.titulo}</h3>
                   <p className="mt-1 text-sm text-marca-grafito">
-                    {fechaCorta(n.fecha)}
+                    {fechaLegible(n.fecha)}
                   </p>
                 </div>
               </Link>
