@@ -1,10 +1,6 @@
 import { EyeIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { getDictionary } from "../lib/i18n";
-import {
-  WHATSAPP_VARAMIENTOS,
-  TELEFONO_VARAMIENTOS,
-  TELEFONO_VARAMIENTOS_TEL,
-} from "../lib/contacto";
+import { WHATSAPP_VARAMIENTOS } from "../lib/contacto";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-mar-900";
@@ -15,10 +11,9 @@ const FOCUS_RING =
 // reporta con calma (marca/cian), un varamiento requiere respuesta
 // inmediata (acento.medusa, tono de alerta).
 //
-// El telefono ya no va suelto en la barra (docs de revision final,
-// seccion 3): queda pegado al boton de varamiento, que es al unico
-// reporte al que pertenece. Sigue siendo texto legible, no solo el
-// icono de WhatsApp.
+// Sin telefono suelto en la barra (docs/fase2-correcciones.md punto
+// 3). El numero sigue visible como texto en BloqueReporte (pie de
+// cada ficha de especie) y en /colabora/contacto.
 export default function TopBarReporte({ locale = "es" }) {
   const dict = getDictionary(locale);
 
@@ -33,21 +28,13 @@ export default function TopBarReporte({ locale = "es" }) {
             <EyeIcon className="h-4 w-4" aria-hidden="true" />
             {dict.common.reportarAvistamiento}
           </a>
-          <span className="inline-flex items-center gap-2">
-            <a
-              href={WHATSAPP_VARAMIENTOS}
-              className={`inline-flex items-center gap-1.5 rounded-full bg-acento-medusa px-3 py-1 font-medium text-mar-900 hover:bg-acento-medusa/80 ${FOCUS_RING}`}
-            >
-              <ExclamationTriangleIcon className="h-4 w-4" aria-hidden="true" />
-              {dict.common.reportarVaramiento}
-            </a>
-            <a
-              href={`tel:${TELEFONO_VARAMIENTOS_TEL}`}
-              className={`text-mar-100 hover:underline ${FOCUS_RING}`}
-            >
-              {TELEFONO_VARAMIENTOS}
-            </a>
-          </span>
+          <a
+            href={WHATSAPP_VARAMIENTOS}
+            className={`inline-flex items-center gap-1.5 rounded-full bg-acento-medusa px-3 py-1 font-medium text-mar-900 hover:bg-acento-medusa/80 ${FOCUS_RING}`}
+          >
+            <ExclamationTriangleIcon className="h-4 w-4" aria-hidden="true" />
+            {dict.common.reportarVaramiento}
+          </a>
         </div>
       </div>
     </div>
