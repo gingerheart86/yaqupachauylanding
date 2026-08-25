@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: gingerheart86/yaqupachauylanding
+  branch: main
+  base_url: https://yaqupachauy.org
+  auth_endpoint: api/auth
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# Las colecciones se agregan en el siguiente commit (Bloque 3).
+collections:
+  - name: "noticias"
+    label: "Noticias"
+    folder: "content/noticias"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    extension: "mdx"
+    fields:
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "fecha", label: "Fecha", widget: "datetime", format: "YYYY-MM-DD" }
+      - { name: "body", label: "Contenido", widget: "markdown" }
