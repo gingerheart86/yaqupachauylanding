@@ -3,6 +3,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
+      disallow: "/admin",
     },
     sitemap: "https://yaqupachauy.org/sitemap.xml",
   };
