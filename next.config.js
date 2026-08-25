@@ -135,6 +135,15 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      // public/admin/index.html no se sirve solo en /admin (Next no
+      // resuelve directorios a su index.html); sin esto, /admin cae en
+      // la ruta dinamica [locale] y renderiza la portada. Ver
+      // docs/cms-panel-edicion.md.
+      { source: "/admin", destination: "/admin/index.html" },
+    ];
+  },
 };
 
 module.exports = nextConfig;
