@@ -8,6 +8,20 @@ backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
+# Redimensiona al subir para que una foto de celular (5-8 MB) no vaya
+# al repo tal cual. 1600 px de lado largo, formato webp. El hint de
+# "Menos de 2 MB" en el campo "imagen" sigue siendo la referencia para
+# quien sube el archivo; esto es la red de contencion automatica.
+media_libraries:
+  default:
+    config:
+      transformations:
+        raster_image:
+          format: "webp"
+          quality: 85
+          width: 1600
+          height: 1600
+
 collections:
   - name: "noticias"
     label: "Noticias"
