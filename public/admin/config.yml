@@ -8,7 +8,6 @@ backend:
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-# Las colecciones se agregan en el siguiente commit (Bloque 3).
 collections:
   - name: "noticias"
     label: "Noticias"
@@ -19,4 +18,56 @@ collections:
     fields:
       - { name: "titulo", label: "Título", widget: "string" }
       - { name: "fecha", label: "Fecha", widget: "datetime", format: "YYYY-MM-DD" }
+      - name: "categoria"
+        label: "Categoría"
+        widget: "select"
+        options: ["Institucional", "Ciencia", "Educación ambiental", "Prensa"]
+      - { name: "resumen", label: "Resumen", widget: "text", hint: "Dos o tres líneas. Aparece en el listado y al compartir en redes." }
+      - { name: "imagen", label: "Imagen principal", widget: "image", required: false, hint: "Menos de 2 MB." }
+      - { name: "alt", label: "Descripción de la imagen", widget: "string", required: false, hint: "Para quienes usan lector de pantalla. Describí qué se ve." }
+      - { name: "destacada", label: "Destacada en portada", widget: "boolean", default: false }
       - { name: "body", label: "Contenido", widget: "markdown" }
+
+  - name: "materiales"
+    label: "Materiales educativos"
+    folder: "content/materiales"
+    create: true
+    fields:
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "descripcion", label: "Descripción", widget: "text" }
+      - { name: "miniatura", label: "Miniatura", widget: "image" }
+      - { name: "archivo_pantalla", label: "PDF liviano (pantalla)", widget: "file" }
+      - { name: "archivo_impresion", label: "PDF de impresión", widget: "file", required: false }
+      - { name: "credito", label: "Crédito", widget: "string", required: false }
+      - { name: "orden", label: "Orden", widget: "number", default: 0 }
+
+  - name: "integrantes"
+    label: "Integrantes"
+    folder: "content/integrantes"
+    create: true
+    fields:
+      - { name: "nombre", label: "Nombre", widget: "string" }
+      - { name: "rol", label: "Rol", widget: "string" }
+      - { name: "foto", label: "Foto", widget: "image" }
+      - { name: "bio", label: "Reseña", widget: "text", required: false }
+      - { name: "orden", label: "Orden", widget: "number", default: 0 }
+
+  - name: "libros"
+    label: "Libros"
+    folder: "content/libros"
+    create: true
+    fields:
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "tapa", label: "Tapa", widget: "image" }
+      - { name: "sinopsis", label: "Sinopsis", widget: "text" }
+      - { name: "edad", label: "Edad recomendada", widget: "string", required: false }
+      - { name: "guion", label: "Guion", widget: "string", default: "Silvia Soler" }
+      - { name: "ilustraciones", label: "Ilustraciones", widget: "string", default: "Yez" }
+      - { name: "editorial", label: "Editorial", widget: "string", default: "Krakatoa" }
+      - { name: "catalogo", label: "Individuo del catálogo", widget: "string", required: false, hint: "Código si el protagonista es un individuo real. Ej: TT-014" }
+      - { name: "disponible", label: "Disponible para la venta", widget: "boolean", default: true }
+
+# No incluidas a proposito: especies, proyectos, publicaciones,
+# catalogos de individuos. Llevan citas y cifras con intervalo de
+# confianza que tienen que redactarse como estimacion - se editan por
+# codigo, con revision previa. Ver docs/cms-panel-edicion.md.
