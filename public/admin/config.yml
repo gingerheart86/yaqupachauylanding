@@ -219,8 +219,48 @@ collections:
       - { name: "catalogo", label: "Individuo del catálogo", widget: "string", required: false, hint: "Código si el protagonista es un individuo real. Ej: TT-014" }
       - { name: "disponible", label: "Disponible para la venta", widget: "boolean", default: true }
 
-# No incluidas todavia: publicaciones y catalogo de individuos
-# (Bloques 4 y 5 de docs/panel-completo.md). especies y proyectos SI
-# estan en el panel (arriba) pero llevan cifras con intervalo de
-# confianza que tienen que redactarse como estimacion - ver el hint
-# del campo "body" de cada una.
+  - name: "catalogo"
+    label: "Catálogo de individuos"
+    folder: "content/catalogo"
+    create: true
+    identifier_field: "nombre"
+    slug: "{{codigo}}"
+    fields:
+      - { name: "codigo", label: "Código de catálogo", widget: "string", hint: "Ej: TT-014" }
+      - { name: "nombre", label: "Nombre", widget: "string" }
+      - name: "proyecto"
+        label: "Proyecto"
+        widget: "select"
+        options:
+          - { label: "Proyecto Toninas", value: "toninas" }
+          - { label: "Identidad Franca", value: "identidad-franca" }
+        default: "toninas"
+      - name: "especie"
+        label: "Especie"
+        widget: "select"
+        options: ["Tonina", "Ballena franca austral"]
+        default: "Tonina"
+      - name: "fotos"
+        label: "Fotos"
+        widget: "list"
+        fields:
+          - { name: "src", label: "Foto", widget: "image", hint: "Máximo 800 px, con marca de agua." }
+          - { name: "vista", label: "Qué se ve", widget: "string", hint: "Ej: aleta dorsal, lado izquierdo." }
+      - { name: "descripcion", label: "Descripción", widget: "text", required: false }
+      - { name: "primer_avistamiento", label: "Primer avistamiento", widget: "datetime", format: "YYYY-MM-DD", hint: "Fecha del primer registro del animal, no del alta en el catálogo." }
+      - { name: "ultimo_avistamiento", label: "Último avistamiento", widget: "datetime", format: "YYYY-MM-DD", required: false, hint: "Provisorio: se actualiza por temporada hasta que exista el enlace con la capa de ArcGIS." }
+      - name: "sexo"
+        label: "Sexo"
+        widget: "select"
+        required: false
+        options: ["Hembra", "Macho"]
+        hint: "Vacío si no se conoce. No se muestra si está vacío."
+      - { name: "muerto", label: "Registrado muerto", widget: "boolean", default: false, hint: "Marcar SOLO si se encontró el animal muerto. Dejar de verse no es evidencia de muerte. La ficha sigue publicada; no se muestra causa de muerte." }
+      - { name: "arcgis_id", label: "ID en la capa de ArcGIS", widget: "string", required: false }
+      - { name: "libro", label: "Libro donde aparece", widget: "string", required: false, hint: "Slug del libro. Ej: muescagrande-la-tonina" }
+      - { name: "publicado", label: "Visible en el sitio", widget: "boolean", default: true, hint: "Desmarcar mientras se confirma la identificación." }
+
+# especies, proyectos, publicaciones y catalogo estan en el panel
+# (arriba), pero llevan cifras con intervalo de confianza
+# (especies/proyectos) o un criterio sensible sobre "muerto"
+# (catalogo) - ver el hint de cada campo antes de editar a mano.
