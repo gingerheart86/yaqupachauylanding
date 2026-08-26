@@ -121,11 +121,19 @@ collections:
     label: "Integrantes"
     folder: "content/integrantes"
     create: true
+    identifier_field: "nombre"
     fields:
       - { name: "nombre", label: "Nombre", widget: "string" }
-      - { name: "rol", label: "Rol", widget: "string" }
-      - { name: "foto", label: "Foto", widget: "image" }
-      - { name: "bio", label: "Reseña", widget: "text", required: false }
+      - { name: "rol", label: "Rol", widget: "string", required: false }
+      - { name: "foto", label: "Foto", widget: "image", hint: "Cuadrada si es posible, menos de 2 MB." }
+      - { name: "alt", label: "Descripción de la foto", widget: "string", required: false }
+      - { name: "bio", label: "Reseña (ES)", widget: "text", required: false }
+      - { name: "bio_en", label: "Reseña (EN)", widget: "text", required: false }
+      - { name: "formacion", label: "Formación", widget: "string", required: false }
+      - { name: "orcid", label: "ORCID", widget: "string", required: false, hint: "Solo el identificador, sin la URL." }
+      - { name: "twitter", label: "Twitter / X", widget: "string", required: false }
+      - { name: "linkedin", label: "LinkedIn", widget: "string", required: false }
+      - { name: "activa", label: "Activa en el equipo", widget: "boolean", default: true, hint: "Desmarcada, desaparece de la grilla pero la ficha se conserva." }
       - { name: "orden", label: "Orden", widget: "number", default: 0 }
 
   - name: "libros"
