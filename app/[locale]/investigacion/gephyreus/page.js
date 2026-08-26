@@ -1,6 +1,8 @@
-import Image from "next/image";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { Section, PageHeader } from "../../../../components/ui";
 import { alternatesPara } from "../../../../lib/i18n";
+import { getContenidoProyecto } from "../../../../lib/contenido-proyectos";
+import { getMdxComponents } from "../../../../lib/mdx-components";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -25,90 +27,16 @@ export function generateMetadata({ params: { locale } }) {
 }
 
 export default function Home({ params: { locale } }) {
-  if (locale === "en") {
-    return (
-      <Section fondo="claro">
-        <PageHeader title="Gephyreus Project" />
-        <p className="mt-8 text-base leading-8 text-texto">
-          Since 2018, we have been part of a binational project together
-          with Brazilian researchers, aiming to estimate the abundance of
-          toninas in the Southwest Atlantic.
-        </p>
-        <div className="flex space-x-3 items-center">
-          <figure className="my-4 flex-1">
-            <Image
-              className="w-full h-auto rounded-lg"
-              src="/pic2.webp"
-              alt="Proyecto Gephyreus logo"
-              width={465}
-              height={318}
-            />
-          </figure>
-          <figure className="my-4 flex-1">
-            <Image
-              className="w-full h-auto rounded-lg"
-              src="/pic3.jpg"
-              alt="Proyecto Gephyreus activities"
-              width={819}
-              height={1024}
-            />
-          </figure>
-        </div>
-        <div className="flex justify-center w-full">
-          <iframe
-            width="650"
-            height="480"
-            src={`https://www.youtube.com/embed/B57lG7eKorA`}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            title="Embedded youtube"
-          />
-        </div>
-      </Section>
-    );
-  }
+  const esIngles = locale === "en";
+  const proyecto = getContenidoProyecto("gephyreus");
+  const nombre = esIngles ? proyecto.nombre_en : proyecto.nombre;
+  const cuerpo = esIngles ? proyecto.body_en : proyecto.content;
 
   return (
     <Section fondo="claro">
-      <PageHeader title="Proyecto Gephyreus" />
-      <p className="mt-8 text-base leading-8 text-texto">
-        Desde 2018, formamos parte de un proyecto binacional en conjunto con
-        investigadores brasileños, con el fin de estimar la abundancia de
-        toninas del Atlántico Sudoccidental.
-      </p>
-      <div className="flex space-x-3 items-center">
-        <figure className="my-4 flex-1">
-          <Image
-            className="w-full h-auto rounded-lg"
-            src="/pic2.webp"
-            alt="Logo del Proyecto Gephyreus"
-            width={465}
-            height={318}
-          />
-        </figure>
-        <figure className="my-4 flex-1">
-          <Image
-            className="w-full h-auto rounded-lg"
-            src="/pic3.jpg"
-            alt="Actividades del Proyecto Gephyreus"
-            width={819}
-            height={1024}
-          />
-        </figure>
-      </div>
-      <div className="flex justify-center w-full">
-        <iframe
-          width="650"
-          height="480"
-          src={`https://www.youtube.com/embed/B57lG7eKorA`}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          loading="lazy"
-          title="Embedded youtube"
-        />
+      <PageHeader title={nombre} />
+      <div className="prose max-w-none text-texto [&_p]:text-base [&_p]:leading-8 [&_p+p]:mt-8">
+        <MDXRemote source={cuerpo} components={getMdxComponents(locale)} />
       </div>
     </Section>
   );

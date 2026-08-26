@@ -13,6 +13,7 @@ export default function PaginaEspecie({
   slug,
   nombreComun,
   nombreCientifico,
+  resumen,
   imagen,
   proyectosAsociados = [],
   locale = "es",
@@ -41,6 +42,9 @@ export default function PaginaEspecie({
         </h1>
         {nombreCientifico && (
           <p className="mt-2 italic text-mar-100">{nombreCientifico}</p>
+        )}
+        {resumen && (
+          <p className="mt-4 max-w-2xl mx-auto text-mar-100">{resumen}</p>
         )}
       </div>
 

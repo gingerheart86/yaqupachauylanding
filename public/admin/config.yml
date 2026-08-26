@@ -104,6 +104,46 @@ collections:
       - { name: "destacada", label: "Destacada en portada", widget: "boolean", default: false }
       - { name: "body", label: "Contenido", widget: "markdown" }
 
+  - name: "especies"
+    label: "Especies"
+    folder: "content/especies"
+    create: true
+    identifier_field: "nombre_comun"
+    fields:
+      - { name: "nombre_comun", label: "Nombre común (ES)", widget: "string" }
+      - { name: "nombre_comun_en", label: "Nombre común (EN)", widget: "string", required: false }
+      - { name: "nombre_cientifico", label: "Nombre científico", widget: "string", hint: "Se muestra en cursiva automáticamente." }
+      - { name: "imagen", label: "Imagen principal", widget: "image", required: false }
+      - { name: "alt", label: "Descripción de la imagen (ES)", widget: "string", required: false }
+      - { name: "alt_en", label: "Descripción de la imagen (EN)", widget: "string", required: false }
+      - { name: "resumen", label: "Bajada (ES)", widget: "text" }
+      - { name: "resumen_en", label: "Bajada (EN)", widget: "text", required: false }
+      - { name: "body", label: "Contenido (ES)", widget: "markdown", hint: "Escribir siempre las cifras como estimaciones: 'se estimó en', 'las estimaciones rondan'. Nunca 'hay' ni 'quedan'. Para insertar una foto en su lugar exacto: <Foto src=\"/ruta/imagen.webp\" alt=\"Qué se ve\" epigrafe=\"Texto al pie\" />. El alt es obligatorio." }
+      - { name: "body_en", label: "Contenido (EN)", widget: "markdown", required: false }
+      - { name: "orden", label: "Orden", widget: "number", default: 0 }
+
+  - name: "proyectos"
+    label: "Proyectos"
+    folder: "content/proyectos"
+    create: true
+    identifier_field: "nombre"
+    fields:
+      - { name: "nombre", label: "Nombre (ES)", widget: "string" }
+      - { name: "nombre_en", label: "Nombre (EN)", widget: "string", required: false }
+      - { name: "resumen", label: "Bajada (ES)", widget: "text" }
+      - { name: "resumen_en", label: "Bajada (EN)", widget: "text", required: false }
+      - { name: "silueta", label: "Silueta", widget: "image", required: false }
+      - { name: "body", label: "Contenido (ES)", widget: "markdown", hint: "Para insertar una foto en su lugar exacto: <Foto src=\"/ruta/imagen.webp\" alt=\"Qué se ve\" epigrafe=\"Texto al pie\" />. Para un par lado a lado: <ParFotos><Foto .../><Foto .../></ParFotos>. El alt es obligatorio." }
+      - { name: "body_en", label: "Contenido (EN)", widget: "markdown", required: false }
+      - name: "registro"
+        label: "Registro visual"
+        widget: "select"
+        options: ["alto", "sobrio"]
+        default: "sobrio"
+        hint: "Alto solo para Proyecto Toninas, que es exclusivo de Yaqu Pacha. Los proyectos compartidos van sobrios."
+      - { name: "destacado", label: "Destacado en portada", widget: "boolean", default: false }
+      - { name: "orden", label: "Orden", widget: "number", default: 0 }
+
   - name: "materiales"
     label: "Materiales educativos"
     folder: "content/materiales"
@@ -151,7 +191,8 @@ collections:
       - { name: "catalogo", label: "Individuo del catálogo", widget: "string", required: false, hint: "Código si el protagonista es un individuo real. Ej: TT-014" }
       - { name: "disponible", label: "Disponible para la venta", widget: "boolean", default: true }
 
-# No incluidas a proposito: especies, proyectos, publicaciones,
-# catalogos de individuos. Llevan citas y cifras con intervalo de
-# confianza que tienen que redactarse como estimacion - se editan por
-# codigo, con revision previa. Ver docs/cms-panel-edicion.md.
+# No incluidas todavia: publicaciones y catalogo de individuos
+# (Bloques 4 y 5 de docs/panel-completo.md). especies y proyectos SI
+# estan en el panel (arriba) pero llevan cifras con intervalo de
+# confianza que tienen que redactarse como estimacion - ver el hint
+# del campo "body" de cada una.
