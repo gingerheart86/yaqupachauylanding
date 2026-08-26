@@ -52,6 +52,13 @@ export default function PaginaEspecie({
           className="absolute right-4 top-4 hidden sm:block"
         />
         <div className="relative mx-auto max-w-5xl text-lg">
+          <Link
+            href={`/${locale}/especies`}
+            className={`mb-8 inline-flex items-center gap-1 text-sm font-medium text-marca-oscuro hover:underline ${FOCUS_RING}`}
+          >
+            ← {locale === "en" ? "All species" : "Todas las especies"}
+          </Link>
+
           {imagen && (
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg">
               <Image
