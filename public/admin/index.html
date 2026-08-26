@@ -8,5 +8,54 @@
   </head>
   <body>
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+    <script type="module">
+      // Botones para insertar los componentes MDX mas usados sin escribir
+      // la etiqueta a mano. docs/panel-completo.md, "Boton para insertar
+      // componentes". Solo Foto y Destacado: son los que se usan de verdad
+      // en el contenido migrado. ParFotos, Silueta, GrillaLogos y
+      // BloqueReporte quedan sin boton (la plantilla esta en el hint del
+      // campo body) - el doc autoriza esta alternativa minima si extender
+      // el editor se complica, y para esos cuatro el patron de atributos
+      // es mas variable y no vale el esfuerzo todavia.
+      CMS.registerEditorComponent({
+        id: "foto",
+        label: "Foto",
+        icon: "image",
+        fields: [
+          { name: "src", label: "Ruta de la imagen (/uploads/...)" },
+          { name: "alt", label: "Descripción (obligatoria, para lector de pantalla)" },
+          { name: "epigrafe", label: "Epígrafe", widget: "string", required: false },
+          { name: "credito", label: "Crédito", widget: "string", required: false },
+        ],
+        pattern: /<Foto\s+src="([^"]*)"\s+alt="([^"]*)"(?:\s+epigrafe="([^"]*)")?(?:\s+credito="([^"]*)")?\s*\/>/,
+        fromBlock: (match) => ({
+          src: match[1],
+          alt: match[2],
+          epigrafe: match[3] ?? "",
+          credito: match[4] ?? "",
+        }),
+        toBlock: (data) => {
+          let tag = `<Foto src="${data.src ?? ""}" alt="${data.alt ?? ""}"`;
+          if (data.epigrafe) tag += ` epigrafe="${data.epigrafe}"`;
+          if (data.credito) tag += ` credito="${data.credito}"`;
+          return `${tag} />`;
+        },
+        toPreview: (data) =>
+          `<figure><img src="${data.src ?? ""}" alt="${data.alt ?? ""}" style="max-width:100%" />` +
+          (data.epigrafe ? `<figcaption>${data.epigrafe}</figcaption>` : "") +
+          `</figure>`,
+      });
+
+      CMS.registerEditorComponent({
+        id: "destacado",
+        label: "Destacado",
+        icon: "format_quote",
+        fields: [{ name: "texto", label: "Texto destacado" }],
+        pattern: /<Destacado>([\s\S]*?)<\/Destacado>/,
+        fromBlock: (match) => ({ texto: match[1].trim() }),
+        toBlock: (data) => `<Destacado>${data.texto ?? ""}</Destacado>`,
+        toPreview: (data) => `<blockquote>${data.texto ?? ""}</blockquote>`,
+      });
+    </script>
   </body>
 </html>

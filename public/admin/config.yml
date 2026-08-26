@@ -144,6 +144,34 @@ collections:
       - { name: "destacado", label: "Destacado en portada", widget: "boolean", default: false }
       - { name: "orden", label: "Orden", widget: "number", default: 0 }
 
+  - name: "publicaciones"
+    label: "Publicaciones científicas"
+    folder: "content/publicaciones"
+    create: true
+    identifier_field: "titulo"
+    fields:
+      - { name: "doi", label: "DOI", widget: "string", required: false, hint: "Solo el identificador, sin https://doi.org/. Ej: 10.1016/j.biocon.2026.111865. Tesis, informes técnicos y capítulos de libro no suelen tener." }
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "autores", label: "Autores", widget: "text", hint: "Como van en la cita. Poner en negrita (**Nombre**) a quienes son del equipo." }
+      - { name: "revista", label: "Revista", widget: "string" }
+      - { name: "anio", label: "Año", widget: "number", value_type: "int" }
+      - { name: "volumen", label: "Volumen", widget: "string", required: false }
+      - { name: "paginas", label: "Páginas o número de artículo", widget: "string", required: false }
+      - name: "especie"
+        label: "Especie"
+        widget: "select"
+        multiple: true
+        required: false
+        options: ["Tonina", "Ballena franca austral", "Franciscana", "Orca", "Varias", "Otra"]
+      - name: "proyecto"
+        label: "Proyecto asociado"
+        widget: "select"
+        required: false
+        options: ["Proyecto Toninas", "Gephyreus", "Grupo de Trabajo en Varamientos", "Identidad Franca", "Ninguno"]
+      - { name: "autoria_yaqu", label: "Con autoría de Yaqu Pacha", widget: "boolean", default: true }
+      - { name: "acceso_abierto", label: "Acceso abierto", widget: "boolean", default: false }
+      - { name: "resumen_es", label: "Resumen en español", widget: "text", required: false, hint: "Dos o tres líneas en lenguaje llano. No es el abstract traducido." }
+
   - name: "materiales"
     label: "Materiales educativos"
     folder: "content/materiales"
