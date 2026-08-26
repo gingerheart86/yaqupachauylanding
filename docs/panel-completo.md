@@ -521,3 +521,183 @@ Precios en pesos uruguayos, formateados con separador de miles.
 - [ ] La aclaración de que no es una compra está visible
 - [ ] El total calcula bien con variantes y cantidades
 - [ ] `npm run build` sin errores
+
+═══════════════════════════════════════════
+BLOQUE — Imágenes intercaladas en MDX
+═══════════════════════════════════════════
+
+Reemplaza la decisión pendiente sobre cómo migrar las páginas con múltiples
+imágenes (franciscana, varamientos, toninas, gephyreus).
+
+**No usar galería agrupada ni dejar las imágenes en el JSX.** Se implementa una
+tercera opción: componentes embebidos en MDX.
+
+## Por qué
+
+En estas páginas la posición de cada imagen no es decorativa. En franciscana:
+
+- La ilustración de Julia Rouaux va arriba porque es la herramienta de
+  identificación de la especie.
+- Las fotos de La Esmeralda van en la sección "por qué casi nadie la ve", porque
+  ilustran ese punto exacto.
+- La foto del animal varado va junto a las indicaciones de qué hacer, para que
+  alguien parado frente a un animal en la arena pueda confirmar qué es.
+
+Agruparlas en una galería al final rompe esa relación. Dejarlas en el JSX las
+preserva pero impide editarlas desde el panel.
+
+MDX permite las dos cosas: texto editable con las imágenes en su lugar exacto.
+
+## Componente
+
+Crear `components/mdx/Foto.js`:
+
+```jsx
+import Image from "next/image";
+
+export function Foto({ src, alt, epigrafe, credito, ancho = "normal" }) {
+  return (
+    <figure className={ancho === "completo" ? "..." : "..."}>
+      <Image src={src} alt={alt} width={1600} height={1067} className="..." />
+      {(epigrafe || credito) && (
+        <figcaption className="...">
+          {epigrafe}
+          {credito && <span className="..."> · {credito}</span>}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+```
+
+- `alt` es obligatorio. Si falta, que el build falle o al menos advierta.
+- `epigrafe` y `credito` opcionales.
+- `ancho` con dos valores: `normal` (ancho del texto) y `completo` (ancho de la
+  sección). El segundo sirve para las ilustraciones apaisadas de Yez, que son 2:1.
+- Usar `next/image`, no `<img>`.
+
+Registrarlo en `mdx-components.js` para que esté disponible en todos los MDX sin
+importarlo en cada archivo.
+
+## Uso en el contenido
+
+```mdx
+Es muy difícil de observar desde la costa en toda su distribución. A su tamaño
+pequeño y su coloración críptica se suma un comportamiento discreto.
+
+<Foto
+  src="/especies/franciscana/franciscana-viva-aguas-dulces.webp"
+  alt="Franciscana emergiendo en aguas someras, con el hocico largo visible"
+  epigrafe="Franciscana viva registrada en Aguas Dulces"
+/>
+
+En Uruguay hay registros de franciscanas vivas comunicados por pescadores,
+investigadoras y público general.
+```
+
+## Otros componentes embebibles
+
+Mismo criterio para lo que ya existe y hoy vive en el JSX:
+
+| Componente | Uso |
+|---|---|
+| `<Foto>` | imagen con epígrafe y crédito |
+| `<Silueta especie="tonina" />` | silueta de `public/decor/` |
+| `<GrillaLogos proyecto="gephyreus" />` | logos de socios institucionales |
+| `<BloqueReporte tipo="varamiento" />` | el bloque de reporte reutilizable |
+| `<Destacado>` | texto destacado, como "están muriendo más franciscanas de las que nacen" |
+
+Todos registrados en `mdx-components.js`.
+
+**`<BloqueReporte>` no recibe el número ni el enlace como parámetro.** Los lee de
+las constantes del código. Si el número cambia, se cambia en un solo lugar.
+
+## Migración
+
+Para cada página con imágenes:
+
+1. Mover el texto al MDX.
+2. Insertar `<Foto>` exactamente donde estaba cada imagen en el JSX, con el mismo
+   `src` y el mismo `alt`.
+3. Comparar el render contra la versión anterior: **la cantidad y el orden de
+   las imágenes tiene que ser idéntico**, y cada una tiene que estar en el mismo
+   punto del texto.
+4. Si en el JSX una imagen no tenía `alt`, escribirlo ahora describiendo qué se
+   ve. No dejarlo vacío ni poner el nombre del archivo.
+
+## Advertencia para quien edite después
+
+En el `hint` del campo `body` de las colecciones especies, proyectos y páginas,
+agregar:
+
+> Para insertar una foto, escribí:
+> `<Foto src="/ruta/imagen.webp" alt="Qué se ve en la foto" epigrafe="Texto al pie" />`
+> El `alt` es obligatorio: es lo que leen quienes usan lector de pantalla.
+
+## Riesgo conocido
+
+Si alguien escribe mal la etiqueta — un atributo sin comillas, una etiqueta sin
+cerrar — **el build falla y el sitio no se despliega**. No es un error silencioso,
+pero conviene saberlo.
+
+Mitigación: probar el cambio en el preview de Vercel antes de que llegue a
+producción, y tener presente el Instant Rollback.
+
+Por eso mismo, si en algún momento editan otras personas sin experiencia técnica,
+conviene revisar si esta solución sigue siendo la adecuada o si esas páginas
+vuelven a un esquema de campos separados.
+
+## Verificación
+
+- [ ] `<Foto>` renderiza con `next/image`
+- [ ] `alt` faltante da error o advertencia visible
+- [ ] `ancho="completo"` funciona para las ilustraciones 2:1 de Yez
+- [ ] Las cuatro páginas migradas tienen las mismas imágenes, en el mismo orden y
+      en el mismo punto del texto que antes
+- [ ] Ninguna imagen quedó sin `alt`
+- [ ] Los epígrafes y créditos se ven
+- [ ] `<GrillaLogos>` y `<BloqueReporte>` funcionan desde MDX
+- [ ] Editar el body desde el panel conserva las etiquetas de componente
+- [ ] `npm run build` sin errores
+
+## Botón para insertar componentes
+
+Para no escribir las etiquetas a mano, agregar botones en la barra del editor
+Markdown que inserten la plantilla en la posición del cursor.
+
+Sveltia permite extender la barra del editor. Un botón por componente:
+
+| Botón | Inserta |
+|---|---|
+| Foto | `<Foto src="" alt="" epigrafe="" />` |
+| Destacado | `<Destacado>texto</Destacado>` |
+| Silueta | `<Silueta especie="" />` |
+| Logos | `<GrillaLogos proyecto="" />` |
+| Reporte | `<BloqueReporte tipo="" />` |
+
+Comportamiento:
+
+- Inserta la plantilla con los atributos vacíos, listos para completar.
+- Deja el cursor dentro del primer atributo.
+- Si hay texto seleccionado, `<Destacado>` lo envuelve en vez de insertar una
+  plantilla vacía.
+
+Para los componentes con opciones cerradas — `especie`, `proyecto`, `tipo` —
+insertar un valor válido por defecto en vez de dejarlo vacío, así nunca queda una
+etiqueta que rompe el build por un valor inexistente.
+
+**Esto no reemplaza la validación.** Sigue siendo posible escribir mal a mano o
+borrar media etiqueta al editar. El botón elimina el error de estructura, que es
+el más común, no todos los errores posibles.
+
+Si extender la barra del editor resulta más complejo de lo previsto, la
+alternativa mínima es dejar las plantillas escritas en el `hint` del campo `body`
+para copiar y pegar. Menos cómodo, cero esfuerzo de implementación.
+
+### Verificación del botón
+
+- [ ] Los botones aparecen en la barra del editor Markdown
+- [ ] Insertan la plantilla en la posición del cursor
+- [ ] `<Destacado>` envuelve el texto seleccionado si lo hay
+- [ ] Los componentes con opciones cerradas insertan un valor válido
+- [ ] Una etiqueta insertada y completada renderiza bien en el sitio
