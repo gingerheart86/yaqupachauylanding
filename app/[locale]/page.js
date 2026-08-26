@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import {
   Section,
   Button,
@@ -11,10 +12,12 @@ import {
 } from "../../components/ui";
 import HeroVideo from "../../components/HeroVideo";
 import BandaIlustrada from "../../components/BandaIlustrada";
+import VideoInstitucional from "../../components/VideoInstitucional";
 import { getDictionary } from "../../lib/i18n";
 import { getUltimasNoticias, fechaLegible } from "../../lib/noticias";
 import { SURVEY123_TONINA_URL } from "../../lib/contacto";
 import { SILUETAS } from "../../lib/especies";
+import { getPagina } from "../../lib/paginas";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -28,6 +31,13 @@ export async function generateStaticParams() {
 export default function Home({ params: { locale } }) {
   const esIngles = locale === "en";
   const noticias = esIngles ? [] : getUltimasNoticias(3);
+  const institucional = getPagina("home-institucional");
+  const tituloInstitucional = esIngles
+    ? institucional.titulo_en
+    : institucional.titulo;
+  const cuerpoInstitucional = esIngles
+    ? institucional.body_en
+    : institucional.content;
 
   return (
     <div className="relative ">
@@ -80,6 +90,23 @@ export default function Home({ params: { locale } }) {
       <div className="flex justify-center bg-white my-12">
         <Garabato numero={2} registro="alto" width={240} />
       </div>
+
+      {/* 3. Seccion institucional - fase3-navegacion-portada.md seccion 4,
+          punto 3. Sin fotos del equipo (van en /nosotros/integrantes).
+          Contenido editable en content/paginas/home-institucional.mdx. */}
+      <Section fondo="textura">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
+            {tituloInstitucional}
+          </h2>
+          <div className="prose prose-lg mx-auto mt-6 max-w-none text-texto">
+            <MDXRemote source={cuerpoInstitucional} />
+          </div>
+          <div className="mt-8 max-w-xl mx-auto">
+            <VideoInstitucional />
+          </div>
+        </div>
+      </Section>
 
       {/* 4. Dos proyectos, no cuatro - Toninas destacado y uno mas */}
       <Section fondo="mar" innerClassName="pt-0" className="relative overflow-hidden">

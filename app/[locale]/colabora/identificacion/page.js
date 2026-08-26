@@ -1,5 +1,6 @@
 import { Section, PageHeader } from "../../../../components/ui";
 import TodoAviso from "../../../../components/TodoAviso";
+import { getPagina } from "../../../../lib/paginas";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -23,15 +24,18 @@ export function generateMetadata({ params: { locale } }) {
 }
 
 export default function Page({ params: { locale } }) {
+  const pagina = getPagina("identificacion");
   return (
     <Section fondo="claro">
       <PageHeader
         title={
           locale === "en"
             ? "Not sure what you saw?"
-            : "No sé qué vi, ayudame a identificarlo"
+            : pagina.titulo
         }
       />
+      {/* El arbol interactivo (Bloque 6) todavia no esta implementado -
+          requiere revision biologica antes de publicarse. */}
       <TodoAviso locale={locale} />
     </Section>
   );

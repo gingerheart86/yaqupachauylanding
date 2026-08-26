@@ -4,6 +4,7 @@ import {
   MapPinIcon,
 } from "@heroicons/react/24/outline";
 import { Section, PageHeader } from "../../../../components/ui";
+import { getPagina } from "../../../../lib/paginas";
 import { alternatesPara } from "../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -30,14 +31,13 @@ export function generateMetadata({ params: { locale } }) {
 
 export default function Home({ params: { locale } }) {
   const esIngles = locale === "en";
+  const pagina = getPagina("contacto");
+  const titulo = esIngles ? pagina.titulo_en : pagina.titulo;
   return (
     <Section fondo="claro">
       <div className="mx-auto max-w-lg md:grid md:max-w-none md:grid-cols-2 md:gap-8">
         <div>
-          <PageHeader
-            align="left"
-            title={esIngles ? "Get in touch" : "Ponte en contacto"}
-          />
+          <PageHeader align="left" title={titulo} />
           <div className="mt-9">
             <div className="flex mt-6">
               <div className="flex-shrink-0">
@@ -47,7 +47,7 @@ export default function Home({ params: { locale } }) {
                 />
               </div>
               <div className="ml-3 text-base text-texto">
-                <p>Orinoco s/n y San Luis, Punta del Diablo, Rocha, Uruguay</p>
+                <p>{pagina.direccion}</p>
               </div>
             </div>
             <div className="mt-6 flex">
@@ -58,7 +58,7 @@ export default function Home({ params: { locale } }) {
                 />
               </div>
               <div className="ml-3 text-base text-texto">
-                <p>yaqupachauy@gmail.com</p>
+                <p>{pagina.email}</p>
               </div>
             </div>
           </div>

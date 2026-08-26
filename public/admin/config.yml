@@ -23,6 +23,68 @@ media_libraries:
           height: 1600
 
 collections:
+  - name: "paginas"
+    label: "Páginas"
+    files:
+      - name: "la-ong"
+        label: "Nosotros — La ONG"
+        file: "content/paginas/la-ong.mdx"
+        fields:
+          - { name: "titulo", label: "Título (ES)", widget: "string" }
+          - { name: "titulo_en", label: "Título (EN)", widget: "string" }
+          - { name: "resumen", label: "Bajada (ES)", widget: "text" }
+          - { name: "resumen_en", label: "Bajada (EN)", widget: "text" }
+          - { name: "imagen", label: "Imagen principal", widget: "image", required: false, hint: "Menos de 2 MB." }
+          - { name: "alt", label: "Descripción de la imagen (ES)", widget: "string", required: false }
+          - { name: "alt_en", label: "Descripción de la imagen (EN)", widget: "string", required: false }
+          - { name: "body", label: "Contenido (ES)", widget: "markdown" }
+          - { name: "body_en", label: "Contenido (EN)", widget: "markdown" }
+
+      - name: "home-institucional"
+        label: "Portada — Sección institucional"
+        file: "content/paginas/home-institucional.mdx"
+        fields:
+          - { name: "titulo", label: "Título de la sección (ES)", widget: "string" }
+          - { name: "titulo_en", label: "Título de la sección (EN)", widget: "string" }
+          - { name: "body", label: "Texto (ES)", widget: "markdown", hint: "Va sobre la textura, conviene que sea breve." }
+          - { name: "body_en", label: "Texto (EN)", widget: "markdown", hint: "Va sobre la textura, conviene que sea breve." }
+
+      - name: "donaciones"
+        label: "Colaborá — Donaciones"
+        file: "content/paginas/donaciones.mdx"
+        fields:
+          - { name: "titulo", label: "Título", widget: "string" }
+          - { name: "intro", label: "Introducción", widget: "text", hint: "A qué se destinan los fondos.", required: false }
+          - { name: "body", label: "Datos para donar", widget: "markdown", hint: "Revisá los números de cuenta dos veces antes de guardar. Solo español: /colabora/donaciones no tiene versión en inglés." }
+
+      - name: "reportar-avistamiento"
+        label: "Colaborá — Reportar un avistamiento"
+        file: "content/paginas/reportar-avistamiento.mdx"
+        fields:
+          - { name: "titulo", label: "Título (ES)", widget: "string" }
+          - { name: "titulo_en", label: "Título (EN)", widget: "string" }
+          - { name: "body", label: "Texto explicativo (ES)", widget: "markdown", hint: "Importancia de los registros oportunistas para el monitoreo y la ciencia ciudadana." }
+          - { name: "body_en", label: "Texto explicativo (EN)", widget: "markdown" }
+          - { name: "aclaracion_varamiento", label: "Aclaración sobre varamientos (ES)", widget: "text", hint: "Un avistamiento es de animales vivos. Si está muerto o varado, es un varamiento." }
+          - { name: "aclaracion_varamiento_en", label: "Aclaración sobre varamientos (EN)", widget: "text" }
+
+      - name: "identificacion"
+        label: "Colaborá — Guía de identificación"
+        file: "content/paginas/identificacion.mdx"
+        fields:
+          - { name: "titulo", label: "Título", widget: "string" }
+          - { name: "intro", label: "Introducción", widget: "text", required: false }
+          - { name: "cierre_educativo", label: "Cierre educativo", widget: "markdown", required: false, hint: "Qué es un cetáceo, diferencia entre misticetos y odontocetos. Requiere revisión biológica antes de publicarse (Bloque 6)." }
+
+      - name: "contacto"
+        label: "Colaborá — Contacto"
+        file: "content/paginas/contacto.mdx"
+        fields:
+          - { name: "titulo", label: "Título (ES)", widget: "string" }
+          - { name: "titulo_en", label: "Título (EN)", widget: "string" }
+          - { name: "direccion", label: "Dirección", widget: "string" }
+          - { name: "email", label: "Correo", widget: "string" }
+
   - name: "noticias"
     label: "Noticias"
     folder: "content/noticias"
