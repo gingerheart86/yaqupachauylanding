@@ -27,7 +27,7 @@ disponible: true
   habitual como valor por defecto.
 - `disponible`: si está a la venta en la tienda, por defecto sí.
 
-Todavía no hay ninguna entrada: `/educacion/libros` sigue siendo un
-placeholder con TODO (faltan las tapas en JPG, ver
-docs/fase2-correcciones.md). La colección queda lista para cuando
-lleguen.
+`/educacion/libros` ya lee de acá (`lib/libros.js`): grilla de 5
+columnas en desktop que baja a 1 en mobile, y cada tarjeta enlaza a
+`/educacion/libros/[slug]`. Todavía no hay ninguna entrada real - la
+grilla muestra "Todavía no hay libros cargados" mientras tanto.

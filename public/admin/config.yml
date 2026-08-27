@@ -85,6 +85,13 @@ collections:
           - { name: "direccion", label: "Dirección", widget: "string" }
           - { name: "email", label: "Correo", widget: "string" }
 
+      - name: "libros"
+        label: "Educación — Libros (intro)"
+        file: "content/paginas/libros.mdx"
+        fields:
+          - { name: "titulo", label: "Título", widget: "string" }
+          - { name: "intro", label: "Introducción", widget: "text" }
+
   - name: "noticias"
     label: "Noticias"
     folder: "content/noticias"
