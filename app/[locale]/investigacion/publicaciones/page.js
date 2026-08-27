@@ -45,11 +45,10 @@ function Autores({ texto }) {
   );
 }
 
-function urlFiltro({ especie, proyecto, soloYaqu }) {
+function urlFiltro({ especie, proyecto }) {
   const params = new URLSearchParams();
   if (especie) params.set("especie", especie);
   if (proyecto) params.set("proyecto", proyecto);
-  if (soloYaqu) params.set("yaqu", "1");
   const qs = params.toString();
   return `/es/investigacion/publicaciones${qs ? `?${qs}` : ""}`;
 }
@@ -58,12 +57,10 @@ export default function Page({ params: { locale }, searchParams }) {
   const esIngles = locale === "en";
   const especieFiltro = searchParams?.especie || null;
   const proyectoFiltro = searchParams?.proyecto || null;
-  const soloYaqu = searchParams?.yaqu === "1";
 
   let publicaciones = getPublicaciones();
   if (especieFiltro) publicaciones = publicaciones.filter((p) => p.especie.includes(especieFiltro));
   if (proyectoFiltro) publicaciones = publicaciones.filter((p) => p.proyecto === proyectoFiltro);
-  if (soloYaqu) publicaciones = publicaciones.filter((p) => p.autoria_yaqu);
 
   const todasLasEspecies = [...new Set(getPublicaciones().flatMap((p) => p.especie))].sort();
   const todosLosProyectos = [...new Set(getPublicaciones().map((p) => p.proyecto).filter(Boolean))].sort();
@@ -88,7 +85,7 @@ export default function Page({ params: { locale }, searchParams }) {
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-marca-grafito">Especie:</span>
               <a
-                href={urlFiltro({ proyecto: proyectoFiltro, soloYaqu })}
+                href={urlFiltro({ proyecto: proyectoFiltro })}
                 className={`rounded-full px-3 py-1 ${FOCUS_RING} ${!especieFiltro ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
               >
                 Todas
@@ -96,7 +93,7 @@ export default function Page({ params: { locale }, searchParams }) {
               {todasLasEspecies.map((e) => (
                 <a
                   key={e}
-                  href={urlFiltro({ especie: e, proyecto: proyectoFiltro, soloYaqu })}
+                  href={urlFiltro({ especie: e, proyecto: proyectoFiltro })}
                   className={`rounded-full px-3 py-1 ${FOCUS_RING} ${especieFiltro === e ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
                 >
                   {e}
@@ -108,7 +105,7 @@ export default function Page({ params: { locale }, searchParams }) {
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-marca-grafito">Proyecto:</span>
               <a
-                href={urlFiltro({ especie: especieFiltro, soloYaqu })}
+                href={urlFiltro({ especie: especieFiltro })}
                 className={`rounded-full px-3 py-1 ${FOCUS_RING} ${!proyectoFiltro ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
               >
                 Todos
@@ -116,7 +113,7 @@ export default function Page({ params: { locale }, searchParams }) {
               {todosLosProyectos.map((p) => (
                 <a
                   key={p}
-                  href={urlFiltro({ especie: especieFiltro, proyecto: p, soloYaqu })}
+                  href={urlFiltro({ especie: especieFiltro, proyecto: p })}
                   className={`rounded-full px-3 py-1 ${FOCUS_RING} ${proyectoFiltro === p ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
                 >
                   {p}
@@ -124,12 +121,6 @@ export default function Page({ params: { locale }, searchParams }) {
               ))}
             </div>
           )}
-          <a
-            href={urlFiltro({ especie: especieFiltro, proyecto: proyectoFiltro, soloYaqu: !soloYaqu })}
-            className={`rounded-full px-3 py-1 ${FOCUS_RING} ${soloYaqu ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
-          >
-            Solo con autoría de Yaqu Pacha
-          </a>
         </div>
       )}
 
@@ -145,7 +136,10 @@ export default function Page({ params: { locale }, searchParams }) {
             </h2>
             <ul role="list" className="mt-4 space-y-6">
               {porAnio.get(anio).map((pub) => (
-                <li key={pub.slug} className="text-texto">
+                <li
+                  key={pub.slug}
+                  className={`text-texto ${pub.autoria_yaqu ? "border-l-4 border-marca pl-4" : ""}`}
+                >
                   <p>
                     <Autores texto={pub.autores} /> ({pub.anio}). {pub.titulo}.{" "}
                     <span className="italic">{pub.revista}</span>
@@ -164,6 +158,11 @@ export default function Page({ params: { locale }, searchParams }) {
                     {pub.acceso_abierto && (
                       <span className="rounded-full bg-costa-100 px-2 py-0.5 text-marca-oscuro font-medium">
                         Acceso abierto
+                      </span>
+                    )}
+                    {pub.autoria_yaqu && (
+                      <span className="rounded-full bg-marca/10 px-2 py-0.5 text-marca-oscuro font-medium">
+                        {esIngles ? "Yaqu Pacha authorship" : "Autoría de Yaqu Pacha"}
                       </span>
                     )}
                   </p>
