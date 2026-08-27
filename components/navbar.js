@@ -17,6 +17,7 @@ import { usePathname } from "next/navigation";
 import { getDictionary } from "../lib/i18n";
 import LanguageSwitcher from "./LanguageSwitcher";
 import TopBarReporte from "./TopBarReporte";
+import ContadorCarrito from "./ContadorCarrito";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -170,6 +171,7 @@ export default function Navbar({ locale = "es" }) {
                               aria-current={isActive(href) ? "page" : undefined}
                             >
                               {dict.nav[rama.key]}
+                              {rama.key === "tienda" && <ContadorCarrito />}
                             </Link>
                           );
                         }
@@ -255,6 +257,7 @@ export default function Navbar({ locale = "es" }) {
                         aria-current={isActive(href) ? "page" : undefined}
                       >
                         {dict.nav[rama.key]}
+                        {rama.key === "tienda" && <ContadorCarrito />}
                       </DisclosureButton>
                     );
                   }

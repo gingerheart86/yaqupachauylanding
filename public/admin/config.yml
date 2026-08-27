@@ -260,6 +260,35 @@ collections:
       - { name: "libro", label: "Libro donde aparece", widget: "string", required: false, hint: "Slug del libro. Ej: muescagrande-la-tonina" }
       - { name: "publicado", label: "Visible en el sitio", widget: "boolean", default: true, hint: "Desmarcar mientras se confirma la identificación." }
 
+  - name: "tienda"
+    label: "Yaqutienda"
+    folder: "content/tienda"
+    create: true
+    identifier_field: "nombre"
+    fields:
+      - { name: "nombre", label: "Nombre del artículo", widget: "string" }
+      - { name: "precio", label: "Precio", widget: "number", value_type: "int", hint: "En pesos uruguayos, sin puntos ni símbolo." }
+      - name: "fotos"
+        label: "Fotos"
+        widget: "list"
+        fields:
+          - { name: "src", label: "Foto", widget: "image", hint: "Menos de 2 MB." }
+          - { name: "alt", label: "Descripción de la foto", widget: "string" }
+      - { name: "descripcion", label: "Descripción", widget: "text", required: false }
+      - name: "categoria"
+        label: "Categoría"
+        widget: "select"
+        options: ["Libros", "Indumentaria", "Accesorios", "Otros"]
+      - name: "variantes"
+        label: "Variantes"
+        widget: "list"
+        required: false
+        hint: "Talles, colores. Dejar vacío si el artículo no tiene variantes."
+        fields:
+          - { name: "opcion", label: "Opción", widget: "string" }
+      - { name: "disponible", label: "Disponible", widget: "boolean", default: true, hint: "Desmarcado, sigue visible pero no se puede agregar al carrito." }
+      - { name: "orden", label: "Orden", widget: "number", default: 0 }
+
 # especies, proyectos, publicaciones y catalogo estan en el panel
 # (arriba), pero llevan cifras con intervalo de confianza
 # (especies/proyectos) o un criterio sensible sobre "muerto"
