@@ -34,8 +34,11 @@ export default function Page({ params: { locale } }) {
             : pagina.titulo
         }
       />
-      {/* El arbol interactivo (Bloque 6) todavia no esta implementado -
-          requiere revision biologica antes de publicarse. */}
+      {/* components/GuiaIdentificacion.js esta construido y probado
+          (docs/panel-completo.md Bloque 6), pero content/guia-identificacion.json
+          todavia es un placeholder sin revision biologica - ver su
+          campo "_aviso". No se activa en produccion hasta que ese
+          archivo tenga el arbol real revisado por el equipo. */}
       <TodoAviso locale={locale} />
     </Section>
   );

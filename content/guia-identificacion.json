@@ -1,0 +1,33 @@
+{
+  "_aviso": "PENDIENTE DE REVISION BIOLOGICA - docs/panel-completo.md Bloque 6. Solo las dos preguntas estructurales (contexto costa/embarcacion, y soplidos/chorros) vienen dadas explicitamente en el doc. No existe docs/guia-identificacion.md con el arbol completo por especie, y esa logica de identificacion (que distingue cada especie, que es 'plausible' ver desde la costa en Uruguay) requiere criterio biologico que no se puede inventar. Por eso, despues de las dos preguntas de contexto, todas las ramas terminan en 'no identificado' en vez de nombrar una especie. No publicar con contenido real sin que el equipo complete y revise este archivo.",
+  "inicio": "contexto",
+  "nodos": {
+    "contexto": {
+      "pregunta": "¿Desde dónde lo viste?",
+      "opciones": [
+        { "texto": "Desde la costa", "siguiente": "respiracion_costa" },
+        { "texto": "Desde una embarcación", "siguiente": "respiracion_embarcacion" },
+        { "texto": "No sé", "siguiente": "sin_identificar" }
+      ]
+    },
+    "respiracion_costa": {
+      "pregunta": "¿Viste soplidos o chorros al respirar?",
+      "opciones": [
+        { "texto": "Sí", "siguiente": "sin_identificar" },
+        { "texto": "No", "siguiente": "sin_identificar" },
+        { "texto": "No sé", "siguiente": "sin_identificar" }
+      ]
+    },
+    "respiracion_embarcacion": {
+      "pregunta": "¿Viste soplidos o chorros al respirar?",
+      "opciones": [
+        { "texto": "Sí", "siguiente": "sin_identificar" },
+        { "texto": "No", "siguiente": "sin_identificar" },
+        { "texto": "No sé", "siguiente": "sin_identificar" }
+      ]
+    },
+    "sin_identificar": {
+      "resultado": null
+    }
+  }
+}
