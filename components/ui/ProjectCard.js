@@ -23,9 +23,9 @@ export function ProjectCardDestacado({ href, title, description, image, imageAlt
           aria-hidden="true"
         />
         <div className="absolute inset-x-0 bottom-0 p-6">
-          <h3 className="text-2xl font-semibold text-white sm:text-3xl">
+          <h2 className="text-2xl font-semibold text-white sm:text-3xl">
             {title}
-          </h3>
+          </h2>
           {description && (
             <p className="mt-2 max-w-2xl text-mar-100">{description}</p>
           )}

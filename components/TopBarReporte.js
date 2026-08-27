@@ -23,14 +23,14 @@ export default function TopBarReporte({ locale = "es" }) {
         <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 py-1.5 text-xs sm:text-sm">
           <a
             href={`/${locale}/colabora/reportar-avistamiento`}
-            className={`inline-flex items-center gap-1.5 rounded-full bg-marca px-3 py-1 font-medium text-white hover:bg-marca-oscuro ${FOCUS_RING}`}
+            className={`inline-flex items-center gap-1.5 rounded-full bg-marca-oscuro px-3 py-1 font-medium text-white hover:bg-mar-900 ${FOCUS_RING}`}
           >
             <EyeIcon className="h-4 w-4" aria-hidden="true" />
             {dict.common.reportarAvistamiento}
           </a>
           <a
             href={WHATSAPP_VARAMIENTOS}
-            className={`inline-flex items-center gap-1.5 rounded-full bg-acento-medusa px-3 py-1 font-medium text-mar-900 hover:bg-acento-medusa/80 ${FOCUS_RING}`}
+            className={`inline-flex items-center gap-1.5 rounded-full bg-acento-medusa px-3 py-1 font-medium text-texto hover:bg-acento-medusa/80 ${FOCUS_RING}`}
           >
             <ExclamationTriangleIcon className="h-4 w-4" aria-hidden="true" />
             {dict.common.reportarVaramiento}
