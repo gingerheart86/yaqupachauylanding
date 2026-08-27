@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section } from "../../../../../components/ui";
 import { getLibro, getLibros } from "../../../../../lib/libros";
+import { getIndividuoPorCodigo } from "../../../../../lib/catalogo";
 import { alternatesPara } from "../../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -26,6 +27,7 @@ const FOCUS_RING =
 export default function Page({ params: { slug } }) {
   const libro = getLibro(slug);
   if (!libro) notFound();
+  const individuo = libro.catalogo ? getIndividuoPorCodigo(libro.catalogo) : null;
 
   return (
     <Section fondo="claro">
@@ -71,10 +73,10 @@ export default function Page({ params: { slug } }) {
             </div>
           </dl>
 
-          {libro.catalogo && (
+          {individuo && (
             <p className="mt-4">
               <Link
-                href={`/es/investigacion/toninas/catalogo/${libro.catalogo}`}
+                href={`/es/investigacion/${individuo.proyecto}/catalogo/${individuo.slug}`}
                 className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
               >
                 Conocé a {libro.catalogo} en el catálogo de individuos →

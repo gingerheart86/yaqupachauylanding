@@ -55,8 +55,8 @@ export default function Page({ params: { locale, proyecto } }) {
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {individuos.map((ind) => (
           <Link
-            key={ind.codigo}
-            href={`/${locale}/investigacion/${proyecto}/catalogo/${ind.codigo}`}
+            key={ind.slug}
+            href={`/${locale}/investigacion/${proyecto}/catalogo/${ind.slug}`}
             className={`block overflow-hidden rounded-lg border-[0.5px] border-marca-grafito/20 ${FOCUS_RING}`}
           >
             <div className="relative aspect-[4/3] w-full bg-costa-100">

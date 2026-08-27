@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section, PageHeader } from "../../../../../../components/ui";
-import { getIndividuo, getCodigosDeProyecto } from "../../../../../../lib/catalogo";
+import { getIndividuo, getSlugsDeProyecto } from "../../../../../../lib/catalogo";
 import { PROYECTOS_CON_CATALOGO } from "../../../../../../lib/proyectos-catalogo";
 import { alternatesPara } from "../../../../../../lib/i18n";
 import { fechaLegible } from "../../../../../../lib/noticias";
@@ -11,7 +11,7 @@ import { fechaLegible } from "../../../../../../lib/noticias";
 // grilla en la ruta padre.
 export async function generateStaticParams() {
   return Object.keys(PROYECTOS_CON_CATALOGO).flatMap((proyecto) =>
-    getCodigosDeProyecto(proyecto).flatMap((codigo) => [
+    getSlugsDeProyecto(proyecto).flatMap((codigo) => [
       { locale: "es", proyecto, codigo },
       { locale: "en", proyecto, codigo },
     ])

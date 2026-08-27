@@ -241,7 +241,7 @@ collections:
       - { name: "guion", label: "Guion", widget: "string", default: "Silvia Soler" }
       - { name: "ilustraciones", label: "Ilustraciones", widget: "string", default: "Yez" }
       - { name: "editorial", label: "Editorial", widget: "string", default: "Krakatoa" }
-      - { name: "catalogo", label: "Individuo del catálogo", widget: "string", required: false, hint: "Código si el protagonista es un individuo real. Ej: TT-014" }
+      - { name: "catalogo", label: "Individuo del catálogo", widget: "string", required: false, hint: "Código si el protagonista es un individuo real. Ej: URU#001" }
       - { name: "disponible", label: "Disponible para la venta", widget: "boolean", default: true }
 
   - name: "catalogo"
@@ -249,10 +249,11 @@ collections:
     folder: "content/catalogo"
     create: true
     identifier_field: "nombre"
-    slug: "{{codigo}}"
+    slug: "{{fields.codigo}}-{{fields.nombre}}"
     fields:
-      - { name: "codigo", label: "Código de catálogo", widget: "string", hint: "Ej: TT-014" }
+      - { name: "codigo", label: "Código de catálogo", widget: "string", hint: "Ej: URU#001. El '#' no se puede usar en la URL - el nombre del archivo lo reemplaza automáticamente por un guion." }
       - { name: "nombre", label: "Nombre", widget: "string" }
+      - { name: "lugar", label: "Lugar de identificación", widget: "string", hint: "Ej: La Coronilla, Rocha - Uruguay" }
       - name: "proyecto"
         label: "Proyecto"
         widget: "select"
@@ -271,7 +272,9 @@ collections:
         fields:
           - { name: "src", label: "Foto", widget: "image", hint: "Máximo 800 px, con marca de agua." }
           - { name: "vista", label: "Qué se ve", widget: "string", hint: "Ej: aleta dorsal, lado izquierdo." }
+      - { name: "stamp", label: "Estampilla", widget: "image", required: false, hint: "Ilustración de la aleta en línea, fondo transparente." }
       - { name: "descripcion", label: "Descripción", widget: "text", required: false }
+      - { name: "historia", label: "Historia", widget: "markdown", required: false, hint: "El relato del individuo. Se muestra al abrir la ficha." }
       - { name: "primer_avistamiento", label: "Primer avistamiento", widget: "datetime", format: "YYYY-MM-DD", hint: "Fecha del primer registro del animal, no del alta en el catálogo." }
       - { name: "ultimo_avistamiento", label: "Último avistamiento", widget: "datetime", format: "YYYY-MM-DD", required: false, hint: "Provisorio: se actualiza por temporada hasta que exista el enlace con la capa de ArcGIS." }
       - name: "sexo"
