@@ -1,5 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { PaginaEspecie } from "../../../../components/ui";
+import { BloqueDescubrimiento } from "../../../../components/catalogo/BloqueDescubrimiento";
 import { alternatesPara } from "../../../../lib/i18n";
 import { getContenidoEspecie } from "../../../../lib/contenido-especies";
 import { getMdxComponents } from "../../../../lib/mdx-components";
@@ -54,6 +55,7 @@ export default function Page({ params: { locale } }) {
       <div className="prose max-w-none text-texto [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-mar-800 [&_h2]:mt-8 [&_p]:text-base [&_p]:leading-8 [&_p+p]:mt-8">
         <MDXRemote source={cuerpo} components={getMdxComponents(locale)} />
       </div>
+      <BloqueDescubrimiento proyecto="toninas" locale={locale} />
     </PaginaEspecie>
   );
 }

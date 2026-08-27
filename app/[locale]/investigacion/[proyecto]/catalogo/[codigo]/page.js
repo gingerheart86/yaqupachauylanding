@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section, PageHeader } from "../../../../../../components/ui";
 import { getIndividuo, getSlugsDeProyecto } from "../../../../../../lib/catalogo";
+import { getLibroPorCodigoCatalogo } from "../../../../../../lib/libros";
 import { PROYECTOS_CON_CATALOGO } from "../../../../../../lib/proyectos-catalogo";
 import { alternatesPara } from "../../../../../../lib/i18n";
 import { fechaLegible } from "../../../../../../lib/noticias";
@@ -34,6 +35,7 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
   const individuo = getIndividuo(proyecto, codigo);
   if (!info || !individuo) notFound();
   const esIngles = locale === "en";
+  const libro = individuo.codigo ? getLibroPorCodigoCatalogo(individuo.codigo) : null;
 
   return (
     <Section fondo="claro">
@@ -48,12 +50,23 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
 
       <PageHeader title={individuo.nombre} description={individuo.codigo} />
 
-      {individuo.muerto && (
-        <p className="mt-4 text-center">
-          <span className="inline-block rounded-full bg-acento-medusa/20 px-3 py-1 text-sm font-semibold text-mar-800">
+      <p className="mt-4 flex flex-wrap justify-center gap-2">
+        {individuo.lugar && (
+          <span className="rounded-full bg-costa-100 px-3 py-1 text-sm text-marca-oscuro">
+            {individuo.lugar}
+          </span>
+        )}
+        {individuo.muerto && (
+          <span className="inline-block rounded-full bg-acento-medusa px-3 py-1 text-sm font-semibold text-mar-900">
             {esIngles ? "Recorded dead" : "Registrado muerto"}
           </span>
-        </p>
+        )}
+      </p>
+
+      {individuo.stamp && (
+        <div className="relative mx-auto mt-6 h-28 w-28">
+          <Image src={individuo.stamp} alt="" aria-hidden="true" fill className="object-contain" sizes="112px" />
+        </div>
       )}
 
       {individuo.fotos.length > 0 && (
@@ -82,7 +95,19 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
       )}
 
       <div className="mt-8 max-w-2xl mx-auto space-y-4 text-texto">
-        {individuo.descripcion && <p>{individuo.descripcion}</p>}
+        {individuo.historia ? (
+          <div className="space-y-3">
+            {individuo.historia
+              .split(/\n\s*\n/)
+              .map((p) => p.trim())
+              .filter(Boolean)
+              .map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+          </div>
+        ) : (
+          individuo.descripcion && <p>{individuo.descripcion}</p>
+        )}
 
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
           {individuo.sexo && (
@@ -109,12 +134,14 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
           )}
         </dl>
 
-        {individuo.libro && (
-          // El enlace se activa cuando exista /educacion/libros/[slug] -
-          // esa pagina individual todavia no existe (Bloque 5 solo
-          // preparaba el campo). Mientras tanto se muestra como texto.
-          <p className="text-sm text-marca-grafito">
-            {esIngles ? "Appears in the book" : "Aparece en el libro"}: {individuo.libro}
+        {libro && (
+          <p className="text-sm">
+            <Link
+              href={`/es/educacion/libros/${libro.slug}`}
+              className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+            >
+              {esIngles ? "Also stars in a book" : "También es protagonista de un libro"} →
+            </Link>
           </p>
         )}
       </div>
