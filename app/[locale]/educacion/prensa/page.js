@@ -1,4 +1,12 @@
+import Image from "next/image";
+import {
+  NewspaperIcon,
+  VideoCameraIcon,
+  MicrophoneIcon,
+  Bars3BottomLeftIcon,
+} from "@heroicons/react/24/outline";
 import { Section, PageHeader } from "../../../../components/ui";
+import { getPrensa } from "../../../../lib/prensa";
 import { alternatesPara } from "../../../../lib/i18n";
 
 // Solo espanol - seccion 3 del doc de fase 3 bloque 1.
@@ -14,112 +22,176 @@ export const metadata = {
   alternates: alternatesPara("educacion/prensa", { soloEs: true }),
 };
 
-export default function Home() {
+const FOCUS_RING =
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
+
+// Miniatura generica por tipo cuando no hay imagen cargada - nunca un
+// hueco vacio. docs/correcciones-revision-local.md punto 4.
+const ICONO_POR_TIPO = {
+  Nota: NewspaperIcon,
+  Video: VideoCameraIcon,
+  Radio: MicrophoneIcon,
+  Podcast: MicrophoneIcon,
+  Otro: Bars3BottomLeftIcon,
+};
+
+function MiniaturaGenerica({ tipo }) {
+  const Icono = ICONO_POR_TIPO[tipo] ?? Bars3BottomLeftIcon;
+  return (
+    <div className="flex h-full w-full items-center justify-center bg-costa-100">
+      <Icono className="h-10 w-10 text-marca-grafito/50" aria-hidden="true" />
+    </div>
+  );
+}
+
+function fechaLegibleCorta(entrada) {
+  if (!entrada.fecha) return null;
+  const m = /^(\d{4})-(\d{2})-XX$/.exec(entrada.fecha);
+  const MESES = [
+    "ene", "feb", "mar", "abr", "may", "jun",
+    "jul", "ago", "sep", "oct", "nov", "dic",
+  ];
+  if (m) return `${MESES[Number(m[2]) - 1]}. ${m[1]}`;
+  if (/^\d{4}$/.test(entrada.fecha)) return entrada.fecha;
+  const d = new Date(entrada.fecha);
+  if (isNaN(d)) return entrada.fecha;
+  return new Intl.DateTimeFormat("es-UY", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }).format(d);
+}
+
+function urlFiltro({ anio, tipo }) {
+  const params = new URLSearchParams();
+  if (anio) params.set("anio", anio);
+  if (tipo) params.set("tipo", tipo);
+  const qs = params.toString();
+  return `/es/educacion/prensa${qs ? `?${qs}` : ""}`;
+}
+
+export default function Page({ searchParams }) {
+  const anioFiltro = searchParams?.anio || null;
+  const tipoFiltro = searchParams?.tipo || null;
+
+  let entradas = getPrensa();
+  if (anioFiltro) entradas = entradas.filter((e) => e.anio === anioFiltro || (anioFiltro === "sin-fecha" && !e.anio));
+  if (tipoFiltro) entradas = entradas.filter((e) => e.tipo === tipoFiltro);
+
+  const todos = getPrensa();
+  const todosLosAnios = [...new Set(todos.map((e) => e.anio).filter(Boolean))].sort((a, b) => b - a);
+  const hayNoFechadas = todos.some((e) => !e.anio);
+  const todosLosTipos = [...new Set(todos.map((e) => e.tipo))].sort();
+
+  const porAnio = new Map();
+  for (const entrada of entradas) {
+    const clave = entrada.anio || "sin-fecha";
+    if (!porAnio.has(clave)) porAnio.set(clave, []);
+    porAnio.get(clave).push(entrada);
+  }
+  const claves = [...porAnio.keys()].sort((a, b) => {
+    if (a === "sin-fecha") return 1;
+    if (b === "sin-fecha") return -1;
+    return b - a;
+  });
+
   return (
     <Section fondo="claro">
-      <PageHeader title="Artículos de prensa" />
-      <div className="prose max-w-none prose-base sm:prose-lg mx-auto mt-6 text-texto overflow-x-auto [&_a]:text-marca-oscuro [&_a]:no-underline hover:[&_a]:underline">
-        <ul role="list">
-            <li>
-              <a href="https://ladiaria.com.uy/ciencia/articulo/2022/1/hallazgos-sobre-el-clitoris-de-las-toninas-dan-indicios-de-la-evolucion-del-placer-sexual-en-los-animales/">
-                https://ladiaria.com.uy/ciencia/articulo/2022/1/hallazgos-sobre-el-clitoris-de-las-toninas-dan-indicios-de-la-evolucion-del-placer-sexual-en-los-animales/
-              </a>
-            </li>
-            <li>
-              <a href="https://ladiaria.com.uy/ciencia/articulo/2018/12/nuestras-toninas-ampliaron-el-rango-de-frecuencia-de-los-silbidos-que-utilizan-para-comunicarse/">
-                https://ladiaria.com.uy/ciencia/articulo/2018/12/nuestras-toninas-ampliaron-el-rango-de-frecuencia-de-los-silbidos-que-utilizan-para-comunicarse/
-              </a>
-            </li>
-            <li>
-              <a href="https://ladiaria.com.uy/ciencia/articulo/2021/7/cambio-de-dieta-de-nuestras-toninas-refleja-su-alejamiento-del-rio-de-la-plata-desde-la-decada-de-1990/">
-                https://ladiaria.com.uy/ciencia/articulo/2021/7/cambio-de-dieta-de-nuestras-toninas-refleja-su-alejamiento-del-rio-de-la-plata-desde-la-decada-de-1990/
-              </a>
-            </li>
-            <li>
-              <a href="https://www.montevideo.com.uy/Ciencia-y-Tecnologia/Toninas-pueden-llegar-a-vivir-en-promedio-entre-40-y-50-anos-uc785686">
-                {" "}
-                https://www.montevideo.com.uy/Ciencia-y-Tecnologia/Toninas-pueden-llegar-a-vivir-en-promedio-entre-40-y-50-anos-uc785686
-              </a>
-            </li>
-            <li>
-              <a href="https://www.elpais.com.uy/vida-actual/munoncito-muesca-grande-opuesta-historia-detras-toninas-residentes.html">
-                https://www.elpais.com.uy/vida-actual/munoncito-muesca-grande-opuesta-historia-detras-toninas-residentes.html
-              </a>{" "}
-            </li>
-            <li>
-              <a href="https://www.youtube.com/watch?v=h3YgkqffZts">
-                https://www.youtube.com/watch?v=h3YgkqffZts
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/tvciudaduy/status/1243314936870248448">
-                https://twitter.com/tvciudaduy/status/1243314936870248448
-              </a>
-            </li>
-            <li>
-              <a href="http://dx.doi.org/10.5597/lajam00214">
-                Latin American Journal of Aquatic Mammals
-              </a>{" "}
-            </li>
-            <li>
-              <a href="https://5dedos.com.uy/capacitacion-sobre-turismo-de-avistamiento-de-toninas-y-cetaceos/">
-                https://5dedos.com.uy/capacitacion-sobre-turismo-de-avistamiento-de-toninas-y-cetaceos/
-              </a>{" "}
-            </li>
-            <li>
-              <a href=" http://dx.doi.org/10.5597/lajam00216">
-                http://dx.doi.org/10.5597/lajam00216"
-              </a>
-            </li>
-            <li>
-              <a href="https://todociencia.com.ar/de-lobos-y-toninas-uruguayas/">
-                https://todociencia.com.ar/de-lobos-y-toninas-uruguayas/
-              </a>{" "}
-            </li>
-          </ul>
-          <h2 className="text-2xl font-semibold text-mar-800">Divulgación</h2>
-          <ul role="list">
-            <li>
-              Laporta, P., Menchaca, C. y Laporta C. 2016. Ficha zoológica
-              Tursiops truncatus (Cetacea: Delphinidae). Noticias de la Sociedad
-              Zoológica del Uruguay 9(31):29-33.
-            </li>
-            <li>
-              Laporta, P. Menchaca, C. y Laporta C. 2016. Investigación y
-              conservación de toninas Tursiops truncatus en Uruguay. Almanaque
-              del Banco de Seguros del Estado 2016.
-            </li>
-            <li>
-              Colaboración en la elaboración, fotografía y financiamiento del
-              libro “En la Orilla. Secretos nunca contados de animales de la
-              costa uruguaya”. Anita Aisenberg, Silvia Soler y Sebastián
-              Pantana. Editoriales Banda Oriental y + Cerca. 2015.
-            </li>
-            <li>
-              Viaje a Cerro Verde e Islas de La Coronilla. ¡Delfín a la vista!
-              Artículo de divulgación en la Revista La Mochila. N°184. Setiembre
-              2015. Banda Oriental (Ed).Setiembre 2015. Colaboradora.
-            </li>
-            <li>
-              Vélez, G. y Laporta P. 2015. Guía del visitante del área protegida
-              de Cerro Verde e Islas de La Coronilla. Karumbé, Yaqu-pacha
-              Uruguay y SNAP/DINAMA/MVOTMA. Formato digital.
-            </li>
-            <li>
-              Laporta, P. 2010. El delfin nariz de botella. En Áreas protegidas
-              del Uruguay. El País #4Julio 2010. P. 10.
-            </li>
-            <li>
-              Autora colaboradora del artículo de divulgación. Arenas: educación
-              ambiental en ecosistemas costeros. GEO Uruguay: Informe del estado
-              del ambiente. 2008. Capítulo 3. Zona costera. P.126.
-            </li>
-            <li>
-              Laporta, P. Trimble, M. y Zamisch, V. 2006. “Toninas. ¿Hay
-              delfines en Uruguay? ¿Existe una población de toninas uruguayas?
-              ¿Las toninas son delfines? Revista Uruguay Natural. P. 34-35.
-            </li>
-          </ul>
+      <PageHeader title="Prensa y divulgación" />
+
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-marca-grafito">Año:</span>
+          <a
+            href={urlFiltro({ tipo: tipoFiltro })}
+            className={`rounded-full px-3 py-1 ${FOCUS_RING} ${!anioFiltro ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
+          >
+            Todos
+          </a>
+          {todosLosAnios.map((a) => (
+            <a
+              key={a}
+              href={urlFiltro({ anio: a, tipo: tipoFiltro })}
+              className={`rounded-full px-3 py-1 ${FOCUS_RING} ${anioFiltro === a ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
+            >
+              {a}
+            </a>
+          ))}
+          {hayNoFechadas && (
+            <a
+              href={urlFiltro({ anio: "sin-fecha", tipo: tipoFiltro })}
+              className={`rounded-full px-3 py-1 ${FOCUS_RING} ${anioFiltro === "sin-fecha" ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
+            >
+              Sin fecha
+            </a>
+          )}
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-marca-grafito">Tipo:</span>
+          <a
+            href={urlFiltro({ anio: anioFiltro })}
+            className={`rounded-full px-3 py-1 ${FOCUS_RING} ${!tipoFiltro ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
+          >
+            Todos
+          </a>
+          {todosLosTipos.map((t) => (
+            <a
+              key={t}
+              href={urlFiltro({ anio: anioFiltro, tipo: t })}
+              className={`rounded-full px-3 py-1 ${FOCUS_RING} ${tipoFiltro === t ? "bg-marca-oscuro text-white" : "bg-costa-100 text-marca-oscuro hover:bg-costa-300"}`}
+            >
+              {t}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {entradas.length === 0 && (
+        <p className="mt-8 text-center text-texto">No hay entradas que coincidan con este filtro.</p>
+      )}
+
+      <div className="mt-10 max-w-4xl mx-auto space-y-10">
+        {claves.map((clave) => (
+          <div key={clave}>
+            <h2 className="text-xl font-semibold text-mar-800 border-b border-marca-grafito/20 pb-2">
+              {clave === "sin-fecha" ? "Sin fecha confirmada" : clave}
+            </h2>
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {porAnio.get(clave).map((entrada) => {
+                const Envoltorio = entrada.url ? "a" : "div";
+                return (
+                  <Envoltorio
+                    key={entrada.slug}
+                    {...(entrada.url ? { href: entrada.url, target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className={`flex gap-4 rounded-lg border-[0.5px] border-marca-grafito/20 p-3 ${entrada.url ? `hover:bg-costa-100 ${FOCUS_RING}` : ""}`}
+                  >
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-md">
+                      {entrada.miniatura ? (
+                        <Image
+                          src={entrada.miniatura}
+                          alt={entrada.alt || entrada.titulo}
+                          fill
+                          className="object-cover"
+                          sizes="80px"
+                        />
+                      ) : (
+                        <MiniaturaGenerica tipo={entrada.tipo} />
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-xs font-semibold uppercase tracking-wide text-marca-oscuro">
+                        {entrada.tipo}
+                      </p>
+                      <h3 className="mt-0.5 font-semibold text-mar-800 line-clamp-2">
+                        {entrada.titulo}
+                      </h3>
+                      <p className="mt-1 text-sm text-marca-grafito">
+                        {entrada.medio}
+                        {fechaLegibleCorta(entrada) && <> · {fechaLegibleCorta(entrada)}</>}
+                      </p>
+                    </div>
+                  </Envoltorio>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
     </Section>
   );

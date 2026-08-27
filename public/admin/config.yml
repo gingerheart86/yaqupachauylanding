@@ -211,6 +211,24 @@ collections:
       - { name: "activa", label: "Activa en el equipo", widget: "boolean", default: true, hint: "Desmarcada, desaparece de la grilla pero la ficha se conserva." }
       - { name: "orden", label: "Orden", widget: "number", default: 0 }
 
+  - name: "prensa"
+    label: "Prensa y divulgación"
+    folder: "content/prensa"
+    create: true
+    identifier_field: "titulo"
+    fields:
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "medio", label: "Medio", widget: "string", hint: "Ej: la diaria, Canal 5, Radio Uruguay." }
+      - { name: "fecha", label: "Fecha", widget: "datetime", format: "YYYY-MM-DD", required: false, hint: "Dejar vacío si no se conoce. Si se sabe el mes pero no el día, usar AAAA-MM-XX." }
+      - name: "tipo"
+        label: "Tipo"
+        widget: "select"
+        options: ["Nota", "Video", "Radio", "Podcast", "Otro"]
+      - { name: "url", label: "Enlace", widget: "string", required: false, hint: "Vacío para citas de material impreso sin versión digital." }
+      - { name: "miniatura", label: "Miniatura", widget: "image", required: false }
+      - { name: "alt", label: "Descripción de la miniatura", widget: "string", required: false }
+      - { name: "resumen", label: "Resumen", widget: "text", required: false }
+
   - name: "libros"
     label: "Libros"
     folder: "content/libros"
