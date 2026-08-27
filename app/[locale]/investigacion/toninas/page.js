@@ -1,10 +1,24 @@
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Gallery from "../../../../components/imagegallery";
+import { Carrusel } from "../../../../components/mdx/Carrusel";
 import { Section, PageHeader, Garabato } from "../../../../components/ui";
 import { alternatesPara } from "../../../../lib/i18n";
 import { getContenidoProyecto } from "../../../../lib/contenido-proyectos";
 import { getMdxComponents } from "../../../../lib/mdx-components";
+
+// Mismas 8 fotos que tenia components/imagegallery.js (react-image-gallery,
+// sin alto fijo - saltaba de layout al cambiar de imagen). docs/correcciones-revision-local.md
+// punto 2.
+const FOTOS_GALERIA = [
+  { src: "/proytoninas/5.webp", alt: "Foto del Proyecto Toninas" },
+  { src: "/proytoninas/1.webp", alt: "Foto del Proyecto Toninas" },
+  { src: "/proytoninas/2.webp", alt: "Foto del Proyecto Toninas" },
+  { src: "/proytoninas/3.webp", alt: "Foto del Proyecto Toninas" },
+  { src: "/proytoninas/4.webp", alt: "Foto del Proyecto Toninas" },
+  { src: "/toninas/4.webp", alt: "Tonina en la costa uruguaya" },
+  { src: "/toninas/5.webp", alt: "Tonina en la costa uruguaya" },
+  { src: "/toninas/6.webp", alt: "Tonina en la costa uruguaya" },
+];
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -58,7 +72,7 @@ export default function Home({ params: { locale } }) {
         {esIngles ? "Photo gallery" : "Galería de fotos"}
       </h2>
       <div className="max-w-5xl w-full mx-auto">
-        <Gallery />
+        <Carrusel imagenes={FOTOS_GALERIA} />
       </div>
     </Section>
   );
