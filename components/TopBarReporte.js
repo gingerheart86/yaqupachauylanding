@@ -1,4 +1,4 @@
-import { EyeIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
+import { EyeIcon, ExclamationTriangleIcon, MapIcon } from "@heroicons/react/24/outline";
 import { getDictionary } from "../lib/i18n";
 import { WHATSAPP_VARAMIENTOS } from "../lib/contacto";
 
@@ -9,7 +9,13 @@ const FOCUS_RING =
 // portada) - seccion 3 de docs/fase3-navegacion-portada.md. Dos
 // urgencias distintas, dos colores distintos: un avistamiento se
 // reporta con calma (marca/cian), un varamiento requiere respuesta
-// inmediata (acento.medusa, tono de alerta).
+// inmediata (acento.medusa, tono de alerta). El mapa es una consulta
+// frecuente, no una urgencia, por eso va en tono neutro.
+//
+// Tres botones, no cuatro - docs/correcciones-revision-local.md punto
+// 7: "con cuatro llamados a la accion se anulan entre si". "Sumate
+// como voluntaria" no es una urgencia ni una consulta frecuente, va
+// en el menu Colabora en vez de esta barra.
 //
 // Sin telefono suelto en la barra (docs/fase2-correcciones.md punto
 // 3). El numero sigue visible como texto en BloqueReporte (pie de
@@ -34,6 +40,13 @@ export default function TopBarReporte({ locale = "es" }) {
           >
             <ExclamationTriangleIcon className="h-4 w-4" aria-hidden="true" />
             {dict.common.reportarVaramiento}
+          </a>
+          <a
+            href={`/${locale}/avistamientos`}
+            className={`inline-flex items-center gap-1.5 rounded-full border border-white/30 bg-white/10 px-3 py-1 font-medium text-white hover:bg-white/20 ${FOCUS_RING}`}
+          >
+            <MapIcon className="h-4 w-4" aria-hidden="true" />
+            {dict.common.mapaAvistamientos}
           </a>
         </div>
       </div>

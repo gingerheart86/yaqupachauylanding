@@ -1,6 +1,7 @@
 import { Section, PageHeader, Garabato } from "../../../components/ui";
-import TodoAviso from "../../../components/TodoAviso";
+import MapaAvistamientos from "../../../components/MapaAvistamientos";
 import { alternatesPara } from "../../../lib/i18n";
+import { ARCGIS_WEBMAP_URL } from "../../../lib/contacto";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -34,7 +35,43 @@ export default function Page({ params: { locale } }) {
         className="absolute right-0 top-0 hidden sm:block"
       />
       <PageHeader title={locale === "en" ? "Sightings" : "Avistamientos"} />
-      <TodoAviso locale={locale} />
+
+      <div className="mx-auto mt-4 max-w-3xl text-center text-texto">
+        <p>
+          {locale === "en"
+            ? "This map combines the citizen-science sightings reported through our survey with our own field records."
+            : "Este mapa combina los avistamientos reportados por ciencia ciudadana a través de nuestro formulario con nuestros propios registros de campo."}
+        </p>
+        <p className="mt-1">
+          {locale === "en" ? (
+            <>
+              Spotted a tonina or other cetacean?{" "}
+              <a
+                href={`/${locale}/colabora/reportar-avistamiento`}
+                className="font-medium text-marca-oscuro underline hover:text-mar-900"
+              >
+                Report it here
+              </a>
+              .
+            </>
+          ) : (
+            <>
+              ¿Viste una tonina u otro cetáceo?{" "}
+              <a
+                href={`/${locale}/colabora/reportar-avistamiento`}
+                className="font-medium text-marca-oscuro underline hover:text-mar-900"
+              >
+                Reportalo acá
+              </a>
+              .
+            </>
+          )}
+        </p>
+      </div>
+
+      <div className="mx-auto mt-8 max-w-4xl">
+        <MapaAvistamientos url={ARCGIS_WEBMAP_URL} locale={locale} />
+      </div>
     </Section>
   );
 }

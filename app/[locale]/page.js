@@ -74,12 +74,12 @@ export default function Home({ params: { locale } }) {
             imageAlt={esIngles ? "A tonina off the Uruguayan coast" : "Tonina en la costa uruguaya"}
           />
           <ProjectCardDestacado
-            href={`/${locale}/colabora/contacto`}
-            title={esIngles ? "Volunteer with us" : "Sumate como voluntaria"}
+            href={`/${locale}/avistamientos`}
+            title={esIngles ? "Explore the sightings map" : "Accedé al mapa de avistamientos"}
             description={
               esIngles
-                ? "Collaborate with Yaqu Pacha Uruguay in fieldwork, environmental education and outreach."
-                : "Colaborá con Yaqu Pacha Uruguay en el trabajo de campo, la educación ambiental y la divulgación."
+                ? "See where toninas and other cetaceans have been spotted along the coast, reported by the community and by our own team."
+                : "Mirá dónde se avistaron toninas y otros cetáceos en la costa, reportados por la comunidad y por nuestro propio equipo."
             }
             image="/gomon.webp"
             imageAlt={esIngles ? "The Uruguayan coast" : "Costa uruguaya"}
