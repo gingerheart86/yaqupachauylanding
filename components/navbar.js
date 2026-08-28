@@ -80,6 +80,7 @@ const NAV = [
     children: [
       { key: "contacto", slug: "colabora/contacto", bilingue: true },
       { key: "donaciones", slug: "colabora/donaciones", bilingue: false },
+      { key: "voluntariado", slug: "colabora/voluntariado", bilingue: true },
     ],
   },
   {

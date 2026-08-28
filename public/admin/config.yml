@@ -92,6 +92,29 @@ collections:
           - { name: "titulo", label: "Título", widget: "string" }
           - { name: "intro", label: "Introducción", widget: "text" }
 
+      - name: "voluntariado"
+        label: "Colaborá — Voluntariado"
+        file: "content/paginas/voluntariado.mdx"
+        fields:
+          - { name: "titulo", label: "Título", widget: "string" }
+          - { name: "intro", label: "Introducción", widget: "markdown", hint: "Qué implica ser voluntaria, qué se espera, épocas del año." }
+          - name: "campos"
+            label: "Campos del formulario"
+            widget: "list"
+            required: false
+            hint: "Vacío mientras el equipo confirma los campos reales (ver el formulario actual). Con la lista vacía, la página muestra el enlace al formulario de Google en su lugar."
+            fields:
+              - { name: "nombre", label: "Nombre del campo", widget: "string", hint: "Ej: telefono. Sin espacios ni acentos." }
+              - { name: "etiqueta", label: "Etiqueta visible", widget: "string" }
+              - name: "tipo"
+                label: "Tipo"
+                widget: "select"
+                options: ["texto", "texto largo", "email", "teléfono", "selección", "casilla"]
+              - { name: "opciones", label: "Opciones", widget: "text", required: false, hint: "Solo para 'selección'. Una por línea." }
+              - { name: "obligatorio", label: "Obligatorio", widget: "boolean", default: false }
+          - { name: "mensaje_exito", label: "Mensaje al enviar", widget: "text" }
+          - { name: "aviso_datos", label: "Aviso sobre los datos", widget: "text", hint: "Qué se hace con la información que deja la persona." }
+
   - name: "noticias"
     label: "Noticias"
     folder: "content/noticias"
