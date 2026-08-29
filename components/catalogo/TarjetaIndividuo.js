@@ -10,11 +10,14 @@ import {
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
 
-// Figurita de catalogo: frente (foto de aleta) -> gira -> dorso
-// (estampilla, codigo, nombre, lugar) -> clic en el nombre abre el
-// modal con la historia. docs/catalogo-figuritas-y-voluntariado.md
-// Bloque A. Giro 3D real (rotateY + perspective), no un cambio
-// brusco, con teclado (Enter/Espacio) y el foco en la cara visible.
+// Figurita de catalogo: frente (foto de aleta, codigo superpuesto) ->
+// gira -> dorso (estampilla, codigo, nombre, lugar, boton "Ver
+// historia") -> el boton "Ver historia" abre el modal/hoja con el
+// relato completo. docs/catalogo-figuritas-y-voluntariado.md Bloque A
+// y su ajuste posterior de accesibilidad: la tarjeta en si no dispara
+// ninguna accion (alguien haciendo scroll en mobile no la gira sin
+// querer), solo los dos botones lo hacen, y ambos miden al menos
+// 44x44px. El nombre ya no es un boton - no se entendia que lo era.
 export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
   const [girada, setGirada] = useState(false);
   const btnFrenteRef = useRef(null);
@@ -43,7 +46,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
   return (
     <div className="relative">
       {individuo.muerto && (
-        <span className="absolute -top-2 -right-2 z-10 rounded-full bg-acento-medusa px-2 py-0.5 text-xs font-semibold text-mar-900 shadow">
+        <span className="absolute -top-2 -left-2 z-20 rounded-full bg-acento-medusa px-2 py-0.5 text-xs font-semibold text-mar-900 shadow">
           Registrado muerto
         </span>
       )}
@@ -55,7 +58,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
             transform: girada ? "rotateY(180deg)" : "none",
           }}
         >
-          {/* Frente: foto de la aleta */}
+          {/* Frente: foto de la aleta, codigo superpuesto */}
           <div
             className="absolute inset-0 overflow-hidden rounded-xl border-2 border-marca-grafito/20 bg-costa-100"
             style={{ backfaceVisibility: "hidden" }}
@@ -70,6 +73,11 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 sizes="(min-width: 1024px) 20vw, 33vw"
               />
             )}
+            {individuo.codigo && (
+              <span className="absolute right-2 top-2 rounded-md bg-mar-900/75 px-2 py-1 font-mono text-xs font-semibold tracking-wide text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]">
+                {individuo.codigo}
+              </span>
+            )}
             <button
               ref={btnFrenteRef}
               type="button"
@@ -77,19 +85,19 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               onKeyDown={onKeyDownGirar}
               tabIndex={girada ? -1 : 0}
               aria-label={`Girar la figurita de ${individuo.nombre}`}
-              className={`absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
               <ArrowPathIcon className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
 
-          {/* Dorso: estampilla, codigo, nombre, lugar */}
+          {/* Dorso: estampilla, codigo, nombre, lugar, ver historia */}
           <div
             className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-marca-grafito/20 bg-arena-200 p-4 text-center"
             style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
             aria-hidden={!girada}
           >
-            <div className="relative h-24 w-24 shrink-0">
+            <div className="relative h-20 w-20 shrink-0">
               {individuo.stamp && (
                 <Image
                   src={individuo.stamp}
@@ -97,24 +105,26 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                   aria-hidden="true"
                   fill
                   className="object-contain"
-                  sizes="96px"
+                  sizes="80px"
                 />
               )}
             </div>
             <p className="font-mono text-sm tracking-wider text-marca-grafito">
               {individuo.codigo}
             </p>
+            <p className="font-semibold text-mar-800">{individuo.nombre}</p>
+            {individuo.lugar && (
+              <p className="text-xs text-marca-grafito">{individuo.lugar}</p>
+            )}
             <button
               type="button"
               onClick={() => onAbrirHistoria(individuo)}
               tabIndex={girada ? 0 : -1}
-              className={`font-semibold text-mar-800 underline underline-offset-4 hover:text-marca-oscuro ${FOCUS_RING}`}
+              aria-label={`Ver la historia de ${individuo.nombre}`}
+              className={`mt-1 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
             >
-              {individuo.nombre}
+              Ver historia
             </button>
-            {individuo.lugar && (
-              <p className="text-xs text-marca-grafito">{individuo.lugar}</p>
-            )}
             <button
               ref={btnDorsoRef}
               type="button"
@@ -122,7 +132,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               onKeyDown={onKeyDownGirar}
               tabIndex={girada ? 0 : -1}
               aria-label={`Volver al frente de la figurita de ${individuo.nombre}`}
-              className={`absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
               <ArrowUturnLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
