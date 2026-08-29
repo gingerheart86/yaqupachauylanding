@@ -15,7 +15,7 @@ edad: "A partir de 6 años"
 guion: "Silvia Soler"
 ilustraciones: "Yez"
 editorial: "Krakatoa"
-catalogo: "TT-014"
+catalogo: "URU#001"
 disponible: true
 ---
 ```
