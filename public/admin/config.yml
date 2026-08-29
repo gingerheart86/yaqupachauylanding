@@ -222,6 +222,11 @@ collections:
     identifier_field: "nombre"
     fields:
       - { name: "nombre", label: "Nombre", widget: "string" }
+      - name: "grupo"
+        label: "Grupo"
+        widget: "select"
+        options: ["Equipo científico y dirección", "Equipo artístico"]
+        default: "Equipo científico y dirección"
       - { name: "rol", label: "Rol", widget: "string", required: false }
       - { name: "foto", label: "Foto", widget: "image", hint: "Cuadrada si es posible, menos de 2 MB." }
       - { name: "alt", label: "Descripción de la foto", widget: "string", required: false }

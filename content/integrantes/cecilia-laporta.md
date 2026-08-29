@@ -1,5 +1,6 @@
 ---
 nombre: "Cecilia Laporta"
+grupo: "Equipo científico y dirección"
 rol: ""
 foto: /checho.webp
 alt:

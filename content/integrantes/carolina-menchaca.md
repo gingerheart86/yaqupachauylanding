@@ -1,5 +1,6 @@
 ---
 nombre: "Carolina Menchaca"
+grupo: "Equipo científico y dirección"
 rol: ""
 foto: /caro.webp
 alt:

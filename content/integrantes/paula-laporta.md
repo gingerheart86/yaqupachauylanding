@@ -1,5 +1,6 @@
 ---
 nombre: "Paula Laporta"
+grupo: "Equipo científico y dirección"
 rol: ""
 foto: /Paula.webp
 alt:
