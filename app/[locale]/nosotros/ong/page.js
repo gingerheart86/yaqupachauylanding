@@ -20,7 +20,7 @@ export function generateMetadata({ params: { locale } }) {
     };
   }
   return {
-    title: "La ONG",
+    title: "Asociación Civil",
     description:
       "Yaqu Pacha Uruguay, filial de Yaqu Pacha e.V.: investigación y conservación de mamíferos acuáticos en América del Sur, desde 2013.",
     alternates,

@@ -27,7 +27,7 @@ collections:
     label: "Páginas"
     files:
       - name: "la-ong"
-        label: "Nosotros — La ONG"
+        label: "Nosotros — Asociación Civil"
         file: "content/paginas/la-ong.mdx"
         fields:
           - { name: "titulo", label: "Título (ES)", widget: "string" }
