@@ -22,7 +22,7 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title: "Grupo de Trabajo en Varamientos",
     description:
-      "Registro, seguimiento y rescate de varamientos de cetáceos en la costa uruguaya, en conjunto con Karumbé y la Alianza AFC3R para la franciscana.",
+      "Registro y seguimiento de varamientos de tortugas y cetáceos, vivos o muertos, en la costa uruguaya.",
     alternates,
   };
 }
