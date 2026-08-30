@@ -1,7 +1,7 @@
 "use client";
 
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import {
   Disclosure,
   DisclosureButton,
@@ -21,6 +21,23 @@ import ContadorCarrito from "./ContadorCarrito";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
+}
+
+// Headless UI no desmonta el Popover/Disclosure al navegar con
+// next/link (la navegacion del lado del cliente no remonta el layout
+// persistente), asi que el desplegable se queda abierto tapando la
+// pagina nueva. Se cierra a mano escuchando el cambio de ruta -
+// cubre tanto el clic en un item como el boton de atras del
+// navegador, que tambien cambia el pathname. No toca el cierre con
+// Escape ni la devolucion de foco: eso lo sigue manejando Headless UI
+// por su cuenta, sin tocar.
+function CerrarAlNavegar({ close }) {
+  const pathname = usePathname();
+  useEffect(() => {
+    close();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
+  return null;
 }
 
 const FOCUS_RING =
@@ -119,8 +136,9 @@ export default function Navbar({ locale = "es" }) {
         as="nav"
         className="bg-costa-100 border-b border-marca-grafito/10 shadow-sm z-50 relative"
       >
-        {({ open }) => (
+        {({ open, close }) => (
           <>
+            <CerrarAlNavegar close={close} />
             <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 mx-auto">
               <div className="relative flex h-20 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -180,8 +198,9 @@ export default function Navbar({ locale = "es" }) {
                         const activa = esRamaActiva(rama);
                         return (
                           <Popover key={rama.key} className="relative">
-                            {() => (
+                            {({ close }) => (
                               <>
+                                <CerrarAlNavegar close={close} />
                                 <PopoverButton
                                   className={classNames(
                                     activa
