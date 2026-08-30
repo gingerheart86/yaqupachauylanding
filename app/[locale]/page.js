@@ -52,9 +52,20 @@ export default function Home({ params: { locale } }) {
           className="w-80 h-auto drop-shadow-lg sm:w-96"
           priority
         />
-        <div className="mt-8">
-          <Button href={`/${locale}/especies/tonina`} variante="primario">
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button
+            href={`/${locale}/especies/tonina`}
+            variante="primario"
+            className="min-h-11"
+          >
             {esIngles ? "Meet the tonina" : "Conocé a la tonina"}
+          </Button>
+          <Button
+            href={`/${locale}/investigacion/toninas/catalogo`}
+            variante="secundario-oscuro"
+            className="min-h-11"
+          >
+            {esIngles ? "See the catalogue" : "Mirá el catálogo"}
           </Button>
         </div>
       </HeroVideo>

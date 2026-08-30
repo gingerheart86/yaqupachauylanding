@@ -6,6 +6,12 @@ const base =
 const variantes = {
   primario: "bg-marca-oscuro text-white hover:bg-marca-oscuro/90",
   secundario: "border border-marca-oscuro text-marca-oscuro hover:bg-marca-oscuro/10",
+  // Para botones secundarios sobre foto o video (ej. el hero): un
+  // borde solo se pierde si lo que hay detras es claro (agua turquesa,
+  // luminancia ~113). El relleno oscuro semitransparente asegura el
+  // contraste del texto blanco pase lo que pase detras.
+  "secundario-oscuro":
+    "border border-white/80 bg-mar-900/40 text-white hover:bg-mar-900/60",
 };
 
 export default function Button({
