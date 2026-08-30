@@ -11,6 +11,11 @@ const FOCUS_RING =
 // docs/catalogo-figuritas-y-voluntariado.md ("Descubrimiento desde la
 // especie"). No renderiza nada si el proyecto todavia no tiene
 // ningun individuo publicado - no hay nada que descubrir todavia.
+//
+// Sin contador de individuos: mostraba la cantidad de fichas subidas
+// (5), no la del catalogo real (~55), y un numero bajo transmite lo
+// contrario de lo que corresponde. Se vuelve a agregar cuando esten
+// todas las fichas cargadas.
 export function BloqueDescubrimiento({ proyecto, locale = "es" }) {
   const individuos = getIndividuos(proyecto);
   if (individuos.length === 0) return null;
@@ -34,14 +39,9 @@ export function BloqueDescubrimiento({ proyecto, locale = "es" }) {
           {esIngles ? "Meet our identified individuals" : "Conocé a los individuos identificados"}
         </p>
         <p className="mt-1 text-marca-grafito">
-          {individuos.length}{" "}
           {esIngles
-            ? individuos.length === 1
-              ? `individual identified — ${info?.nombre_en ?? proyecto} catalogue`
-              : `individuals identified — ${info?.nombre_en ?? proyecto} catalogue`
-            : individuos.length === 1
-              ? `individuo identificado — catálogo de ${info?.nombre ?? proyecto}`
-              : `individuos identificados — catálogo de ${info?.nombre ?? proyecto}`}
+            ? `${info?.nombre_en ?? proyecto} catalogue`
+            : `Catálogo de ${info?.nombre ?? proyecto}`}
         </p>
       </div>
     </Link>

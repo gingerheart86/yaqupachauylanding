@@ -59,16 +59,13 @@ export default function Page({ params: { locale, proyecto } }) {
         </p>
       ) : (
         <>
-          <p className="mt-4 text-center text-lg font-semibold text-mar-800">
-            {individuos.length}{" "}
-            {esIngles
-              ? individuos.length === 1
-                ? "individual identified"
-                : "individuals identified"
-              : individuos.length === 1
-                ? "individuo identificado"
-                : "individuos identificados"}
-          </p>
+          {/* Lugar reservado para el contador real de individuos
+              catalogados (no la cantidad de fichas subidas al sitio).
+              Se saco porque mostraba "5" cuando el catalogo real tiene
+              unos 55 - un numero bajo transmite lo contrario de lo que
+              corresponde. Se vuelve a poner cuando esten todas las
+              fichas cargadas, no antes. docs/correcciones-* pendiente. */}
+          <div className="mt-4 h-7" aria-hidden="true" />
           <div className="mt-10">
             <GrillaCatalogo individuos={individuos} librosPorCodigo={librosPorCodigo} />
           </div>
