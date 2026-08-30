@@ -16,6 +16,9 @@ export default function FooterFC({ locale = "es" }) {
               key={item.name}
               href={item.href}
               className={`text-marca-grafito hover:text-marca-oscuro ${FOCUS_RING}`}
+              {...(item.nuevaPestana
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
             >
               <span className="sr-only">{item.name}</span>
               <item.Icon className="h-6 w-6" aria-hidden="true" />
