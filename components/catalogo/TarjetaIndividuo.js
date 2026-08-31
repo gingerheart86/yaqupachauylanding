@@ -6,9 +6,28 @@ import {
   ArrowPathIcon,
   ArrowUturnLeftIcon,
 } from "@heroicons/react/24/outline";
+import { siluetaPorEspecie } from "../../lib/especies";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
+
+// Marco de figurita: mar.800 solido, sin sombra ni degrade. El mismo
+// marco en las dos caras para que se mantenga al girar.
+const MARCO =
+  "border-[5px] sm:border-[7px] border-mar-800 ring-1 ring-inset ring-white rounded-[5px]";
+
+function estiloMascara(src) {
+  return {
+    maskImage: `url(${src})`,
+    maskSize: "contain",
+    maskRepeat: "no-repeat",
+    maskPosition: "center",
+    WebkitMaskImage: `url(${src})`,
+    WebkitMaskSize: "contain",
+    WebkitMaskRepeat: "no-repeat",
+    WebkitMaskPosition: "center",
+  };
+}
 
 // Figurita de catalogo: frente (foto de aleta, codigo superpuesto) ->
 // gira -> dorso (estampilla, codigo, nombre, lugar, boton "Ver
@@ -19,6 +38,7 @@ const FOCUS_RING =
 // querer), solo los dos botones lo hacen, y ambos miden al menos
 // 44x44px. El nombre ya no es un boton - no se entendia que lo era.
 export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
+  const silueta = siluetaPorEspecie(individuo.especie);
   const [girada, setGirada] = useState(false);
   const btnFrenteRef = useRef(null);
   const btnDorsoRef = useRef(null);
@@ -58,9 +78,9 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
             transform: girada ? "rotateY(180deg)" : "none",
           }}
         >
-          {/* Frente: foto de la aleta, codigo superpuesto */}
+          {/* Frente: foto de la aleta, codigo sobre la silueta de la especie */}
           <div
-            className="absolute inset-0 overflow-hidden rounded-xl border-2 border-marca-grafito/20 bg-costa-100"
+            className={`absolute inset-0 overflow-hidden bg-costa-100 ${MARCO}`}
             style={{ backfaceVisibility: "hidden" }}
             aria-hidden={girada}
           >
@@ -73,10 +93,20 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 sizes="(min-width: 1024px) 20vw, 33vw"
               />
             )}
-            {individuo.codigo && (
-              <span className="absolute right-2 top-2 rounded-md bg-mar-900/75 px-2 py-1 font-mono text-xs font-semibold tracking-wide text-white [text-shadow:0_1px_2px_rgba(0,0,0,0.6)]">
-                {individuo.codigo}
-              </span>
+            {individuo.codigo && silueta && (
+              <div
+                className="absolute right-1 top-1 w-14 sm:right-2 sm:top-2 sm:w-20"
+                style={{ aspectRatio: `${silueta.width} / ${silueta.height}` }}
+              >
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-mar-800"
+                  style={estiloMascara(silueta.src)}
+                />
+                <span className="relative flex h-full items-center justify-center font-mono text-[9px] font-semibold tracking-wide text-white sm:text-[11px]">
+                  {individuo.codigo}
+                </span>
+              </div>
             )}
             <button
               ref={btnFrenteRef}
@@ -93,7 +123,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
 
           {/* Dorso: estampilla, codigo, nombre, lugar, ver historia */}
           <div
-            className="absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden rounded-xl border-2 border-marca-grafito/20 bg-arena-200 p-4 text-center"
+            className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 text-center ${MARCO}`}
             style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
             aria-hidden={!girada}
           >
