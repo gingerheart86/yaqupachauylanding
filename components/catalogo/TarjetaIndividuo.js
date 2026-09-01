@@ -29,14 +29,22 @@ function estiloMascara(src) {
   };
 }
 
-// Figurita de catalogo: frente (foto de aleta, codigo superpuesto) ->
-// gira -> dorso (estampilla, codigo, nombre, lugar, boton "Ver
-// historia") -> el boton "Ver historia" abre el modal/hoja con el
-// relato completo. docs/catalogo-figuritas-y-voluntariado.md Bloque A
-// y su ajuste posterior de accesibilidad: la tarjeta en si no dispara
-// ninguna accion (alguien haciendo scroll en mobile no la gira sin
-// querer), solo los dos botones lo hacen, y ambos miden al menos
-// 44x44px. El nombre ya no es un boton - no se entendia que lo era.
+// Figurita de catalogo: frente (foto de aleta, codigo sobre la
+// silueta arriba a la derecha, lengueta con el nombre abajo, boton
+// de girar arriba a la izquierda) -> gira -> dorso (estampilla,
+// codigo, nombre en texto simple, lugar, boton "Ver historia", boton
+// de volver abajo a la derecha) -> "Ver historia" abre el modal/hoja
+// con el relato completo. docs/catalogo-figuritas-y-voluntariado.md
+// Bloque A y sus ajustes posteriores de accesibilidad y diseno: la
+// tarjeta en si no dispara ninguna accion (alguien haciendo scroll en
+// mobile no la gira sin querer), solo los botones lo hacen, y todos
+// miden al menos 44x44px.
+//
+// El boton de girar esta arriba a la izquierda (no abajo a la
+// derecha, la posicion "natural") para dejarle todo el borde inferior
+// libre a la lengueta del nombre - un nombre largo como Muescagrande
+// centrado chocaba con un boton ahi en anchos de tarjeta angostos
+// (grillas de mobile), pase lo que pase con el largo del nombre.
 export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
   const silueta = siluetaPorEspecie(individuo.especie);
   const [girada, setGirada] = useState(false);
@@ -66,7 +74,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
   return (
     <div className="relative">
       {individuo.muerto && (
-        <span className="absolute -top-2 -left-2 z-20 rounded-full bg-acento-medusa px-2 py-0.5 text-xs font-semibold text-mar-900 shadow">
+        <span className="absolute -bottom-2 -left-2 z-20 rounded-full bg-acento-medusa px-2 py-0.5 text-xs font-semibold text-mar-900 shadow">
           Registrado muerto
         </span>
       )}
@@ -117,6 +125,18 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 </span>
               </div>
             )}
+            {/* Lengueta con el nombre, apoyada en el borde inferior del
+                anverso - como la banda de nombre de una figurita.
+                Centrada en el ancho completo: la esquina inferior
+                derecha queda libre a proposito (el boton de girar se
+                movio arriba a la izquierda) para que un nombre largo
+                como Muescagrande nunca compita por espacio con un
+                boton, sea cual sea el ancho de la tarjeta. */}
+            <div className="absolute inset-x-2 bottom-2 flex justify-center">
+              <span className="inline-block max-w-full whitespace-nowrap rounded-sm bg-mar-800 px-3 py-1 text-xs font-semibold text-white">
+                {individuo.nombre}
+              </span>
+            </div>
             <button
               ref={btnFrenteRef}
               type="button"
@@ -124,7 +144,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               onKeyDown={onKeyDownGirar}
               tabIndex={girada ? -1 : 0}
               aria-label={`Girar la figurita de ${individuo.nombre}`}
-              className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
               <ArrowPathIcon className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -132,59 +152,38 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
 
           {/* Dorso: estampilla, codigo, nombre, lugar, ver historia */}
           <div
-            className={`absolute inset-0 flex flex-col items-center overflow-hidden bg-arena-200 p-3 pb-2 text-center ${MARCO}`}
+            className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 text-center ${MARCO}`}
             style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
             aria-hidden={!girada}
           >
-            {/* min-h-0 deja que este bloque se achique si hace falta
-                en vez de desbordar la tarjeta (alto fijo por
-                aspect-ratio) cuando "lugar" ocupa dos lineas - sin
-                esto la lengueta del nombre quedaba recortada fuera
-                de la vista en tarjetas mas anchas que altas. */}
-            <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-1">
-              <div className="relative h-12 w-12 shrink-0">
-                {individuo.stamp && (
-                  <Image
-                    src={individuo.stamp}
-                    alt=""
-                    aria-hidden="true"
-                    fill
-                    className="object-contain"
-                    sizes="48px"
-                  />
-                )}
-              </div>
-              <p className="font-mono text-sm tracking-wider text-marca-grafito">
-                {individuo.codigo}
-              </p>
-              {individuo.lugar && (
-                <p className="text-xs leading-tight text-marca-grafito">{individuo.lugar}</p>
+            <div className="relative h-20 w-20 shrink-0">
+              {individuo.stamp && (
+                <Image
+                  src={individuo.stamp}
+                  alt=""
+                  aria-hidden="true"
+                  fill
+                  className="object-contain"
+                  sizes="80px"
+                />
               )}
-              <button
-                type="button"
-                onClick={() => onAbrirHistoria(individuo)}
-                tabIndex={girada ? 0 : -1}
-                aria-label={`Ver la historia de ${individuo.nombre}`}
-                className={`flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
-              >
-                Ver historia
-              </button>
             </div>
-            {/* Lengueta con el nombre, apoyada en el borde inferior -
-                como la banda de nombre de una figurita. Ancho segun
-                el contenido (inline-block), nunca corta con puntos
-                suspensivos. Centrada en el ancho completo: el boton
-                de volver se movio a la esquina superior (ver mas
-                abajo) para no competir por espacio horizontal con
-                nombres largos como Muescagrande - reservar un margen
-                lateral fijo (pr-12) funcionaba a un ancho de tarjeta
-                pero se volvia a romper en otro (mobile a 2 columnas
-                es mas angosto que el grid de escritorio a 5). */}
-            <div className="flex w-full justify-center">
-              <span className="inline-block max-w-full whitespace-nowrap rounded-sm bg-mar-800 px-3 py-1 text-xs font-semibold text-white">
-                {individuo.nombre}
-              </span>
-            </div>
+            <p className="font-mono text-sm tracking-wider text-marca-grafito">
+              {individuo.codigo}
+            </p>
+            <p className="font-semibold text-mar-800">{individuo.nombre}</p>
+            {individuo.lugar && (
+              <p className="text-xs text-marca-grafito">{individuo.lugar}</p>
+            )}
+            <button
+              type="button"
+              onClick={() => onAbrirHistoria(individuo)}
+              tabIndex={girada ? 0 : -1}
+              aria-label={`Ver la historia de ${individuo.nombre}`}
+              className={`mt-1 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+            >
+              Ver historia
+            </button>
             <button
               ref={btnDorsoRef}
               type="button"
@@ -192,7 +191,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               onKeyDown={onKeyDownGirar}
               tabIndex={girada ? 0 : -1}
               aria-label={`Volver al frente de la figurita de ${individuo.nombre}`}
-              className={`absolute top-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
               <ArrowUturnLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
