@@ -118,7 +118,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                     caja completa - el medio geometrico cae sobre la
                     cola, angosta, y el codigo se desbordaba. */}
                 <span
-                  className="absolute whitespace-nowrap font-mono text-[11px] font-semibold tracking-tighter text-white sm:text-[13px]"
+                  className="absolute whitespace-nowrap font-mono text-[11px] font-normal tracking-wide text-white sm:text-[13px]"
                   style={{ left: "43%", top: "55%", transform: "translate(-50%, -50%)" }}
                 >
                   {individuo.codigo}
