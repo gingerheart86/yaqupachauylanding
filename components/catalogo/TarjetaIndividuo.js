@@ -95,7 +95,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
             )}
             {individuo.codigo && silueta && (
               <div
-                className="absolute right-1 top-1 w-14 sm:right-2 sm:top-2 sm:w-20"
+                className="absolute right-1 top-1 w-[67px] sm:right-2 sm:top-2 sm:w-24"
                 style={{ aspectRatio: `${silueta.width} / ${silueta.height}` }}
               >
                 <div
@@ -103,7 +103,16 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                   className="absolute inset-0 bg-mar-800"
                   style={estiloMascara(silueta.src)}
                 />
-                <span className="relative flex h-full items-center justify-center font-mono text-[9px] font-semibold tracking-wide text-white sm:text-[11px]">
+                {/* Posicionado a mano sobre el punto mas ancho del
+                    cuerpo de la silueta (medido en pixeles reales del
+                    PNG: a ~55% de alto hay una franja solida de ~68%
+                    del ancho, centrada ~43%), no en el medio de la
+                    caja completa - el medio geometrico cae sobre la
+                    cola, angosta, y el codigo se desbordaba. */}
+                <span
+                  className="absolute whitespace-nowrap font-mono text-[11px] font-semibold tracking-tighter text-white sm:text-[13px]"
+                  style={{ left: "43%", top: "55%", transform: "translate(-50%, -50%)" }}
+                >
                   {individuo.codigo}
                 </span>
               </div>
@@ -123,38 +132,59 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
 
           {/* Dorso: estampilla, codigo, nombre, lugar, ver historia */}
           <div
-            className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 text-center ${MARCO}`}
+            className={`absolute inset-0 flex flex-col items-center overflow-hidden bg-arena-200 p-3 pb-2 text-center ${MARCO}`}
             style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
             aria-hidden={!girada}
           >
-            <div className="relative h-20 w-20 shrink-0">
-              {individuo.stamp && (
-                <Image
-                  src={individuo.stamp}
-                  alt=""
-                  aria-hidden="true"
-                  fill
-                  className="object-contain"
-                  sizes="80px"
-                />
+            {/* min-h-0 deja que este bloque se achique si hace falta
+                en vez de desbordar la tarjeta (alto fijo por
+                aspect-ratio) cuando "lugar" ocupa dos lineas - sin
+                esto la lengueta del nombre quedaba recortada fuera
+                de la vista en tarjetas mas anchas que altas. */}
+            <div className="flex min-h-0 flex-1 flex-col items-center justify-center gap-1">
+              <div className="relative h-12 w-12 shrink-0">
+                {individuo.stamp && (
+                  <Image
+                    src={individuo.stamp}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    className="object-contain"
+                    sizes="48px"
+                  />
+                )}
+              </div>
+              <p className="font-mono text-sm tracking-wider text-marca-grafito">
+                {individuo.codigo}
+              </p>
+              {individuo.lugar && (
+                <p className="text-xs leading-tight text-marca-grafito">{individuo.lugar}</p>
               )}
+              <button
+                type="button"
+                onClick={() => onAbrirHistoria(individuo)}
+                tabIndex={girada ? 0 : -1}
+                aria-label={`Ver la historia de ${individuo.nombre}`}
+                className={`flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+              >
+                Ver historia
+              </button>
             </div>
-            <p className="font-mono text-sm tracking-wider text-marca-grafito">
-              {individuo.codigo}
-            </p>
-            <p className="font-semibold text-mar-800">{individuo.nombre}</p>
-            {individuo.lugar && (
-              <p className="text-xs text-marca-grafito">{individuo.lugar}</p>
-            )}
-            <button
-              type="button"
-              onClick={() => onAbrirHistoria(individuo)}
-              tabIndex={girada ? 0 : -1}
-              aria-label={`Ver la historia de ${individuo.nombre}`}
-              className={`mt-1 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
-            >
-              Ver historia
-            </button>
+            {/* Lengueta con el nombre, apoyada en el borde inferior -
+                como la banda de nombre de una figurita. Ancho segun
+                el contenido (inline-block), nunca corta con puntos
+                suspensivos. Centrada en el ancho completo: el boton
+                de volver se movio a la esquina superior (ver mas
+                abajo) para no competir por espacio horizontal con
+                nombres largos como Muescagrande - reservar un margen
+                lateral fijo (pr-12) funcionaba a un ancho de tarjeta
+                pero se volvia a romper en otro (mobile a 2 columnas
+                es mas angosto que el grid de escritorio a 5). */}
+            <div className="flex w-full justify-center">
+              <span className="inline-block max-w-full whitespace-nowrap rounded-sm bg-mar-800 px-3 py-1 text-xs font-semibold text-white">
+                {individuo.nombre}
+              </span>
+            </div>
             <button
               ref={btnDorsoRef}
               type="button"
@@ -162,7 +192,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               onKeyDown={onKeyDownGirar}
               tabIndex={girada ? 0 : -1}
               aria-label={`Volver al frente de la figurita de ${individuo.nombre}`}
-              className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              className={`absolute top-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
               <ArrowUturnLeftIcon className="h-5 w-5" aria-hidden="true" />
             </button>
