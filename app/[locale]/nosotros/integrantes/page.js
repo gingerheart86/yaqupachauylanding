@@ -36,11 +36,11 @@ const GRUPOS_EN = {
 
 function Grilla({ personas, esIngles }) {
   return (
-    <ul role="list" className="mt-8 flex flex-wrap justify-around">
+    <ul role="list" className="mt-8 flex flex-wrap justify-around items-stretch">
       {personas.map((p) => (
-        <li key={p.nombre} className="sm:py-8 max-w-sm mb-8 my-10 sm:my-0">
-          <Card>
-            <div className="relative w-full h-[26rem] shrink-0 flex-1 bg-costa-100 rounded-lg overflow-hidden">
+        <li key={p.nombre} className="flex sm:py-8 max-w-sm mb-8 my-10 sm:my-0">
+          <Card className="flex w-full flex-col">
+            <div className="relative w-full h-[13rem] shrink-0 bg-costa-100 rounded-lg overflow-hidden">
               {p.foto && (
                 <Image
                   className="rounded-lg object-cover"
@@ -51,18 +51,18 @@ function Grilla({ personas, esIngles }) {
                 />
               )}
             </div>
-            <div className="mt-4">
-              <div className="space-y-4">
-                <div className="space-y-1 text-lg font-medium leading-6">
+            <div className="mt-4 flex flex-1 flex-col">
+              <div className="flex flex-1 flex-col space-y-3">
+                <div className="space-y-1 text-sm font-medium leading-5">
                   <h3>{p.nombre}</h3>
                   {p.rol && <p className="text-marca-grafito">{p.rol}</p>}
                 </div>
-                <div className="text-lg">
+                <div className="min-h-[6rem] text-sm">
                   <p className="text-texto">
                     {esIngles ? p.bio_en : p.bio}
                   </p>
                 </div>
-                <ul role="list" className="flex space-x-5">
+                <ul role="list" className="mt-auto flex space-x-5">
                   {p.twitter && (
                     <li>
                       <a
