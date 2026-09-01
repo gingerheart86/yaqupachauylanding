@@ -133,7 +133,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 como Muescagrande nunca compita por espacio con un
                 boton, sea cual sea el ancho de la tarjeta. */}
             <div className="absolute inset-x-2 bottom-2 flex justify-center">
-              <span className="inline-block max-w-full whitespace-nowrap rounded-sm bg-mar-800 px-3 py-1 text-xs font-semibold text-white">
+              <span className="inline-block max-w-full whitespace-nowrap rounded-sm bg-mar-800 px-3 py-1 text-xs font-normal text-white">
                 {individuo.nombre}
               </span>
             </div>
@@ -146,7 +146,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               aria-label={`Girar la figurita de ${individuo.nombre}`}
               className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
-              <ArrowPathIcon className="h-5 w-5" aria-hidden="true" />
+              <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
 
@@ -193,7 +193,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               aria-label={`Volver al frente de la figurita de ${individuo.nombre}`}
               className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
             >
-              <ArrowUturnLeftIcon className="h-5 w-5" aria-hidden="true" />
+              <ArrowUturnLeftIcon className="h-4 w-4" aria-hidden="true" />
             </button>
           </div>
         </div>
