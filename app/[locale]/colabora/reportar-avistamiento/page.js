@@ -31,7 +31,7 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title: "Reportar un avistamiento",
     description:
-      "Reportá un avistamiento de tonina, ballena, orca o franciscana en la costa uruguaya.",
+      "Reporta un avistamiento de tonina, ballena, orca o franciscana en la costa uruguaya.",
     alternates,
   };
 }
@@ -91,7 +91,7 @@ export default function Page({ params: { locale } }) {
           : "Abre el grupo de Telegram de BallenasUY"
         : esIngles
           ? "Coming soon — contact us for now"
-          : "Próximamente — mientras tanto, escribinos por contacto",
+          : "Próximamente — mientras tanto, escríbenos por contacto",
     },
     {
       silueta: SILUETAS.orca,
@@ -103,7 +103,7 @@ export default function Page({ params: { locale } }) {
           : "Abre el formulario de reporte"
         : esIngles
           ? "Coming soon — contact us for now"
-          : "Próximamente — mientras tanto, escribinos por contacto",
+          : "Próximamente — mientras tanto, escríbenos por contacto",
     },
   ];
 
@@ -128,7 +128,7 @@ export default function Page({ params: { locale } }) {
             href={WHATSAPP_VARAMIENTOS}
             className={`font-semibold text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
           >
-            {esIngles ? "Report a stranding" : "Avisá al"} {TELEFONO_VARAMIENTOS}
+            {esIngles ? "Report a stranding" : "Avisa al"} {TELEFONO_VARAMIENTOS}
           </a>
         </p>
       </div>
@@ -144,7 +144,7 @@ export default function Page({ params: { locale } }) {
           href={`/${locale}/colabora/identificacion`}
           className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
         >
-          {esIngles ? "Not sure what you saw? Help me identify it" : "No sé qué vi, ayudame a identificarlo"}
+          {esIngles ? "Not sure what you saw? Help me identify it" : "No sé qué vi, ayúdame a identificarlo"}
         </Link>
       </p>
     </Section>

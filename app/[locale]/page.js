@@ -58,14 +58,14 @@ export default function Home({ params: { locale } }) {
             variante="primario"
             className="min-h-11"
           >
-            {esIngles ? "Meet the tonina" : "Conocé a la tonina"}
+            {esIngles ? "Meet the tonina" : "Conoce a la tonina"}
           </Button>
           <Button
             href={`/${locale}/investigacion/toninas/catalogo`}
             variante="secundario-oscuro"
             className="min-h-11"
           >
-            {esIngles ? "See the catalogue" : "Mirá el catálogo"}
+            {esIngles ? "See the catalogue" : "Mira el catálogo"}
           </Button>
         </div>
       </HeroVideo>
@@ -75,22 +75,22 @@ export default function Home({ params: { locale } }) {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <ProjectCardDestacado
             href={SURVEY123_TONINA_URL}
-            title={esIngles ? "Report a tonina sighting" : "Reportá un avistamiento de tonina"}
+            title={esIngles ? "Report a tonina sighting" : "Reporta un avistamiento de tonina"}
             description={
               esIngles
                 ? "Did you spot a tonina from the coast or a boat? Report it directly — it opens the form."
-                : "¿Viste una tonina desde la costa o una embarcación? Reportalo directo — abre el formulario."
+                : "¿Viste una tonina desde la costa o una embarcación? Repórtalo directo — abre el formulario."
             }
             image="/dol1.webp"
             imageAlt={esIngles ? "A tonina off the Uruguayan coast" : "Tonina en la costa uruguaya"}
           />
           <ProjectCardDestacado
             href={`/${locale}/avistamientos`}
-            title={esIngles ? "Explore the sightings map" : "Accedé al mapa de avistamientos"}
+            title={esIngles ? "Explore the sightings map" : "Accede al mapa de avistamientos"}
             description={
               esIngles
                 ? "See where toninas and other cetaceans have been spotted along the coast, reported by the community and by our own team."
-                : "Mirá dónde se avistaron toninas y otros cetáceos en la costa, reportados por la comunidad y por nuestro propio equipo."
+                : "Mira dónde se avistaron toninas y otros cetáceos en la costa, reportados por la comunidad y por nuestro propio equipo."
             }
             image="/gomon.webp"
             imageAlt={esIngles ? "The Uruguayan coast" : "Costa uruguaya"}

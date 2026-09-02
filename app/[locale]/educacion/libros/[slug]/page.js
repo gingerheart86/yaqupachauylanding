@@ -79,7 +79,7 @@ export default function Page({ params: { slug } }) {
                 href={`/es/investigacion/${individuo.proyecto}/catalogo/${individuo.slug}`}
                 className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
               >
-                Conocé a {libro.catalogo} en el catálogo de individuos →
+                Conoce a {libro.catalogo} en el catálogo de individuos →
               </Link>
             </p>
           )}

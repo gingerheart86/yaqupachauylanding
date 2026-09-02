@@ -36,7 +36,7 @@ export function BloqueDescubrimiento({ proyecto, locale = "es" }) {
       )}
       <div>
         <p className="text-lg font-semibold text-mar-800">
-          {esIngles ? "Meet our identified individuals" : "Conocé a los individuos identificados"}
+          {esIngles ? "Meet our identified individuals" : "Conoce a los individuos identificados"}
         </p>
         <p className="mt-1 text-marca-grafito">
           {esIngles

@@ -17,7 +17,7 @@ export function generateMetadata({ params: { locale } }) {
     };
   }
   return {
-    title: "No sé qué vi, ayudame a identificarlo",
+    title: "No sé qué vi, ayúdame a identificarlo",
     description: "Una guía breve para identificar lo que viste en el agua.",
     alternates,
   };

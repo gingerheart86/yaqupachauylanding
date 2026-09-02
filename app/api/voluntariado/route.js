@@ -38,7 +38,7 @@ export async function POST(request) {
   const from = process.env.RESEND_FROM;
   if (!apiKey || !from) {
     return Response.json(
-      { error: "El envío de formularios todavía no está configurado. Escribinos por otro medio mientras tanto." },
+      { error: "El envío de formularios todavía no está configurado. Escríbenos por otro medio mientras tanto." },
       { status: 503 }
     );
   }
@@ -65,14 +65,14 @@ export async function POST(request) {
   } catch (err) {
     clearTimeout(timeout);
     if (err.name === "AbortError") {
-      return Response.json({ error: "El envío tardó demasiado. Probá de nuevo." }, { status: 504 });
+      return Response.json({ error: "El envío tardó demasiado. Prueba de nuevo." }, { status: 504 });
     }
-    return Response.json({ error: "No se pudo enviar el formulario. Probá de nuevo." }, { status: 502 });
+    return Response.json({ error: "No se pudo enviar el formulario. Prueba de nuevo." }, { status: 502 });
   }
   clearTimeout(timeout);
 
   if (!res.ok) {
-    return Response.json({ error: "No se pudo enviar el formulario. Probá de nuevo." }, { status: 502 });
+    return Response.json({ error: "No se pudo enviar el formulario. Prueba de nuevo." }, { status: 502 });
   }
 
   return Response.json({ ok: true });

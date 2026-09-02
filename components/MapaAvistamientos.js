@@ -31,7 +31,7 @@ export default function MapaAvistamientos({ url, locale = "es" }) {
         <p className="mt-2 text-texto">
           {esIngles
             ? "We're setting up the sightings map. In the meantime, you can still report a sighting using the button above."
-            : "Estamos preparando el mapa de avistamientos. Mientras tanto, igual podés reportar un avistamiento con el botón de arriba."}
+            : "Estamos preparando el mapa de avistamientos. Mientras tanto, igual puedes reportar un avistamiento con el botón de arriba."}
         </p>
       </div>
     );
@@ -58,7 +58,7 @@ export default function MapaAvistamientos({ url, locale = "es" }) {
           <p className="mt-2 text-texto">
             {esIngles
               ? "You can open it directly in a new tab instead."
-              : "Podés abrirlo directo en una pestaña nueva."}
+              : "Puedes abrirlo directo en una pestaña nueva."}
           </p>
           <a
             href={url}

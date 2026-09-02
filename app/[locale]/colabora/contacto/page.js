@@ -24,7 +24,7 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title: "Contacto",
     description:
-      "Escribinos para reportar un avistamiento de toninas, colaborar con el proyecto o consultar sobre nuestras actividades.",
+      "Escríbenos para reportar un avistamiento de toninas, colaborar con el proyecto o consultar sobre nuestras actividades.",
     alternates,
   };
 }

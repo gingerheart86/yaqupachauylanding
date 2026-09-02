@@ -127,8 +127,8 @@ export default function Carrito({ locale = "es" }) {
           </a>
         ) : (
           <p className="rounded-md bg-costa-100 px-6 py-3 text-center text-sm text-marca-grafito">
-            El número de WhatsApp de la tienda todavía no está cargado. Mientras tanto, copiá el
-            pedido de arriba y envialo por Instagram.
+            El número de WhatsApp de la tienda todavía no está cargado. Mientras tanto, copia el
+            pedido de arriba y envíalo por Instagram.
           </p>
         )}
         <button

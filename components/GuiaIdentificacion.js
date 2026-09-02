@@ -18,7 +18,7 @@ import {
 // ahi mismo. No publicar contenido real sin revision biologica.
 
 // Especies con pagina propia con contenido real (no un TODO), para
-// decidir si mostrar el enlace "conocé más" en el resultado.
+// decidir si mostrar el enlace "conoce más" en el resultado.
 const ESPECIES_CON_CONTENIDO = new Set(["tonina", "franciscana"]);
 
 const URL_REPORTE_POR_ESPECIE = {
@@ -104,7 +104,7 @@ function PantallaResultado({ especieSlug, locale, onEmpezarDeNuevo }) {
             href={`/${locale}/especies/${especieSlug}`}
             className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
           >
-            {esIngles ? "Learn more" : "Conocé más"}
+            {esIngles ? "Learn more" : "Conoce más"}
           </Link>
         </p>
       )}

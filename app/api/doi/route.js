@@ -56,12 +56,12 @@ export async function GET(request) {
     clearTimeout(timeout);
     if (err.name === "AbortError") {
       return Response.json(
-        { error: "Crossref no respondió a tiempo. Cargá los datos a mano." },
+        { error: "Crossref no respondió a tiempo. Carga los datos a mano." },
         { status: 504 }
       );
     }
     return Response.json(
-      { error: "No se pudo conectar con Crossref. Cargá los datos a mano." },
+      { error: "No se pudo conectar con Crossref. Carga los datos a mano." },
       { status: 502 }
     );
   }
@@ -72,7 +72,7 @@ export async function GET(request) {
   }
   if (!res.ok) {
     return Response.json(
-      { error: `Crossref devolvió un error (${res.status}). Cargá los datos a mano.` },
+      { error: `Crossref devolvió un error (${res.status}). Carga los datos a mano.` },
       { status: 502 }
     );
   }
@@ -82,7 +82,7 @@ export async function GET(request) {
     json = await res.json();
   } catch {
     return Response.json(
-      { error: "Crossref devolvió una respuesta inválida. Cargá los datos a mano." },
+      { error: "Crossref devolvió una respuesta inválida. Carga los datos a mano." },
       { status: 502 }
     );
   }

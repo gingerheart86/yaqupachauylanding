@@ -20,7 +20,7 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title: "Avistamientos",
     description:
-      "Reportá un avistamiento de toninas u otros cetáceos en la costa uruguaya.",
+      "Reporta un avistamiento de toninas u otros cetáceos en la costa uruguaya.",
     alternates,
   };
 }
@@ -61,7 +61,7 @@ export default function Page({ params: { locale } }) {
                 href={`/${locale}/colabora/reportar-avistamiento`}
                 className="font-medium text-marca-oscuro underline hover:text-mar-900"
               >
-                Reportalo acá
+                Repórtalo acá
               </a>
               .
             </>

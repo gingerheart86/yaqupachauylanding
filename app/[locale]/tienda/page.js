@@ -12,7 +12,7 @@ export const dynamicParams = false;
 
 export const metadata = {
   title: "Tienda",
-  description: "Comprá los libros y productos de Proyecto Toninas.",
+  description: "Compra los libros y productos de Proyecto Toninas.",
   alternates: alternatesPara("tienda", { soloEs: true }),
 };
 
