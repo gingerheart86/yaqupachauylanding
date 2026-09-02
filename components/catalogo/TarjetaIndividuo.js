@@ -5,8 +5,10 @@ import Image from "next/image";
 import {
   ArrowPathIcon,
   ArrowUturnLeftIcon,
+  MagnifyingGlassPlusIcon,
 } from "@heroicons/react/24/outline";
 import { siluetaPorEspecie } from "../../lib/especies";
+import { LightboxFoto } from "./LightboxFoto";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
@@ -53,6 +55,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
   // lo decide el contenido de cada una, no una lista escrita a mano.
   const tieneReverso = Boolean(individuo.stamp) || Boolean(individuo.historia);
   const [girada, setGirada] = useState(false);
+  const [lupaAbierta, setLupaAbierta] = useState(false);
   const btnFrenteRef = useRef(null);
   const btnDorsoRef = useRef(null);
   const primeraVez = useRef(true);
@@ -129,6 +132,26 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                   {individuo.codigo}
                 </span>
               </div>
+            )}
+            {individuo.fotos[0]?.src && (
+              // Lupa para ver la foto sin recortar, mas grande - abajo
+              // de la silueta con el codigo, apilada en la misma
+              // esquina en vez de al lado (no hay ancho de sobra para
+              // dos botones de 44px junto al codigo en una tarjeta
+              // angosta). No compite con el boton de girar (arriba a
+              // la izquierda) ni con la lengueta del nombre (abajo,
+              // centrada en todo el ancho - cualquier boton fijo en
+              // una esquina inferior choca con un nombre largo como
+              // Muescagrande, ya paso con el boton de volver del
+              // dorso).
+              <button
+                type="button"
+                onClick={() => setLupaAbierta(true)}
+                aria-label={`Ver la foto de ${individuo.nombre} en detalle`}
+                className={`absolute right-1 top-[35px] flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 sm:right-2 sm:top-[52px] ${FOCUS_RING}`}
+              >
+                <MagnifyingGlassPlusIcon className="h-4 w-4" aria-hidden="true" />
+              </button>
             )}
             {/* Lengueta con el nombre, apoyada en el borde inferior del
                 anverso - como la banda de nombre de una figurita.
@@ -212,6 +235,13 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
           )}
         </div>
       </div>
+      {lupaAbierta && (
+        <LightboxFoto
+          foto={individuo.fotos[0]}
+          nombre={individuo.nombre}
+          onCerrar={() => setLupaAbierta(false)}
+        />
+      )}
     </div>
   );
 }
