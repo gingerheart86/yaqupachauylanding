@@ -47,6 +47,11 @@ function estiloMascara(src) {
 // (grillas de mobile), pase lo que pase con el largo del nombre.
 export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
   const silueta = siluetaPorEspecie(individuo.especie);
+  // Sin estampilla ni historia el dorso quedaria vacio y el boton de
+  // girar llevaria a nada - el catalogo real tiene muchas mas fichas
+  // con solo la foto de aleta que fichas completas con relato, y esto
+  // lo decide el contenido de cada una, no una lista escrita a mano.
+  const tieneReverso = Boolean(individuo.stamp) || Boolean(individuo.historia);
   const [girada, setGirada] = useState(false);
   const btnFrenteRef = useRef(null);
   const btnDorsoRef = useRef(null);
@@ -137,65 +142,74 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 {individuo.nombre}
               </span>
             </div>
-            <button
-              ref={btnFrenteRef}
-              type="button"
-              onClick={girar}
-              onKeyDown={onKeyDownGirar}
-              tabIndex={girada ? -1 : 0}
-              aria-label={`Girar la figurita de ${individuo.nombre}`}
-              className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
-            >
-              <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
-            </button>
+            {tieneReverso && (
+              <button
+                ref={btnFrenteRef}
+                type="button"
+                onClick={girar}
+                onKeyDown={onKeyDownGirar}
+                tabIndex={girada ? -1 : 0}
+                aria-label={`Girar la figurita de ${individuo.nombre}`}
+                className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              >
+                <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
+              </button>
+            )}
           </div>
 
-          {/* Dorso: estampilla, codigo, nombre, lugar, ver historia */}
-          <div
-            className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 text-center ${MARCO}`}
-            style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-            aria-hidden={!girada}
-          >
-            <div className="relative h-20 w-20 shrink-0">
-              {individuo.stamp && (
-                <Image
-                  src={individuo.stamp}
-                  alt=""
-                  aria-hidden="true"
-                  fill
-                  className="object-contain"
-                  sizes="80px"
-                />
+          {/* Dorso: estampilla, codigo, nombre, lugar, ver historia -
+              no existe si no hay nada que mostrar en el (sin
+              estampilla ni historia no hay boton de girar que lleve
+              hasta aca, pero tampoco se monta el contenido). */}
+          {tieneReverso && (
+            <div
+              className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 text-center ${MARCO}`}
+              style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+              aria-hidden={!girada}
+            >
+              <div className="relative h-20 w-20 shrink-0">
+                {individuo.stamp && (
+                  <Image
+                    src={individuo.stamp}
+                    alt=""
+                    aria-hidden="true"
+                    fill
+                    className="object-contain"
+                    sizes="80px"
+                  />
+                )}
+              </div>
+              <p className="font-mono text-sm tracking-wider text-marca-grafito">
+                {individuo.codigo}
+              </p>
+              <p className="font-semibold text-mar-800">{individuo.nombre}</p>
+              {individuo.lugar && (
+                <p className="text-xs text-marca-grafito">{individuo.lugar}</p>
               )}
+              {individuo.historia && (
+                <button
+                  type="button"
+                  onClick={() => onAbrirHistoria(individuo)}
+                  tabIndex={girada ? 0 : -1}
+                  aria-label={`Ver la historia de ${individuo.nombre}`}
+                  className={`mt-1 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+                >
+                  Ver historia
+                </button>
+              )}
+              <button
+                ref={btnDorsoRef}
+                type="button"
+                onClick={girar}
+                onKeyDown={onKeyDownGirar}
+                tabIndex={girada ? 0 : -1}
+                aria-label={`Volver al frente de la figurita de ${individuo.nombre}`}
+                className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              >
+                <ArrowUturnLeftIcon className="h-4 w-4" aria-hidden="true" />
+              </button>
             </div>
-            <p className="font-mono text-sm tracking-wider text-marca-grafito">
-              {individuo.codigo}
-            </p>
-            <p className="font-semibold text-mar-800">{individuo.nombre}</p>
-            {individuo.lugar && (
-              <p className="text-xs text-marca-grafito">{individuo.lugar}</p>
-            )}
-            <button
-              type="button"
-              onClick={() => onAbrirHistoria(individuo)}
-              tabIndex={girada ? 0 : -1}
-              aria-label={`Ver la historia de ${individuo.nombre}`}
-              className={`mt-1 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
-            >
-              Ver historia
-            </button>
-            <button
-              ref={btnDorsoRef}
-              type="button"
-              onClick={girar}
-              onKeyDown={onKeyDownGirar}
-              tabIndex={girada ? 0 : -1}
-              aria-label={`Volver al frente de la figurita de ${individuo.nombre}`}
-              className={`absolute bottom-2 right-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
-            >
-              <ArrowUturnLeftIcon className="h-4 w-4" aria-hidden="true" />
-            </button>
-          </div>
+          )}
         </div>
       </div>
     </div>
