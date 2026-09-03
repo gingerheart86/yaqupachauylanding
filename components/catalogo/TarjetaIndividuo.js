@@ -134,6 +134,11 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
               </div>
             )}
             {tieneReverso && (
+              // El circulo visible se achico a 24px (el minimo que
+              // todavia deja un margen visible alrededor del icono de
+              // 16px) pero el boton en si sigue midiendo 44x44 y el
+              // circulo queda centrado adentro - el area tocable no se
+              // achica, solo lo que se ve.
               <button
                 ref={btnFrenteRef}
                 type="button"
@@ -141,9 +146,11 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 onKeyDown={onKeyDownGirar}
                 tabIndex={girada ? -1 : 0}
                 aria-label={`Girar la figurita de ${individuo.nombre}`}
-                className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+                className={`group absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full ${FOCUS_RING}`}
               >
-                <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-mar-900/70 text-white group-hover:bg-mar-900/90">
+                  <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
+                </span>
               </button>
             )}
             {individuo.fotos[0]?.src && (
@@ -160,11 +167,13 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 type="button"
                 onClick={() => setLupaAbierta(true)}
                 aria-label={`Ver la foto de ${individuo.nombre} en detalle`}
-                className={`absolute left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING} ${
+                className={`group absolute left-2 flex h-11 w-11 items-center justify-center rounded-full ${FOCUS_RING} ${
                   tieneReverso ? "top-[60px]" : "top-2"
                 }`}
               >
-                <MagnifyingGlassPlusIcon className="h-4 w-4" aria-hidden="true" />
+                <span className="flex h-6 w-6 items-center justify-center rounded-full bg-mar-900/70 text-white group-hover:bg-mar-900/90">
+                  <MagnifyingGlassPlusIcon className="h-4 w-4" aria-hidden="true" />
+                </span>
               </button>
             )}
             {/* Lengueta con el nombre, apoyada en el borde inferior del
@@ -175,7 +184,10 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 como Muescagrande nunca compita por espacio con un
                 boton, sea cual sea el ancho de la tarjeta. */}
             <div className="absolute inset-x-2 bottom-2 flex justify-center">
-              <span className="inline-block max-w-full whitespace-nowrap rounded-sm bg-mar-800 px-3 py-1 text-xs font-normal text-white">
+              <span
+                className="inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-sm bg-mar-800 px-[13.8px] py-[4.6px] text-[13.8px] font-normal text-white"
+                title={individuo.nombre}
+              >
                 {individuo.nombre}
               </span>
             </div>
