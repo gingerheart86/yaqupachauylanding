@@ -96,9 +96,13 @@ export function LightboxFoto({ foto, nombre, onCerrar }) {
           <XMarkIcon className="h-5 w-5" aria-hidden="true" />
         </button>
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-mar-900">
-          {foto?.src && (
+          {/* La version grande (1600px, con marca de agua en las
+              fotos que la llevan) - la miniatura de la tarjeta es de
+              solo 600px y sin marca, no sirve para este detalle
+              ampliado. */}
+          {(foto?.full || foto?.src) && (
             <Image
-              src={foto.src}
+              src={foto.full || foto.src}
               alt={foto.vista || nombre}
               fill
               className="object-contain"
