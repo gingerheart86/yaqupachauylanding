@@ -133,22 +133,36 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 </span>
               </div>
             )}
+            {tieneReverso && (
+              <button
+                ref={btnFrenteRef}
+                type="button"
+                onClick={girar}
+                onKeyDown={onKeyDownGirar}
+                tabIndex={girada ? -1 : 0}
+                aria-label={`Girar la figurita de ${individuo.nombre}`}
+                className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
+              >
+                <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
+              </button>
+            )}
             {individuo.fotos[0]?.src && (
-              // Lupa para ver la foto sin recortar, mas grande - abajo
-              // de la silueta con el codigo, apilada en la misma
-              // esquina en vez de al lado (no hay ancho de sobra para
-              // dos botones de 44px junto al codigo en una tarjeta
-              // angosta). No compite con el boton de girar (arriba a
-              // la izquierda) ni con la lengueta del nombre (abajo,
-              // centrada en todo el ancho - cualquier boton fijo en
-              // una esquina inferior choca con un nombre largo como
-              // Muescagrande, ya paso con el boton de volver del
-              // dorso).
+              // Lupa para ver la foto sin recortar, mas grande - apilada
+              // debajo del boton de girar (arriba a la izquierda), los
+              // dos del mismo lado. Si no hay reverso el girar no se
+              // monta y la lupa ocupa ese mismo lugar arriba a la
+              // izquierda. No usa la esquina derecha (ahi esta la
+              // silueta con el codigo) ni la lengueta del nombre abajo
+              // (centrada en todo el ancho, choca con un boton fijo en
+              // cualquier esquina inferior con nombres largos como
+              // Muescagrande).
               <button
                 type="button"
                 onClick={() => setLupaAbierta(true)}
                 aria-label={`Ver la foto de ${individuo.nombre} en detalle`}
-                className={`absolute right-1 top-[35px] flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 sm:right-2 sm:top-[52px] ${FOCUS_RING}`}
+                className={`absolute left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING} ${
+                  tieneReverso ? "top-[60px]" : "top-2"
+                }`}
               >
                 <MagnifyingGlassPlusIcon className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -165,19 +179,6 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 {individuo.nombre}
               </span>
             </div>
-            {tieneReverso && (
-              <button
-                ref={btnFrenteRef}
-                type="button"
-                onClick={girar}
-                onKeyDown={onKeyDownGirar}
-                tabIndex={girada ? -1 : 0}
-                aria-label={`Girar la figurita de ${individuo.nombre}`}
-                className={`absolute top-2 left-2 flex h-11 w-11 items-center justify-center rounded-full bg-mar-900/70 text-white hover:bg-mar-900/90 ${FOCUS_RING}`}
-              >
-                <ArrowPathIcon className="h-4 w-4" aria-hidden="true" />
-              </button>
-            )}
           </div>
 
           {/* Dorso: estampilla, codigo, nombre, lugar, ver historia -
