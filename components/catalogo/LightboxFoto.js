@@ -107,6 +107,7 @@ export function LightboxFoto({ foto, nombre, onCerrar }) {
               fill
               className="object-contain"
               sizes="(min-width: 768px) 768px, 100vw"
+              quality={90}
             />
           )}
         </div>
