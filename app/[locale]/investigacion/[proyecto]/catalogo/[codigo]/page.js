@@ -70,7 +70,11 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
       )}
 
       {individuo.fotos.length > 0 && (
-        <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div
+          className={`mt-8 mx-auto grid grid-cols-1 gap-4 ${
+            individuo.fotos.length > 1 ? "max-w-3xl sm:grid-cols-2" : "max-w-md"
+          }`}
+        >
           {individuo.fotos.map((foto, i) => (
             <figure key={i}>
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-costa-100">
