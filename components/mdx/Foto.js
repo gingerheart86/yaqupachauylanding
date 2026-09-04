@@ -37,7 +37,7 @@ export function Foto({ src, alt, epigrafe, credito, ancho = "normal", width = 12
             </span>
           )}
           {epigrafe}
-          {credito && <span> · {credito}</span>}
+          {credito && <span>{epigrafe ? " · " : ""}{credito}</span>}
         </figcaption>
       )}
     </figure>
