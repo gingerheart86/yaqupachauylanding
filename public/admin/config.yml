@@ -263,6 +263,7 @@ collections:
     create: true
     fields:
       - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "orden", label: "Orden en la grilla", widget: "number", default: 0, hint: "Menor primero. Define el orden de la colección, no el nombre del archivo." }
       - { name: "tapa", label: "Tapa", widget: "image" }
       - { name: "sinopsis", label: "Sinopsis", widget: "text", required: false, hint: "Vacío hasta que se cargue - no se inventa." }
       - { name: "edad", label: "Edad recomendada", widget: "string", required: false }
