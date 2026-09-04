@@ -23,7 +23,7 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title: "La tonina, el delfín de la costa uruguaya",
     description:
-      "Qué es la tonina (Tursiops truncatus gephyreus), el delfín costero de Uruguay: dónde vive, cuántos quedan, cómo se comunica y por qué está en peligro.",
+      "Quién es la tonina (Tursiops truncatus gephyreus), el delfín costero de Uruguay: dónde vive, cuántos quedan, cómo se comunica y por qué está en peligro.",
     alternates,
   };
 }

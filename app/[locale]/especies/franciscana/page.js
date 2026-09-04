@@ -21,7 +21,7 @@ export function generateMetadata({ params: { locale } }) {
   return {
     title: "Franciscana, el delfín del Río de la Plata",
     description:
-      "Qué es la franciscana (Pontoporia blainvillei): una de las cinco especies de delfines de río del mundo, y una de las más amenazadas. Distribución, biología y capturas incidentales.",
+      "Quién es la franciscana (Pontoporia blainvillei): una de las cinco especies de delfines de río del mundo, y una de las más amenazadas. Distribución, biología y capturas incidentales.",
     alternates,
   };
 }
