@@ -17,8 +17,8 @@ export function generateMetadata({ params: { locale } }) {
     };
   }
   return {
-    title: "Súmate como voluntaria",
-    description: "Súmate como voluntaria a Yaqu Pacha Uruguay.",
+    title: "Súmate como voluntario/a",
+    description: "Súmate como voluntario/a a Yaqu Pacha Uruguay.",
     alternates,
   };
 }
