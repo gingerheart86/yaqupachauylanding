@@ -26,7 +26,10 @@ export default function TarjetaArticulo({ articulo, locale = "es" }) {
   }
 
   return (
-    <div className="overflow-hidden rounded-lg border-[0.5px] border-marca-grafito/20">
+    <div
+      id={articulo.slug}
+      className="overflow-hidden rounded-lg border-[0.5px] border-marca-grafito/20 scroll-mt-24"
+    >
       <div className="relative aspect-[4/3] w-full bg-costa-100">
         {articulo.fotos[0]?.src && (
           <Image

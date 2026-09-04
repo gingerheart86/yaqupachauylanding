@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Section, PageHeader } from "../../../../../../components/ui";
 import { getIndividuo, getSlugsDeProyecto } from "../../../../../../lib/catalogo";
-import { getLibroPorCodigoCatalogo } from "../../../../../../lib/libros";
+import { getLibrosPorCodigoCatalogo } from "../../../../../../lib/libros";
 import { PROYECTOS_CON_CATALOGO } from "../../../../../../lib/proyectos-catalogo";
 import { alternatesPara } from "../../../../../../lib/i18n";
 import { fechaLegible } from "../../../../../../lib/noticias";
@@ -35,7 +35,7 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
   const individuo = getIndividuo(proyecto, codigo);
   if (!info || !individuo) notFound();
   const esIngles = locale === "en";
-  const libro = individuo.codigo ? getLibroPorCodigoCatalogo(individuo.codigo) : null;
+  const libros = individuo.codigo ? getLibrosPorCodigoCatalogo(individuo.codigo) : [];
 
   return (
     <Section fondo="claro">
@@ -134,14 +134,17 @@ export default function Page({ params: { locale, proyecto, codigo } }) {
           )}
         </dl>
 
-        {libro && (
-          <p className="text-sm">
-            <Link
-              href={`/es/educacion/libros/${libro.slug}`}
-              className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
-            >
-              {esIngles ? "Also stars in a book" : "También es protagonista de un libro"} →
-            </Link>
+        {libros.length > 0 && (
+          <p className="text-sm space-x-3">
+            {libros.map((libro) => (
+              <Link
+                key={libro.slug}
+                href={`/es/educacion/libros/${libro.slug}`}
+                className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+              >
+                {esIngles ? "Also stars in" : "También es protagonista de"} «{libro.titulo}» →
+              </Link>
+            ))}
           </p>
         )}
       </div>

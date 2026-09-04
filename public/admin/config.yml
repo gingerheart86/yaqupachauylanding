@@ -264,12 +264,18 @@ collections:
     fields:
       - { name: "titulo", label: "Título", widget: "string" }
       - { name: "tapa", label: "Tapa", widget: "image" }
-      - { name: "sinopsis", label: "Sinopsis", widget: "text" }
+      - { name: "sinopsis", label: "Sinopsis", widget: "text", required: false, hint: "Vacío hasta que se cargue - no se inventa." }
       - { name: "edad", label: "Edad recomendada", widget: "string", required: false }
       - { name: "guion", label: "Guion", widget: "string", default: "Silvia Soler" }
       - { name: "ilustraciones", label: "Ilustraciones", widget: "string", default: "Yez" }
       - { name: "editorial", label: "Editorial", widget: "string", default: "Krakatoa" }
-      - { name: "catalogo", label: "Individuo del catálogo", widget: "string", required: false, hint: "Código si el protagonista es un individuo real. Ej: URU#001" }
+      - name: "catalogo"
+        label: "Individuos del catálogo"
+        widget: "list"
+        required: false
+        hint: "Uno por cada protagonista real del libro. Código tal cual, ej: URU#001. Vacío si los personajes no son individuos identificados."
+        fields:
+          - { name: "codigo", label: "Código", widget: "string" }
       - { name: "disponible", label: "Disponible para la venta", widget: "boolean", default: true }
 
   - name: "catalogo"
@@ -313,7 +319,6 @@ collections:
         hint: "Vacío si no se conoce. No se muestra si está vacío."
       - { name: "muerto", label: "Registrado muerto", widget: "boolean", default: false, hint: "Marcar SOLO si se encontró el animal muerto. Dejar de verse no es evidencia de muerte. La ficha sigue publicada; no se muestra causa de muerte." }
       - { name: "arcgis_id", label: "ID en la capa de ArcGIS", widget: "string", required: false }
-      - { name: "libro", label: "Libro donde aparece", widget: "string", required: false, hint: "Slug del libro. Ej: muescagrande-la-tonina" }
       - { name: "publicado", label: "Visible en el sitio", widget: "boolean", default: true, hint: "Desmarcar mientras se confirma la identificación." }
 
   - name: "tienda"

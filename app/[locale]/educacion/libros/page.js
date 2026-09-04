@@ -63,7 +63,7 @@ export default function Page() {
               href={`/es/educacion/libros/${libro.slug}`}
               className={`block overflow-hidden rounded-lg border-[0.5px] border-marca-grafito/20 bg-white ${FOCUS_RING}`}
             >
-              <div className="relative aspect-[2/3] w-full bg-costa-100">
+              <div className="relative aspect-square w-full bg-costa-100">
                 {libro.tapa && (
                   <Image
                     src={libro.tapa}
@@ -72,6 +72,11 @@ export default function Page() {
                     className="object-cover"
                     sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
                   />
+                )}
+                {!libro.disponible && (
+                  <span className="absolute top-2 right-2 rounded-full bg-mar-900/80 px-2 py-0.5 text-xs font-semibold text-white">
+                    Próximamente
+                  </span>
                 )}
               </div>
               <div className="p-3">

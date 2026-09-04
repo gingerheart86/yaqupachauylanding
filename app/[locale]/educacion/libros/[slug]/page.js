@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { Section } from "../../../../../components/ui";
 import { getLibro, getLibros } from "../../../../../lib/libros";
 import { getIndividuoPorCodigo } from "../../../../../lib/catalogo";
+import { getArticulo } from "../../../../../lib/tienda";
 import { alternatesPara } from "../../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -27,7 +28,13 @@ const FOCUS_RING =
 export default function Page({ params: { slug } }) {
   const libro = getLibro(slug);
   if (!libro) notFound();
-  const individuo = libro.catalogo ? getIndividuoPorCodigo(libro.catalogo) : null;
+  const individuos = libro.catalogo
+    .map((codigo) => getIndividuoPorCodigo(codigo))
+    .filter(Boolean);
+  // El slug del libro y el del articulo de la tienda son el mismo
+  // texto por convencion - si todavia no existe ese articulo, no hay
+  // boton de compra en vez de uno que no lleva a ningun lado.
+  const articulo = libro.disponible ? getArticulo(libro.slug) : null;
 
   return (
     <Section fondo="claro">
@@ -41,7 +48,7 @@ export default function Page({ params: { slug } }) {
       </p>
 
       <div className="mt-8 max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-[240px_1fr] gap-8">
-        <div className="relative aspect-[2/3] w-full max-w-xs mx-auto sm:mx-0 overflow-hidden rounded-lg bg-costa-100">
+        <div className="relative aspect-square w-full max-w-xs mx-auto sm:mx-0 overflow-hidden rounded-lg bg-costa-100">
           {libro.tapa && (
             <Image
               src={libro.tapa}
@@ -50,6 +57,11 @@ export default function Page({ params: { slug } }) {
               className="object-cover"
               sizes="240px"
             />
+          )}
+          {!libro.disponible && (
+            <span className="absolute top-2 right-2 rounded-full bg-mar-900/80 px-3 py-1 text-xs font-semibold text-white">
+              Próximamente
+            </span>
           )}
         </div>
 
@@ -73,22 +85,34 @@ export default function Page({ params: { slug } }) {
             </div>
           </dl>
 
-          {individuo && (
-            <p className="mt-4">
-              <Link
-                href={`/es/investigacion/${individuo.proyecto}/catalogo/${individuo.slug}`}
-                className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
-              >
-                Conoce a {libro.catalogo} en el catálogo de individuos →
-              </Link>
+          {individuos.length > 0 && (
+            <p className="mt-4 space-x-3">
+              {individuos.map((individuo) => (
+                <Link
+                  key={individuo.slug}
+                  href={`/es/investigacion/${individuo.proyecto}/catalogo/${individuo.slug}`}
+                  className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+                >
+                  Conoce a {individuo.nombre} en el catálogo →
+                </Link>
+              ))}
             </p>
           )}
 
-          {!libro.disponible && (
+          {!libro.disponible ? (
             <p className="mt-4 text-sm text-marca-grafito">
-              Por ahora no está disponible para la venta.
+              Próximamente. Todavía no está publicado.
             </p>
-          )}
+          ) : articulo ? (
+            <p className="mt-4">
+              <Link
+                href={`/es/tienda#${articulo.slug}`}
+                className={`inline-block rounded-md bg-marca-oscuro px-4 py-2 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+              >
+                Comprarlo en la Yaqutienda
+              </Link>
+            </p>
+          ) : null}
         </div>
       </div>
     </Section>
