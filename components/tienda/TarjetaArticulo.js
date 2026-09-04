@@ -2,13 +2,18 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useCarrito } from "../../lib/carrito";
 import { formatearPrecio } from "../../lib/tienda-utils";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
 
-export default function TarjetaArticulo({ articulo, locale = "es" }) {
+// libro: la ficha de content/libros con el mismo slug, si el
+// articulo es uno de los libros (se resuelve en el server, page.js -
+// este componente es "use client" y no puede leer content/ con fs).
+// Ahi vive la sinopsis y los creditos; la tienda no los duplica.
+export default function TarjetaArticulo({ articulo, locale = "es", libro = null }) {
   const esIngles = locale === "en";
   const { agregar } = useCarrito();
   const [variante, setVariante] = useState(articulo.variantes[0] ?? null);
@@ -50,6 +55,14 @@ export default function TarjetaArticulo({ articulo, locale = "es" }) {
         <h3 className="font-semibold text-mar-800">{articulo.nombre}</h3>
         {articulo.descripcion && (
           <p className="mt-1 text-sm text-texto">{articulo.descripcion}</p>
+        )}
+        {libro && (
+          <Link
+            href={`/es/educacion/libros/${libro.slug}`}
+            className={`mt-1 inline-block text-sm text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+          >
+            {esIngles ? "About this book" : "Sobre este libro"}
+          </Link>
         )}
         <p className="mt-2 font-semibold text-mar-800">
           $U {formatearPrecio(articulo.precio)}

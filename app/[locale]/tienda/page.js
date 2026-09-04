@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Section, PageHeader } from "../../../components/ui";
 import TarjetaArticulo from "../../../components/tienda/TarjetaArticulo";
 import { getArticulos, getCategorias } from "../../../lib/tienda";
+import { getLibro } from "../../../lib/libros";
 import { alternatesPara } from "../../../lib/i18n";
 
 // Solo espanol - seccion 3 del doc de fase 3 bloque 1.
@@ -71,7 +72,12 @@ export default function Page({ params: { locale }, searchParams }) {
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {articulos.map((a) => (
-          <TarjetaArticulo key={a.slug} articulo={a} locale={locale} />
+          <TarjetaArticulo
+            key={a.slug}
+            articulo={a}
+            locale={locale}
+            libro={a.categoria === "Libros" ? getLibro(a.slug) : null}
+          />
         ))}
       </div>
     </Section>
