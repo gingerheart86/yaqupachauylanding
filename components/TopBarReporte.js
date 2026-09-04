@@ -36,7 +36,7 @@ export default function TopBarReporte({ locale = "es" }) {
           </a>
           <a
             href={WHATSAPP_VARAMIENTOS}
-            className={`inline-flex items-center gap-1.5 rounded-full bg-acento-medusa px-3 py-1 font-medium text-texto hover:bg-acento-medusa/80 ${FOCUS_RING}`}
+            className={`inline-flex items-center gap-1.5 rounded-full bg-acento-medusa px-3 py-1 font-medium text-black hover:bg-acento-medusa/80 ${FOCUS_RING}`}
           >
             <ExclamationTriangleIcon className="h-4 w-4" aria-hidden="true" />
             {dict.common.reportarVaramiento}

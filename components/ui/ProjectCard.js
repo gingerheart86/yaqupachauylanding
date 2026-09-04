@@ -42,7 +42,7 @@ export function ProjectCardCompacta({ href, title, description, oscuro = false }
         href={href}
         className={`block rounded-lg border-[0.5px] border-white/20 p-5 hover:bg-white/10 ${FOCUS_RING}`}
       >
-        <h3 className="font-semibold text-white">{title}</h3>
+        <h2 className="font-semibold text-white">{title}</h2>
         {description && (
           <p className="mt-1 text-sm text-mar-100">{description}</p>
         )}
@@ -55,7 +55,7 @@ export function ProjectCardCompacta({ href, title, description, oscuro = false }
       href={href}
       className={`block rounded-lg border-[0.5px] border-marca-grafito/20 p-5 hover:bg-costa-100 ${FOCUS_RING}`}
     >
-      <h3 className="font-semibold text-mar-800">{title}</h3>
+      <h2 className="font-semibold text-mar-800">{title}</h2>
       {description && (
         <p className="mt-1 text-sm text-texto">{description}</p>
       )}

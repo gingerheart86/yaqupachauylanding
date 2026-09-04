@@ -55,7 +55,7 @@ function Tarjeta({ silueta, titulo, nota, href, notaDestino }) {
           className="h-10 w-auto"
         />
       </div>
-      <h3 className="mt-4 font-semibold text-mar-800">{titulo}</h3>
+      <h2 className="mt-4 font-semibold text-mar-800">{titulo}</h2>
       {notaDestino && (
         <p className="mt-1 text-xs text-marca-grafito">{notaDestino}</p>
       )}

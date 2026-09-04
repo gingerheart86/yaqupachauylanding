@@ -52,7 +52,7 @@ export default function TarjetaArticulo({ articulo, locale = "es", libro = null 
         )}
       </div>
       <div className="p-4">
-        <h3 className="font-semibold text-mar-800">{articulo.nombre}</h3>
+        <h2 className="font-semibold text-mar-800">{articulo.nombre}</h2>
         {articulo.descripcion && (
           <p className="mt-1 text-sm text-texto">{articulo.descripcion}</p>
         )}

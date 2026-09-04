@@ -31,6 +31,7 @@ export default function HeroVideo({ children }) {
           src="/video/hero-costa-poster.jpg"
           alt="Vista aérea de tres toninas nadando cerca de la costa"
           className="absolute inset-0 h-full w-full object-cover"
+          fetchPriority="high"
         />
       )}
       <div className="absolute inset-0 bg-mar-900/45" aria-hidden="true" />

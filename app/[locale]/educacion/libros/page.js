@@ -80,7 +80,7 @@ export default function Page() {
                 )}
               </div>
               <div className="p-3">
-                <h3 className="text-sm font-semibold text-mar-800">{libro.titulo}</h3>
+                <h2 className="text-sm font-semibold text-mar-800">{libro.titulo}</h2>
                 {libro.sinopsis && (
                   <p className="mt-1 text-xs text-texto line-clamp-2">{libro.sinopsis}</p>
                 )}

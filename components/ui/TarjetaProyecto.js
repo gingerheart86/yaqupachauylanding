@@ -14,6 +14,7 @@ export default function TarjetaProyecto({
   description,
   silueta,
   destacada = false,
+  nivel: Nivel = "h3",
 }) {
   return (
     <Link
@@ -36,13 +37,13 @@ export default function TarjetaProyecto({
         />
       )}
       <div className="relative">
-        <h3
+        <Nivel
           className={`font-semibold text-white ${
             destacada ? "text-2xl sm:text-3xl" : "text-lg"
           }`}
         >
           {title}
-        </h3>
+        </Nivel>
         {description && (
           <p
             className={`mt-2 text-mar-100 ${

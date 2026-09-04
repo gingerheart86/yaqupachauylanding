@@ -38,6 +38,7 @@ export default function Home({ params: { locale } }) {
       />
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4">
         <TarjetaProyecto
+          nivel="h2"
           destacada
           href={`/${locale}/investigacion/toninas`}
           title="Proyecto Toninas"
@@ -49,6 +50,7 @@ export default function Home({ params: { locale } }) {
           }
         />
         <TarjetaProyecto
+          nivel="h2"
           href={`/${locale}/investigacion/gephyreus`}
           title="Proyecto Gephyreus"
           silueta={SILUETAS.tonina}
@@ -59,6 +61,7 @@ export default function Home({ params: { locale } }) {
           }
         />
         <TarjetaProyecto
+          nivel="h2"
           href={`/${locale}/investigacion/varamientos`}
           title="Red Nacional de Varamientos"
           description={
@@ -68,6 +71,7 @@ export default function Home({ params: { locale } }) {
           }
         />
         <TarjetaProyecto
+          nivel="h2"
           href={`/${locale}/investigacion/identidad-franca`}
           title="Identidad Franca"
           silueta={SILUETAS["ballena-franca"]}

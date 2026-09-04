@@ -141,7 +141,7 @@ export default function Page() {
               />
             </div>
             <div className="p-5">
-              <h3 className="font-semibold text-mar-800">{r.titulo}</h3>
+              <h2 className="font-semibold text-mar-800">{r.titulo}</h2>
               <p className="mt-1 text-sm text-texto">{r.descripcion}</p>
               <div className="mt-3 flex flex-col gap-2">
                 {r.descargas.map((d) => (
@@ -155,7 +155,7 @@ export default function Page() {
                       <ArrowDownTrayIcon className="h-4 w-4" aria-hidden="true" />
                       {d.label}
                     </span>
-                    <span className="text-xs text-mar-100">
+                    <span className="text-xs text-white">
                       {d.formato} · {d.peso}
                     </span>
                   </a>
