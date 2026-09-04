@@ -150,7 +150,7 @@ export default function Page({ searchParams }) {
         {claves.map((clave) => (
           <div key={clave}>
             <h2 className="text-xl font-semibold text-mar-800 border-b border-marca-grafito/20 pb-2">
-              {clave === "sin-fecha" ? "Sin fecha confirmada" : clave}
+              {clave === "sin-fecha" ? "Anteriores" : clave}
             </h2>
             <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {porAnio.get(clave).map((entrada) => {
