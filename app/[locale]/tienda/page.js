@@ -13,7 +13,7 @@ export const dynamicParams = false;
 
 export const metadata = {
   title: "Tienda",
-  description: "Compra los libros y productos de Proyecto Toninas.",
+  description: "Compra los libros y productos de Yaqu Pacha Uruguay.",
   alternates: alternatesPara("tienda", { soloEs: true }),
 };
 
@@ -30,7 +30,7 @@ export default function Page({ params: { locale }, searchParams }) {
     <Section fondo="claro">
       <PageHeader
         title="Yaqutienda"
-        description="Los libros y productos de Proyecto Toninas. El pedido se coordina por WhatsApp, no hay pago en línea."
+        description="Los libros y productos de Yaqu Pacha Uruguay. El pedido se coordina por WhatsApp, no hay pago en línea."
       />
 
       <p className="mt-4 text-center text-sm">
