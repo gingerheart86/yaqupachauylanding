@@ -58,7 +58,7 @@ export default function Page({ params: { locale } }) {
             <p className="text-texto">
               {esIngles
                 ? "Our own form is on its way. Meanwhile, use this form to sign up:"
-                : "Nuestro formulario propio está en camino. Mientras tanto, súmate con este:"}
+                : "Mientras tanto, súmate con este:"}
             </p>
             <a
               href={FORMULARIO_GOOGLE}
