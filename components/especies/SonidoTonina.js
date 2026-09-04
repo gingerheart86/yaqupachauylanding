@@ -7,9 +7,7 @@ const FOCUS_RING =
 // Ilustracion de Yez ("Las toninas silban", de El Sonido de las
 // Toninas) + reproductor del silbido real. preload="none": que el
 // audio no se descargue hasta que alguien lo pida, y nunca autoplay -
-// docs/panel-completo.md. La descripcion textual del sonido no es
-// solo para quien no oye: tambien sirve para quien esta en un lugar
-// donde no puede poner sonido.
+// docs/panel-completo.md.
 export function SonidoTonina({ locale = "es" }) {
   const esIngles = locale === "en";
 
@@ -41,12 +39,6 @@ export function SonidoTonina({ locale = "es" }) {
             ? "Your browser can't play this audio."
             : "Tu navegador no puede reproducir este audio."}
         </audio>
-
-        <p className="mt-2 text-sm text-marca-grafito">
-          {esIngles
-            ? "A sharp, modulated whistle that lasts less than a second."
-            : "Un silbido agudo y modulado, que dura menos de un segundo."}
-        </p>
 
         <p className="mt-4 text-sm">
           <Link
