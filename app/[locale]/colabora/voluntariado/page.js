@@ -55,11 +55,11 @@ export default function Page({ params: { locale } }) {
           />
         ) : (
           <div className="rounded-lg border-[0.5px] border-marca-grafito/20 bg-costa-100 p-6 text-center">
-            <p className="text-texto">
-              {esIngles
-                ? "Our own form is on its way. Meanwhile, use this form to sign up:"
-                : "Mientras tanto, súmate con este:"}
-            </p>
+            {esIngles && (
+              <p className="text-texto">
+                Our own form is on its way. Meanwhile, use this form to sign up:
+              </p>
+            )}
             <a
               href={FORMULARIO_GOOGLE}
               target="_blank"
