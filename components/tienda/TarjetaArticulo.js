@@ -16,8 +16,12 @@ const FOCUS_RING =
 export default function TarjetaArticulo({ articulo, locale = "es", libro = null }) {
   const esIngles = locale === "en";
   const { agregar } = useCarrito();
-  const [variante, setVariante] = useState(articulo.variantes[0] ?? null);
+  // Sin variante preseleccionada cuando hay talles: quien compra
+  // tiene que elegir a proposito, no llevarse el primero de la lista
+  // sin darse cuenta. Sin variantes (los libros) sigue siendo null.
+  const [variante, setVariante] = useState(articulo.variantes.length > 0 ? "" : null);
   const [agregado, setAgregado] = useState(false);
+  const faltaElegirVariante = articulo.variantes.length > 0 && !variante;
 
   function handleAgregar() {
     agregar({
@@ -73,8 +77,12 @@ export default function TarjetaArticulo({ articulo, locale = "es", libro = null 
             value={variante ?? ""}
             onChange={(e) => setVariante(e.target.value)}
             disabled={!articulo.disponible}
+            aria-label={esIngles ? "Size" : "Talle"}
             className={`mt-2 w-full rounded-md border-[0.5px] border-marca-grafito/30 px-3 py-1.5 text-sm ${FOCUS_RING}`}
           >
+            <option value="" disabled>
+              {esIngles ? "Choose a size" : "Elegí un talle"}
+            </option>
             {articulo.variantes.map((v) => (
               <option key={v} value={v}>
                 {v}
@@ -85,9 +93,9 @@ export default function TarjetaArticulo({ articulo, locale = "es", libro = null 
 
         <button
           onClick={handleAgregar}
-          disabled={!articulo.disponible}
+          disabled={!articulo.disponible || faltaElegirVariante}
           className={`mt-3 w-full rounded-md px-4 py-2 text-sm font-medium ${FOCUS_RING} ${
-            articulo.disponible
+            articulo.disponible && !faltaElegirVariante
               ? "bg-marca-oscuro text-white hover:bg-marca-oscuro/90"
               : "bg-costa-100 text-marca-grafito cursor-not-allowed"
           }`}

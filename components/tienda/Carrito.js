@@ -14,7 +14,7 @@ const FOCUS_RING =
 function armarMensaje(items, total) {
   const lineas = items.map(
     (it) =>
-      `· ${it.nombre}${it.variante ? ` ${it.variante}` : ""} — ${it.cantidad} — $${formatearPrecio(it.precio * it.cantidad)}`
+      `· ${it.nombre}${it.variante ? ` — talle ${it.variante}` : ""} — ${it.cantidad} — $${formatearPrecio(it.precio * it.cantidad)}`
   );
   return `Hola, quiero hacer este pedido de la Yaqutienda:\n\n${lineas.join("\n")}\n\nTotal: $${formatearPrecio(total)}`;
 }
@@ -61,7 +61,7 @@ export default function Carrito({ locale = "es" }) {
             <div className="flex-1">
               <p className="font-medium text-mar-800">
                 {it.nombre}
-                {it.variante && <span className="text-marca-grafito"> — {it.variante}</span>}
+                {it.variante && <span className="text-marca-grafito"> — talle {it.variante}</span>}
               </p>
               <p className="text-sm text-marca-grafito">$U {formatearPrecio(it.precio)} c/u</p>
             </div>
