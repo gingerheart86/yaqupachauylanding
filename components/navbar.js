@@ -141,7 +141,7 @@ export default function Navbar({ locale = "es" }) {
             <CerrarAlNavegar close={close} />
             <div className=" max-w-7xl px-2 sm:px-6 lg:px-8 mx-auto">
               <div className="relative flex h-20 items-center justify-between">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                <div className="absolute inset-y-0 left-0 flex items-center xl:hidden">
                   {/* Mobile menu button*/}
                   <DisclosureButton
                     className={classNames(
@@ -157,7 +157,7 @@ export default function Navbar({ locale = "es" }) {
                     )}
                   </DisclosureButton>
                 </div>
-                <div className="flex flex-shrink-0 items-center justify-end w-full sm:w-auto sm:justify-start">
+                <div className="flex flex-shrink-0 items-center justify-end w-full xl:w-auto xl:justify-start">
                   <Link href={`/${locale}`} className={FOCUS_RING}>
                     <Image
                       src="/logo2.png"
@@ -170,8 +170,8 @@ export default function Navbar({ locale = "es" }) {
                   </Link>
                 </div>
 
-                <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center">
-                  <div className="hidden sm:ml-6 sm:block">
+                <div className="flex flex-1 items-center justify-center xl:items-stretch xl:justify-center">
+                  <div className="hidden xl:ml-6 xl:block">
                     <div className="flex items-center space-x-6">
                       {ramas.map((rama) => {
                         if (!rama.children) {
@@ -257,7 +257,7 @@ export default function Navbar({ locale = "es" }) {
               </div>
             </div>
 
-            <DisclosurePanel className="sm:hidden">
+            <DisclosurePanel className="xl:hidden">
               <div className="space-y-1 px-2 pt-2 pb-3">
                 {ramas.map((rama) => {
                   if (!rama.children) {

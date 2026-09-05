@@ -74,49 +74,49 @@ export default function Home({ params: { locale } }) {
             Catalogue photo examples
           </h2>
           <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
-            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+            <div className="relative aspect-square w-full mt-2">
               <Image
                 src="/toninas/1.webp"
                 alt="Tonina dorsal-fin identification photo"
                 fill
                 className="object-cover"
-                sizes="13rem"
+                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
               />
             </div>
-            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+            <div className="relative aspect-square w-full mt-2">
               <Image
                 src="/toninas/aletas1.webp"
                 alt="Tonina dorsal-fin identification photo"
                 fill
                 className="object-cover"
-                sizes="13rem"
+                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
               />
             </div>
-            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+            <div className="relative aspect-square w-full mt-2">
               <Image
                 src="/toninas/3.webp"
                 alt="Tonina dorsal-fin identification photo"
                 fill
                 className="object-cover"
-                sizes="13rem"
+                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
               />
             </div>
-            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+            <div className="relative aspect-square w-full mt-2">
               <Image
                 src="/toninas/aletas2.webp"
                 alt="Tonina dorsal-fin identification photo"
                 fill
                 className="object-cover"
-                sizes="13rem"
+                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
               />
             </div>
-            <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+            <div className="relative aspect-square w-full mt-2">
               <Image
                 src="/toninas/aletas3.webp"
                 alt="Tonina dorsal-fin identification photo"
                 fill
                 className="object-cover"
-                sizes="13rem"
+                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
               />
             </div>
           </div>
@@ -200,49 +200,49 @@ export default function Home({ params: { locale } }) {
           Ejemplo de fotos del catálogo
         </h2>
         <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
-          <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+          <div className="relative aspect-square w-full mt-2">
             <Image
               src="/toninas/1.webp"
               alt="Foto de identificación de aleta de tonina"
               fill
               className="object-cover"
-              sizes="13rem"
+              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
             />
           </div>
-          <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+          <div className="relative aspect-square w-full mt-2">
             <Image
               src="/toninas/aletas1.webp"
               alt="Foto de identificación de aleta de tonina"
               fill
               className="object-cover"
-              sizes="13rem"
+              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
             />
           </div>
-          <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+          <div className="relative aspect-square w-full mt-2">
             <Image
               src="/toninas/3.webp"
               alt="Foto de identificación de aleta de tonina"
               fill
               className="object-cover"
-              sizes="13rem"
+              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
             />
           </div>
-          <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+          <div className="relative aspect-square w-full mt-2">
             <Image
               src="/toninas/aletas2.webp"
               alt="Foto de identificación de aleta de tonina"
               fill
               className="object-cover"
-              sizes="13rem"
+              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
             />
           </div>
-          <div className="relative h-44 w-44 sm:w-52 sm:h-52 mt-2">
+          <div className="relative aspect-square w-full mt-2">
             <Image
               src="/toninas/aletas3.webp"
               alt="Foto de identificación de aleta de tonina"
               fill
               className="object-cover"
-              sizes="13rem"
+              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
             />
           </div>
         </div>
