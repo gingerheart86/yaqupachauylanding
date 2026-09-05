@@ -40,9 +40,16 @@ export default function Page({ params: { locale, proyecto } }) {
   const nombreProyecto = esIngles ? info.nombre_en : info.nombre;
   const individuos = getIndividuos(proyecto);
 
+  // catalogo es una lista de codigos (un libro puede tener mas de un
+  // protagonista real, y un individuo puede aparecer en mas de un
+  // libro - Muescagrande esta en dos) - se arma codigo -> lista de
+  // libros, no un solo slug por codigo.
   const librosPorCodigo = {};
   for (const libro of getLibros()) {
-    if (libro.catalogo) librosPorCodigo[libro.catalogo] = libro.slug;
+    for (const codigo of libro.catalogo) {
+      if (!librosPorCodigo[codigo]) librosPorCodigo[codigo] = [];
+      librosPorCodigo[codigo].push({ slug: libro.slug, titulo: libro.titulo });
+    }
   }
 
   return (

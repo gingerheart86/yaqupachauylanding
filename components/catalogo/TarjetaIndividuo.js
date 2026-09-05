@@ -183,7 +183,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                 movio arriba a la izquierda) para que un nombre largo
                 como Muescagrande nunca compita por espacio con un
                 boton, sea cual sea el ancho de la tarjeta. */}
-            <div className="absolute inset-x-2 bottom-2 flex justify-center">
+            <div className="absolute inset-x-1 bottom-2 flex justify-center">
               <span
                 className="inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-sm bg-mar-800 px-[13.8px] py-[4.6px] text-[13.8px] font-normal text-white"
                 title={individuo.nombre}
@@ -196,10 +196,15 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
           {/* Dorso: estampilla, codigo, nombre, lugar, ver historia -
               no existe si no hay nada que mostrar en el (sin
               estampilla ni historia no hay boton de girar que lleve
-              hasta aca, pero tampoco se monta el contenido). */}
+              hasta aca, pero tampoco se monta el contenido). pb-14
+              extra abajo: el contenido esta centrado verticalmente y
+              con historias largas (Muescagrande) el boton "Ver
+              historia" quedaba pegado al boton de volver, fijo en la
+              esquina inferior derecha - se reserva ese espacio en vez
+              de dejar que el centrado lo invada. */}
           {tieneReverso && (
             <div
-              className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 text-center ${MARCO}`}
+              className={`absolute inset-0 flex flex-col items-center justify-center gap-2 overflow-hidden bg-arena-200 p-4 pb-14 text-center ${MARCO}`}
               style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
               aria-hidden={!girada}
             >
@@ -228,7 +233,7 @@ export function TarjetaIndividuo({ individuo, onAbrirHistoria }) {
                   onClick={() => onAbrirHistoria(individuo)}
                   tabIndex={girada ? 0 : -1}
                   aria-label={`Ver la historia de ${individuo.nombre}`}
-                  className={`mt-1 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
+                  className={`mt-1 mr-14 flex min-h-11 items-center justify-center rounded-full bg-marca-oscuro px-4 text-sm font-medium text-white hover:bg-marca-oscuro/90 ${FOCUS_RING}`}
                 >
                   Ver historia
                 </button>

@@ -32,7 +32,7 @@ const UMBRAL_CIERRE_PX = 100;
 // parrafos simples sin links/imagenes - se separa por linea en
 // blanco en vez de sumar un pipeline de MDX del lado del cliente
 // para esto.
-export function ModalHistoria({ individuo, libro, onCerrar }) {
+export function ModalHistoria({ individuo, libros = [], onCerrar }) {
   const [visible, setVisible] = useState(false);
   const [arrastreY, setArrastreY] = useState(0);
   const [arrastrando, setArrastrando] = useState(false);
@@ -179,14 +179,17 @@ export function ModalHistoria({ individuo, libro, onCerrar }) {
             )}
           </div>
 
-          {libro && (
-            <p className="mt-4 border-t border-marca-grafito/10 pt-4 text-sm">
-              <Link
-                href={`/es/educacion/libros/${libro}`}
-                className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
-              >
-                {individuo.nombre} también es protagonista de un libro →
-              </Link>
+          {libros.length > 0 && (
+            <p className="mt-4 space-x-3 border-t border-marca-grafito/10 pt-4 text-sm">
+              {libros.map((libro) => (
+                <Link
+                  key={libro.slug}
+                  href={`/es/educacion/libros/${libro.slug}`}
+                  className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+                >
+                  {individuo.nombre} también es protagonista de «{libro.titulo}» →
+                </Link>
+              ))}
             </p>
           )}
         </div>

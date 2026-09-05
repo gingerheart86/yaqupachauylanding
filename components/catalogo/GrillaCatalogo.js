@@ -21,7 +21,7 @@ export function GrillaCatalogo({ individuos, librosPorCodigo }) {
       {abierto && (
         <ModalHistoria
           individuo={abierto}
-          libro={librosPorCodigo[abierto.codigo] ?? null}
+          libros={librosPorCodigo[abierto.codigo] ?? []}
           onCerrar={() => setAbierto(null)}
         />
       )}
