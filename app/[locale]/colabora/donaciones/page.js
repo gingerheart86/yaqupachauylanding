@@ -3,6 +3,7 @@ import { Section, PageHeader } from "../../../../components/ui";
 import TodoAviso from "../../../../components/TodoAviso";
 import { getPagina } from "../../../../lib/paginas";
 import { alternatesPara } from "../../../../lib/i18n";
+import { getMdxComponents } from "../../../../lib/mdx-components";
 
 // Solo espanol - seccion 3 del doc de fase 3 bloque 1.
 export async function generateStaticParams() {
@@ -25,7 +26,7 @@ export default function Page({ params: { locale } }) {
       <PageHeader title={pagina.titulo} description={pagina.intro} />
       {hayContenido ? (
         <div className="prose max-w-3xl mx-auto mt-8 text-texto [&_a]:text-marca-oscuro">
-          <MDXRemote source={pagina.content} />
+          <MDXRemote source={pagina.content} components={getMdxComponents(locale)} />
         </div>
       ) : (
         <TodoAviso locale={locale} />
