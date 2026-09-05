@@ -1,25 +1,15 @@
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { Carrusel } from "../../../../components/mdx/Carrusel";
-import { Section, PageHeader, Garabato } from "../../../../components/ui";
+import { Section, PageHeader, ProjectCardCompacta } from "../../../../components/ui";
 import { alternatesPara } from "../../../../lib/i18n";
-import { getContenidoProyecto } from "../../../../lib/contenido-proyectos";
+import { getContenidoProyecto, getLineasDeTrabajo } from "../../../../lib/contenido-proyectos";
 import { getMdxComponents } from "../../../../lib/mdx-components";
 
-// Mismas 8 fotos que tenia components/imagegallery.js (react-image-gallery,
-// sin alto fijo - saltaba de layout al cambiar de imagen). docs/correcciones-revision-local.md
-// punto 2.
-const FOTOS_GALERIA = [
-  { src: "/proytoninas/5.webp", alt: "Foto del Proyecto Toninas" },
-  { src: "/proytoninas/1.webp", alt: "Foto del Proyecto Toninas" },
-  { src: "/proytoninas/2.webp", alt: "Foto del Proyecto Toninas" },
-  { src: "/proytoninas/3.webp", alt: "Foto del Proyecto Toninas" },
-  { src: "/proytoninas/4.webp", alt: "Foto del Proyecto Toninas" },
-  { src: "/toninas/4.webp", alt: "Tonina en la costa uruguaya" },
-  { src: "/toninas/5.webp", alt: "Tonina en la costa uruguaya" },
-  { src: "/toninas/6.webp", alt: "Tonina en la costa uruguaya" },
-];
-
+// Proyecto Toninas es el proyecto "padre": empezo antes y Centinelas
+// de la Costa fue una de sus lineas de trabajo, no un proyecto al
+// mismo nivel - docs de esta ronda. Las lineas de trabajo salen de
+// content/proyectos/*.mdx con proyecto_padre: "toninas", no estan
+// escritas a mano aca, para poder sumar mas sin tocar este archivo.
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
 }
@@ -28,25 +18,26 @@ export function generateMetadata({ params: { locale } }) {
   const alternates = alternatesPara("investigacion/toninas");
   if (locale === "en") {
     return {
-      title: "Toninas Centinelas de la Costa",
+      title: "Proyecto Toninas",
       description:
-        "The project that has studied toninas in La Paloma, Cabo Polonio and Cerro Verde since 2002.",
+        "The project that has studied toninas on the Uruguayan coast since 2002.",
       alternates,
     };
   }
   return {
-    title: "Toninas, centinelas de la costa",
+    title: "Proyecto Toninas",
     description:
-      "El proyecto que estudia a las toninas en La Paloma, Cabo Polonio y Cerro Verde desde 2002, y trabaja en educación ambiental con las comunidades de la costa de Rocha.",
+      "El proyecto que estudia a las toninas en la costa uruguaya desde 2002.",
     alternates,
   };
 }
 
-export default function Home({ params: { locale } }) {
+export default function Page({ params: { locale } }) {
   const esIngles = locale === "en";
   const proyecto = getContenidoProyecto("toninas");
   const nombre = esIngles ? proyecto.nombre_en : proyecto.nombre;
   const cuerpo = esIngles ? proyecto.body_en : proyecto.content;
+  const lineas = getLineasDeTrabajo("toninas");
 
   return (
     <Section fondo="claro">
@@ -65,14 +56,43 @@ export default function Home({ params: { locale } }) {
         <MDXRemote source={cuerpo} components={getMdxComponents(locale)} />
       </div>
 
-      <div className="mt-8 flex justify-center">
-        <Garabato numero={4} registro="alto" width={90} />
-      </div>
-      <h2 className="mt-4 block text-center text-3xl font-semibold tracking-tight text-mar-800 sm:text-3xl">
-        {esIngles ? "Photo gallery" : "Galería de fotos"}
-      </h2>
-      <div className="max-w-5xl w-full mx-auto">
-        <Carrusel imagenes={FOTOS_GALERIA} />
+      {lineas.length > 0 && (
+        <div className="mt-12">
+          <h2 className="text-2xl font-semibold tracking-tight text-mar-800">
+            {esIngles ? "Lines of work" : "Líneas de trabajo"}
+          </h2>
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {lineas.map((linea) => (
+              <ProjectCardCompacta
+                key={linea.slug}
+                href={`/${locale}/investigacion/toninas/${linea.slug}`}
+                title={esIngles ? linea.nombre_en || linea.nombre : linea.nombre}
+                description={esIngles ? linea.resumen_en : linea.resumen}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <ProjectCardCompacta
+          href={`/${locale}/investigacion/toninas/antecedentes`}
+          title={esIngles ? "Background" : "Antecedentes"}
+          description={
+            esIngles
+              ? "More than twenty years studying toninas on the Uruguayan coast."
+              : "Más de veinte años estudiando a las toninas en la costa uruguaya."
+          }
+        />
+        <ProjectCardCompacta
+          href={`/${locale}/investigacion/toninas/catalogo`}
+          title={esIngles ? "Photo-identification catalogue" : "Catálogo de foto-identificación"}
+          description={
+            esIngles
+              ? "Meet the individually identified toninas."
+              : "Conocé a las toninas identificadas individualmente."
+          }
+        />
       </div>
     </Section>
   );

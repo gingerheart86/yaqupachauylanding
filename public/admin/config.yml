@@ -173,6 +173,7 @@ collections:
         hint: "Alto solo para Proyecto Toninas, que es exclusivo de Yaqu Pacha. Los proyectos compartidos van sobrios."
       - { name: "destacado", label: "Destacado en portada", widget: "boolean", default: false }
       - { name: "orden", label: "Orden", widget: "number", default: 0 }
+      - { name: "proyecto_padre", label: "Proyecto padre", widget: "string", required: false, hint: "Slug del proyecto padre (nombre del archivo, sin .mdx). Vacío si es un proyecto de primer nivel. Ej: toninas" }
 
   - name: "publicaciones"
     label: "Publicaciones científicas"

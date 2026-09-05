@@ -36,11 +36,11 @@ export default function Page({ params: { locale } }) {
 
   const proyectosAsociados = esIngles
     ? [
-        { nombre: "Toninas Centinelas de la Costa", href: `/${locale}/investigacion/toninas` },
+        { nombre: "Proyecto Toninas", href: `/${locale}/investigacion/toninas` },
         { nombre: "Proyecto Gephyreus", href: `/${locale}/investigacion/gephyreus` },
       ]
     : [
-        { nombre: "Toninas centinelas de la costa", href: `/${locale}/investigacion/toninas` },
+        { nombre: "Proyecto Toninas", href: `/${locale}/investigacion/toninas` },
         { nombre: "Proyecto Gephyreus", href: `/${locale}/investigacion/gephyreus` },
       ];
 
