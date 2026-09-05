@@ -6,6 +6,10 @@ import {
 import { Section, PageHeader } from "../../../../components/ui";
 import { getPagina } from "../../../../lib/paginas";
 import { alternatesPara } from "../../../../lib/i18n";
+import {
+  TELEFONO_VARAMIENTOS,
+  TELEFONO_VARAMIENTOS_TEL,
+} from "../../../../lib/contacto";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -59,6 +63,19 @@ export default function Home({ params: { locale } }) {
               </div>
               <div className="ml-3 text-base text-texto">
                 <p>{pagina.email}</p>
+              </div>
+            </div>
+            <div className="mt-6 flex">
+              <div className="flex-shrink-0">
+                <PhoneIcon
+                  className="h-6 w-6 text-marca-grafito"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="ml-3 text-base text-texto">
+                <a href={`tel:${TELEFONO_VARAMIENTOS_TEL}`} className="hover:underline">
+                  {TELEFONO_VARAMIENTOS}
+                </a>
               </div>
             </div>
           </div>

@@ -145,7 +145,7 @@ export default function Navbar({ locale = "es" }) {
                   {/* Mobile menu button*/}
                   <DisclosureButton
                     className={classNames(
-                      "inline-flex items-center justify-center rounded-md p-2 text-marca-grafito hover:bg-marca-oscuro hover:text-white",
+                      "inline-flex min-h-11 min-w-11 items-center justify-center rounded-md p-2 text-marca-grafito hover:bg-marca-oscuro hover:text-white",
                       FOCUS_RING
                     )}
                   >
@@ -271,7 +271,7 @@ export default function Navbar({ locale = "es" }) {
                           isActive(href)
                             ? "bg-marca-oscuro text-white"
                             : "text-marca-oscuro hover:bg-marca-oscuro hover:text-white",
-                          "block px-3 py-2 rounded-md text-base font-medium",
+                          "flex min-h-11 items-center px-3 py-2 rounded-md text-base font-medium",
                           FOCUS_RING
                         )}
                         aria-current={isActive(href) ? "page" : undefined}
@@ -299,7 +299,7 @@ export default function Navbar({ locale = "es" }) {
                                 isActive(href)
                                   ? "bg-marca-oscuro text-white"
                                   : "text-marca-oscuro hover:bg-marca-oscuro hover:text-white",
-                                "block px-3 py-2 rounded-md text-base font-medium",
+                                "flex min-h-11 items-center px-3 py-2 rounded-md text-base font-medium",
                                 FOCUS_RING
                               )}
                               aria-current={isActive(href) ? "page" : undefined}
