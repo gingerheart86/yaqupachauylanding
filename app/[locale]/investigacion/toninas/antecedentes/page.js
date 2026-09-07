@@ -1,6 +1,9 @@
-import Image from "next/image";
+import Link from "next/link";
 import { Section, PageHeader } from "../../../../../components/ui";
 import { alternatesPara } from "../../../../../lib/i18n";
+
+const FOCUS_RING =
+  "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -59,7 +62,7 @@ export default function Home({ params: { locale } }) {
           </p>
 
           <p className="mt-8 text-base leading-8 text-texto">
-            📸 In Uruguay, more than 45 toninas have been identified
+            📸 In Uruguay, more than 50 toninas have been identified
             through photographs of natural dorsal-fin marks (Laporta 2009,
             Laporta et al. 2016, Menchaca et al. 2019). Each tonina has a
             name and a corresponding number, and they are catalogued in a
@@ -70,56 +73,14 @@ export default function Home({ params: { locale } }) {
             population, how long each individual stays in a given area,
             association preferences, calving intervals, and other data.
           </p>
-          <h2 className="text-mar-800 font-semibold text-2xl mt-4">
-            Catalogue photo examples
-          </h2>
-          <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
-            <div className="relative aspect-square w-full mt-2">
-              <Image
-                src="/toninas/1.webp"
-                alt="Tonina dorsal-fin identification photo"
-                fill
-                className="object-cover"
-                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-              />
-            </div>
-            <div className="relative aspect-square w-full mt-2">
-              <Image
-                src="/toninas/aletas1.webp"
-                alt="Tonina dorsal-fin identification photo"
-                fill
-                className="object-cover"
-                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-              />
-            </div>
-            <div className="relative aspect-square w-full mt-2">
-              <Image
-                src="/toninas/3.webp"
-                alt="Tonina dorsal-fin identification photo"
-                fill
-                className="object-cover"
-                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-              />
-            </div>
-            <div className="relative aspect-square w-full mt-2">
-              <Image
-                src="/toninas/aletas2.webp"
-                alt="Tonina dorsal-fin identification photo"
-                fill
-                className="object-cover"
-                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-              />
-            </div>
-            <div className="relative aspect-square w-full mt-2">
-              <Image
-                src="/toninas/aletas3.webp"
-                alt="Tonina dorsal-fin identification photo"
-                fill
-                className="object-cover"
-                sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-              />
-            </div>
-          </div>
+          <p className="mt-4">
+            <Link
+              href="/en/investigacion/toninas/catalogo"
+              className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+            >
+              See the photo-identification catalogue →
+            </Link>
+          </p>
           <p className="mt-8 text-base leading-8 text-texto">
             Since 2017, Proyecto Toninas has been acoustically monitoring
             tonina groups in Uruguay, aiming to build a whistle catalogue.
@@ -129,16 +90,16 @@ export default function Home({ params: { locale } }) {
             and 11 kHz, and most whistles had a minimum frequency between
             2.1 and 5.1 kHz, a maximum frequency below 12 kHz, and a
             duration under 600 ms (Menchaca 2018).
-            <div className="prose my-4">
-              <h3>🎧 Listen to a whistle</h3>
-              <audio
-                controls
-                className="my-4"
-                controlsList="nodownload noremoteplayback noplaybackrate"
-              >
-                <source src="/silbido.mp3" type="audio/mp3" />
-              </audio>
-            </div>
+          </p>
+          <p className="mt-4">
+            <Link
+              href="/en/especies/tonina"
+              className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+            >
+              Listen to a whistle on the tonina species page →
+            </Link>
+          </p>
+          <p className="mt-8 text-base leading-8 text-texto">
             In addition, a comparative whistle study together with
             colleagues from Brazil found that toninas from southern Brazil
             and Uruguay produce sounds that are more similar to each other
@@ -184,7 +145,7 @@ export default function Home({ params: { locale } }) {
         </p>
 
         <p className="mt-8 text-base leading-8 text-texto">
-          📸En Uruguay se han identificado más de 45 toninas a través de
+          📸En Uruguay se han identificado más de 50 toninas a través de
           fotografías de las marcas naturales de la aleta dorsal (Laporta
           2009, Laporta et al. 2016, Menchaca et al. 2019). Cada tonina tiene
           un nombre, su número correspondiente y están ordenadas en un 📖
@@ -196,56 +157,14 @@ export default function Home({ params: { locale } }) {
           en un área determinada, las preferencias de asociación, los
           intervalos de nacimiento de las crías, entre otros datos.
         </p>
-        <h2 className="text-mar-800 font-semibold text-2xl mt-4">
-          Ejemplo de fotos del catálogo
-        </h2>
-        <div className="grid sm:grid-cols-4 grid-cols-2 md:grid-cols-5 gap-x-5">
-          <div className="relative aspect-square w-full mt-2">
-            <Image
-              src="/toninas/1.webp"
-              alt="Foto de identificación de aleta de tonina"
-              fill
-              className="object-cover"
-              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-            />
-          </div>
-          <div className="relative aspect-square w-full mt-2">
-            <Image
-              src="/toninas/aletas1.webp"
-              alt="Foto de identificación de aleta de tonina"
-              fill
-              className="object-cover"
-              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-            />
-          </div>
-          <div className="relative aspect-square w-full mt-2">
-            <Image
-              src="/toninas/3.webp"
-              alt="Foto de identificación de aleta de tonina"
-              fill
-              className="object-cover"
-              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-            />
-          </div>
-          <div className="relative aspect-square w-full mt-2">
-            <Image
-              src="/toninas/aletas2.webp"
-              alt="Foto de identificación de aleta de tonina"
-              fill
-              className="object-cover"
-              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-            />
-          </div>
-          <div className="relative aspect-square w-full mt-2">
-            <Image
-              src="/toninas/aletas3.webp"
-              alt="Foto de identificación de aleta de tonina"
-              fill
-              className="object-cover"
-              sizes="(min-width: 768px) 20vw, (min-width: 640px) 25vw, 45vw"
-            />
-          </div>
-        </div>
+        <p className="mt-4">
+          <Link
+            href="/es/investigacion/toninas/catalogo"
+            className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+          >
+            Ver el catálogo de foto-identificación →
+          </Link>
+        </p>
         <p className="mt-8 text-base leading-8 text-texto">
           A partir del 2017, el Proyecto Toninas comenzó a monitorear
           acústicamente a los grupos de toninas de Uruguay, con el objetivo de
@@ -256,16 +175,16 @@ export default function Home({ params: { locale } }) {
           mayoría de los silbidos tuvo una frecuencia mínima entre 2,1 y 5,1
           kHz, una frecuencia máxima menor a 12 kHz, y una duración menor a
           600 ms (Menchaca 2018).
-          <div className="prose my-4">
-            <h3>🎧 Escucha un silbido</h3>
-            <audio
-              controls
-              className="my-4"
-              controlsList="nodownload noremoteplayback noplaybackrate"
-            >
-              <source src="/silbido.mp3" type="audio/mp3" />
-            </audio>
-          </div>
+        </p>
+        <p className="mt-4">
+          <Link
+            href="/es/especies/tonina"
+            className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+          >
+            Escuchá un silbido en la página de la tonina →
+          </Link>
+        </p>
+        <p className="mt-8 text-base leading-8 text-texto">
           Además, en un estudio comparativo de silbidos, en conjunto con
           colegas de Brasil, se determinó que las toninas del sur de Brasil y
           Uruguay emiten sonidos que son más similares entre sí que los que
