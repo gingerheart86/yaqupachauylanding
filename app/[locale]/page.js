@@ -17,7 +17,7 @@ import { getDictionary } from "../../lib/i18n";
 import { getUltimasNoticias, fechaLegible } from "../../lib/noticias";
 import { SURVEY123_TONINA_URL } from "../../lib/contacto";
 import { SILUETAS } from "../../lib/especies";
-import { getPagina } from "../../lib/paginas";
+import { getPagina, catalogoEstaOculto } from "../../lib/paginas";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -32,6 +32,7 @@ export default function Home({ params: { locale } }) {
   const esIngles = locale === "en";
   const noticias = esIngles ? [] : getUltimasNoticias(3);
   const institucional = getPagina("home-institucional");
+  const catalogoOculto = catalogoEstaOculto();
   const tituloInstitucional = esIngles
     ? institucional.titulo_en
     : institucional.titulo;
@@ -60,13 +61,15 @@ export default function Home({ params: { locale } }) {
           >
             {esIngles ? "Meet the tonina" : "Conoce a la tonina"}
           </Button>
-          <Button
-            href={`/${locale}/investigacion/toninas/catalogo`}
-            variante="secundario-oscuro"
-            className="min-h-11"
-          >
-            {esIngles ? "See the catalogue" : "Mira el catálogo"}
-          </Button>
+          {!catalogoOculto && (
+            <Button
+              href={`/${locale}/investigacion/toninas/catalogo`}
+              variante="secundario-oscuro"
+              className="min-h-11"
+            >
+              {esIngles ? "See the catalogue" : "Mira el catálogo"}
+            </Button>
+          )}
         </div>
       </HeroVideo>
 

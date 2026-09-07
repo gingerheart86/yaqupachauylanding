@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Section, PageHeader } from "../../../../../components/ui";
 import { alternatesPara } from "../../../../../lib/i18n";
+import { catalogoEstaOculto } from "../../../../../lib/paginas";
 
 const FOCUS_RING =
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-marca focus-visible:ring-offset-2";
@@ -28,6 +29,7 @@ export function generateMetadata({ params: { locale } }) {
 }
 
 export default function Home({ params: { locale } }) {
+  const catalogoOculto = catalogoEstaOculto();
   if (locale === "en") {
     return (
       <Section fondo="claro">
@@ -73,14 +75,16 @@ export default function Home({ params: { locale } }) {
             population, how long each individual stays in a given area,
             association preferences, calving intervals, and other data.
           </p>
-          <p className="mt-4">
-            <Link
-              href="/en/investigacion/toninas/catalogo"
-              className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
-            >
-              See the photo-identification catalogue →
-            </Link>
-          </p>
+          {!catalogoOculto && (
+            <p className="mt-4">
+              <Link
+                href="/en/investigacion/toninas/catalogo"
+                className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+              >
+                See the photo-identification catalogue →
+              </Link>
+            </p>
+          )}
           <p className="mt-8 text-base leading-8 text-texto">
             Since 2017, Proyecto Toninas has been acoustically monitoring
             tonina groups in Uruguay, aiming to build a whistle catalogue.
@@ -157,14 +161,16 @@ export default function Home({ params: { locale } }) {
           en un área determinada, las preferencias de asociación, los
           intervalos de nacimiento de las crías, entre otros datos.
         </p>
-        <p className="mt-4">
-          <Link
-            href="/es/investigacion/toninas/catalogo"
-            className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
-          >
-            Ver el catálogo de foto-identificación →
-          </Link>
-        </p>
+        {!catalogoOculto && (
+          <p className="mt-4">
+            <Link
+              href="/es/investigacion/toninas/catalogo"
+              className={`text-marca-oscuro underline underline-offset-4 ${FOCUS_RING}`}
+            >
+              Ver el catálogo de foto-identificación →
+            </Link>
+          </p>
+        )}
         <p className="mt-8 text-base leading-8 text-texto">
           A partir del 2017, el Proyecto Toninas comenzó a monitorear
           acústicamente a los grupos de toninas de Uruguay, con el objetivo de

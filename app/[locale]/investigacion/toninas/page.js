@@ -4,6 +4,7 @@ import { Section, PageHeader, ProjectCardCompacta } from "../../../../components
 import { alternatesPara } from "../../../../lib/i18n";
 import { getContenidoProyecto, getLineasDeTrabajo } from "../../../../lib/contenido-proyectos";
 import { getMdxComponents } from "../../../../lib/mdx-components";
+import { catalogoEstaOculto } from "../../../../lib/paginas";
 
 // Proyecto Toninas es el proyecto "padre": empezo antes y Centinelas
 // de la Costa fue una de sus lineas de trabajo, no un proyecto al
@@ -38,6 +39,7 @@ export default function Page({ params: { locale } }) {
   const nombre = esIngles ? proyecto.nombre_en : proyecto.nombre;
   const cuerpo = esIngles ? proyecto.body_en : proyecto.content;
   const lineas = getLineasDeTrabajo("toninas");
+  const catalogoOculto = catalogoEstaOculto();
 
   return (
     <Section fondo="claro">
@@ -69,7 +71,7 @@ export default function Page({ params: { locale } }) {
         </div>
       )}
 
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className={`mt-12 grid grid-cols-1 gap-4 ${catalogoOculto ? "" : "sm:grid-cols-2"}`}>
         <ProjectCardCompacta
           href={`/${locale}/investigacion/toninas/antecedentes`}
           title={esIngles ? "Background" : "Antecedentes"}
@@ -79,15 +81,17 @@ export default function Page({ params: { locale } }) {
               : "Más de veinte años estudiando a las toninas en la costa uruguaya."
           }
         />
-        <ProjectCardCompacta
-          href={`/${locale}/investigacion/toninas/catalogo`}
-          title={esIngles ? "Photo-identification catalogue" : "Catálogo de foto-identificación"}
-          description={
-            esIngles
-              ? "Meet the individually identified toninas."
-              : "Conocé a las toninas identificadas individualmente."
-          }
-        />
+        {!catalogoOculto && (
+          <ProjectCardCompacta
+            href={`/${locale}/investigacion/toninas/catalogo`}
+            title={esIngles ? "Photo-identification catalogue" : "Catálogo de foto-identificación"}
+            description={
+              esIngles
+                ? "Meet the individually identified toninas."
+                : "Conocé a las toninas identificadas individualmente."
+            }
+          />
+        )}
       </div>
     </Section>
   );

@@ -5,6 +5,7 @@ import { Section } from "../../../../../components/ui";
 import { getLibro, getLibros } from "../../../../../lib/libros";
 import { getIndividuoPorCodigo } from "../../../../../lib/catalogo";
 import { getArticulo } from "../../../../../lib/tienda";
+import { catalogoEstaOculto } from "../../../../../lib/paginas";
 import { alternatesPara } from "../../../../../lib/i18n";
 
 export async function generateStaticParams() {
@@ -28,9 +29,9 @@ const FOCUS_RING =
 export default function Page({ params: { slug } }) {
   const libro = getLibro(slug);
   if (!libro) notFound();
-  const individuos = libro.catalogo
-    .map((codigo) => getIndividuoPorCodigo(codigo))
-    .filter(Boolean);
+  const individuos = catalogoEstaOculto()
+    ? []
+    : libro.catalogo.map((codigo) => getIndividuoPorCodigo(codigo)).filter(Boolean);
   // El slug del libro y el del articulo de la tienda son el mismo
   // texto por convencion - si todavia no existe ese articulo, no hay
   // boton de compra en vez de uno que no lleva a ningun lado.

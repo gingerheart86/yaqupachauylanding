@@ -5,6 +5,7 @@ import { SonidoTonina } from "../../../../components/especies/SonidoTonina";
 import { alternatesPara } from "../../../../lib/i18n";
 import { getContenidoEspecie } from "../../../../lib/contenido-especies";
 import { getMdxComponents } from "../../../../lib/mdx-components";
+import { catalogoEstaOculto } from "../../../../lib/paginas";
 
 export async function generateStaticParams() {
   return [{ locale: "es" }, { locale: "en" }];
@@ -57,7 +58,9 @@ export default function Page({ params: { locale } }) {
         <MDXRemote source={cuerpo} components={getMdxComponents(locale)} />
       </div>
       <SonidoTonina locale={locale} />
-      <BloqueDescubrimiento proyecto="toninas" locale={locale} />
+      {!catalogoEstaOculto() && (
+        <BloqueDescubrimiento proyecto="toninas" locale={locale} />
+      )}
     </PaginaEspecie>
   );
 }

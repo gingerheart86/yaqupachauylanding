@@ -115,6 +115,15 @@ collections:
           - { name: "mensaje_exito", label: "Mensaje al enviar", widget: "text" }
           - { name: "aviso_datos", label: "Aviso sobre los datos", widget: "text", hint: "Qué se hace con la información que deja la persona." }
 
+      - name: "catalogo"
+        label: "Catálogo de individuos"
+        file: "content/paginas/catalogo.mdx"
+        fields:
+          - { name: "titulo", label: "Título", widget: "string" }
+          - { name: "en_construccion", label: "En construcción", widget: "boolean", default: true, hint: "Marcado, muestra el aviso. Desmarcado, muestra el catálogo completo." }
+          - { name: "texto_construccion", label: "Texto del aviso", widget: "markdown" }
+          - { name: "intro", label: "Introducción del catálogo", widget: "text", hint: "Se muestra cuando el catálogo está activo." }
+
   - name: "noticias"
     label: "Noticias"
     folder: "content/noticias"
