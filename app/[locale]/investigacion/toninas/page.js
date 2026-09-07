@@ -50,27 +50,22 @@ export default function Page({ params: { locale } }) {
           className="w-48 h-auto sm:w-56"
         />
       </div>
-      <PageHeader title={nombre} className="mt-6" />
+      <PageHeader title={nombre} className="mt-12" />
 
-      <div className="prose max-w-none text-texto [&_p]:text-base [&_p]:leading-8 [&_p+p]:mt-8">
+      <div className="mt-16 prose max-w-none text-texto [&_p]:text-base [&_p]:leading-8 [&_p+p]:mt-8">
         <MDXRemote source={cuerpo} components={getMdxComponents(locale)} />
       </div>
 
       {lineas.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-2xl font-semibold tracking-tight text-mar-800">
-            {esIngles ? "Lines of work" : "Líneas de trabajo"}
-          </h2>
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {lineas.map((linea) => (
-              <ProjectCardCompacta
-                key={linea.slug}
-                href={`/${locale}/investigacion/toninas/${linea.slug}`}
-                title={esIngles ? linea.nombre_en || linea.nombre : linea.nombre}
-                description={esIngles ? linea.resumen_en : linea.resumen}
-              />
-            ))}
-          </div>
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {lineas.map((linea) => (
+            <ProjectCardCompacta
+              key={linea.slug}
+              href={`/${locale}/investigacion/toninas/${linea.slug}`}
+              title={esIngles ? linea.nombre_en || linea.nombre : linea.nombre}
+              description={esIngles ? linea.resumen_en : linea.resumen}
+            />
+          ))}
         </div>
       )}
 
