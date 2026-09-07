@@ -46,7 +46,7 @@ export const socialLinks = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/proyecto.toninas/",
+    href: "https://www.instagram.com/yaqupacha.uy/",
     Icon: InstagramIcon,
   },
   {
