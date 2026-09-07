@@ -5,7 +5,7 @@ export default function HeroVideo({ children }) {
   const [reproducir, setReproducir] = useState(false);
 
   useEffect(() => {
-    const anchoOk = window.matchMedia("(min-width: 768px)").matches;
+    const anchoOk = window.matchMedia("(min-width: 1024px)").matches;
     const sinMovimiento = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
