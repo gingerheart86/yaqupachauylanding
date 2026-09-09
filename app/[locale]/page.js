@@ -45,16 +45,14 @@ export default function Home({ params: { locale } }) {
       {/* 1. Hero con video */}
       <HeroVideo>
         <h1 className="sr-only">Toninas</h1>
-        <div className="flex justify-center">
-          <Image
-            src="/decor/logo-proyecto-toninas-blanco.png"
-            alt="Proyecto Toninas: Centinelas de la Costa"
-            width={800}
-            height={658}
-            className="w-80 h-auto drop-shadow-lg sm:w-96"
-            priority
-          />
-        </div>
+        <Image
+          src="/decor/logo-proyecto-toninas-blanco.png"
+          alt="Proyecto Toninas: Centinelas de la Costa"
+          width={800}
+          height={658}
+          className="w-80 h-auto drop-shadow-lg sm:w-96"
+          priority
+        />
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button
             href={`/${locale}/especies/tonina`}

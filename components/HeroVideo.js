@@ -35,8 +35,8 @@ export default function HeroVideo({ children }) {
         />
       )}
       <div className="absolute inset-0 bg-mar-900/45" aria-hidden="true" />
-      <div className="relative flex h-full w-full items-end">
-        <div className="mx-auto w-full max-w-7xl px-4 pb-12 sm:px-6 sm:pb-16 lg:px-8">
+      <div className="relative flex h-full w-full items-center">
+        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           {children}
         </div>
       </div>
